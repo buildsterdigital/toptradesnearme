@@ -124,6 +124,7 @@ footer { background: var(--surface); border-top: 1px solid var(--line); }
 .quote iframe.ghl { margin-top: 10px; }
 .prose h2 { font-size: 20px; margin-top: 24px; }
 .prose p { max-width: 68ch; }
+.prose ul { max-width: 68ch; padding-left: 20px; display: grid; gap: 6px; }
 
 /* Finder: landing page with trade picker, postcode search and map */
 .finder { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; align-items: start; padding-block: 28px 10px; }
