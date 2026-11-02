@@ -1,0 +1,3058 @@
+{
+ "checked": "2 Nov 2026",
+ "towns": {
+  "oxford": {
+   "name": "Oxford",
+   "villages": "Headington, Cowley, Botley, Summertown, Marston, Iffley, Littlemore, Blackbird Leys, Wolvercote, Cumnor, Kennington, Horspath"
+  },
+  "abingdon": {
+   "name": "Abingdon",
+   "villages": "Drayton, Radley, Sutton Courtenay, Culham, Marcham, Steventon, Milton, Wootton, Shippon, Kennington"
+  },
+  "didcot": {
+   "name": "Didcot",
+   "villages": "Great Western Park, Harwell, East Hagbourne, West Hagbourne, Blewbury, Upton, Cholsey, Long Wittenham, Chilton, Milton Park"
+  },
+  "banbury": {
+   "name": "Banbury",
+   "villages": "Bodicote, Adderbury, Bloxham, Cropredy, Deddington, Hook Norton, King's Sutton, Middleton Cheney, Sibford Ferris, Wroxton"
+  },
+  "bicester": {
+   "name": "Bicester",
+   "villages": "Launton, Chesterton, Ambrosden, Arncott, Bucknell, Kirtlington, Weston-on-the-Green, Upper Heyford, Ardley, Graven Hill"
+  },
+  "witney": {
+   "name": "Witney",
+   "villages": "Eynsham, Ducklington, Hailey, Minster Lovell, North Leigh, Long Hanborough, Freeland, Standlake, Stanton Harcourt, Bampton"
+  },
+  "wantage": {
+   "name": "Wantage",
+   "villages": "Grove, East Hendred, Childrey, Letcombe Regis, Ardington, Denchworth, Stanford in the Vale, Uffington, Charney Bassett, East Challow"
+  },
+  "thame": {
+   "name": "Thame",
+   "villages": "Haddenham, Long Crendon, Tetsworth, Towersey, Great Milton, Little Milton, Sydenham, Shabbington, Moreton, Kingsey"
+  },
+  "henley": {
+   "name": "Henley-on-Thames",
+   "villages": "Sonning Common, Nettlebed, Shiplake, Peppard, Rotherfield Greys, Harpsden, Binfield Heath, Goring, Woodcote, Checkendon"
+  },
+  "wallingford": {
+   "name": "Wallingford",
+   "villages": "Cholsey, Benson, Crowmarsh Gifford, Brightwell-cum-Sotwell, North Moreton, South Moreton, Shillingford, Warborough, Dorchester-on-Thames, Berinsfield"
+  },
+  "kidlington": {
+   "name": "Kidlington",
+   "villages": "Yarnton, Begbroke, Islip, Thrupp, Gosford, Water Eaton, Bletchingdon, Shipton-on-Cherwell, Hampton Poyle, Kirtlington"
+  },
+  "carterton": {
+   "name": "Carterton",
+   "villages": "Brize Norton, Alvescot, Black Bourton, Clanfield, Kencot, Shilton, Aston, Curbridge, Bampton, Lew"
+  },
+  "chipping-norton": {
+   "name": "Chipping Norton",
+   "villages": "Charlbury, Enstone, Spelsbury, Over Norton, Kingham, Churchill, Great Tew, Salford, Chadlington, Little Compton"
+  },
+  "faringdon": {
+   "name": "Faringdon",
+   "villages": "Buckland, Shrivenham, Watchfield, Uffington, Longcot, Little Coxwell, Great Coxwell, Littleworth, Kingston Bagpuize, Southmoor"
+  },
+  "woodstock": {
+   "name": "Woodstock",
+   "villages": "Bladon, Wootton, Tackley, Stonesfield, Combe, Long Hanborough, Begbroke, Kiddington, Glympton, Old Woodstock"
+  },
+  "burford": {
+   "name": "Burford",
+   "villages": "Fulbrook, Shipton-under-Wychwood, Milton-under-Wychwood, Asthall, Swinbrook, Taynton, Leafield, Ascott-under-Wychwood, Filkins, Langford"
+  },
+  "watlington": {
+   "name": "Watlington and Chinnor",
+   "villages": "Chinnor, Pyrton, Christmas Common, Stoke Talmage, Shirburn, Lewknor, Postcombe, Aston Rowant, Kingston Blount, Cuxham"
+  },
+  "wheatley": {
+   "name": "Wheatley",
+   "villages": "Holton, Forest Hill, Stanton St John, Garsington, Horspath, Cuddesdon, Waterperry, Beckley, Waterstock, Littleworth"
+  }
+ },
+ "trades": {
+  "roofers": {
+   "name": "Roofers",
+   "short": "Roofers",
+   "single": "roofer",
+   "verb": "roofing",
+   "intro": "Re-roofs, slipped tiles, flat roofs, leadwork, chimneys, fascias and gutters.",
+   "tips": [
+    "Ask for the guarantee in writing. New tiled or slate roofs often come with 10 to 20 years; flat roofs usually match the membrane's own warranty.",
+    "Check public liability insurance is current. Directory profiles sometimes show it as unverified.",
+    "A roof survey usually costs £80 to £150 locally and is often free if you go ahead with the work.",
+    "For scaffolding on a pavement, the roofer or scaffolder needs a council licence. Ask who is arranging it."
+   ]
+  },
+  "driveways": {
+   "name": "Driveway companies",
+   "short": "Driveways",
+   "single": "driveway company",
+   "verb": "driveways",
+   "intro": "Block paving, resin bound, tarmac, gravel, patios and dropped kerbs.",
+   "tips": [
+    "Front garden over 5 square metres? A new hard surface must be permeable (resin bound, permeable blocks or gravel) or drain to a lawn or border, otherwise you need planning permission.",
+    "A dropped kerb needs Oxfordshire County Council approval before any work starts on the pavement.",
+    "Block paving driveways in this area typically come in around £3,800 for an average drive, or roughly £100 per square metre. Get two or three written quotes.",
+    "Ask what goes underneath: depth of sub-base and type of membrane matter more than the surface you see."
+   ]
+  },
+  "plumbers": {
+   "name": "Plumbers and heating engineers",
+   "short": "Plumbers",
+   "single": "plumber",
+   "verb": "plumbing and heating",
+   "intro": "Boiler installs and repairs, servicing, leaks, bathrooms, cylinders and landlord gas certificates.",
+   "tips": [
+    "Any gas work must be done by a Gas Safe registered engineer. Check their number on the official Gas Safe Register before they start.",
+    "A gas boiler service costs around £80 to £120 locally.",
+    "Landlords need a gas safety certificate (CP12) every 12 months.",
+    "For a new boiler, ask which manufacturer warranty you get and whether it needs a yearly service to stay valid."
+   ]
+  }
+ },
+ "listings": {
+  "roofers/oxford": [
+   {
+    "name": "Oxfordshire Roofing & Building",
+    "base": "Oxfordshire",
+    "rating": 4.9,
+    "scale": 5,
+    "reviews": 124,
+    "source": "MyBuilder",
+    "url": "https://www.mybuilder.com/profile/oxfordshire_roofing_building/reviews",
+    "services": "Leak repairs, tiling, general roofing"
+   },
+   {
+    "name": "Tilney Roofing",
+    "base": "Oxford",
+    "rating": 9.86,
+    "scale": 10,
+    "reviews": 7,
+    "source": "Checkatrade (last 12 months)",
+    "url": "https://www.checkatrade.com/trades/tilneyroofing",
+    "services": "Roofing"
+   },
+   {
+    "name": "Oxford Roofing & Maintenance Ltd",
+    "base": "Faringdon",
+    "rating": 10,
+    "scale": 10,
+    "reviews": 2,
+    "source": "Checkatrade (last 12 months)",
+    "url": "https://www.checkatrade.com/trades/OxfordRoofingAndMaintenanceLtd",
+    "services": "Roof repairs and maintenance"
+   },
+   {
+    "name": "KBS Oxford Roofing",
+    "base": "Oxford",
+    "services": "Roofing, CRC member (self-stated)"
+   }
+  ],
+  "roofers/abingdon": [
+   {
+    "name": "Abingdon on Thames Roofing & Building",
+    "base": "Abingdon",
+    "rating": 9.9,
+    "scale": 10,
+    "source": "Checkatrade",
+    "url": "https://www.checkatrade.com/trades/abingdononthamesroofingandbui",
+    "services": "Gutters, fascias, soffits, emergency repairs"
+   },
+   {
+    "name": "Oxford Roofing & Leadworks",
+    "base": "Abingdon",
+    "rating": 9.59,
+    "scale": 10,
+    "source": "Checkatrade",
+    "url": "https://www.checkatrade.com/trades/oxfordroofingandleadworks",
+    "services": "Leadwork, dormers, roof windows, chimneys"
+   },
+   {
+    "name": "Everlast Roofing Services Ltd",
+    "base": "Abingdon",
+    "services": "Domestic and commercial roofing",
+    "url": "https://www.trustatrader.com/traders/everlast-roofing-services-ltd-roofers-roofing-abingdon"
+   },
+   {
+    "name": "R W Dawson Roofing Contractors Ltd",
+    "base": "Radley Road, Abingdon",
+    "services": "Roofing contractor"
+   },
+   {
+    "name": "Abingdon Roof Company",
+    "base": "Abingdon",
+    "services": "Roofing"
+   },
+   {
+    "name": "Regatta Roofing",
+    "base": "Drayton",
+    "services": "Roofing"
+   }
+  ],
+  "roofers/didcot": [
+   {
+    "name": "Harris Roofing & Guttering Ltd",
+    "base": "Didcot",
+    "services": "Roofing and guttering"
+   },
+   {
+    "name": "D Champion Roofing",
+    "base": "Didcot",
+    "services": "Roofing"
+   },
+   {
+    "name": "Prestige Elite Roofing",
+    "base": "Didcot area",
+    "services": "Roofing, 20+ years trading (self-stated)"
+   },
+   {
+    "name": "Oxford Roofing and Building",
+    "base": "Upton",
+    "services": "Roofing and building"
+   }
+  ],
+  "driveways/oxford": [
+   {
+    "name": "The Driveway and Patio Company Ltd",
+    "base": "Drayton",
+    "rating": 9.98,
+    "scale": 10,
+    "reviews": 173,
+    "source": "Checkatrade",
+    "url": "https://www.checkatrade.com/trades/thedrivewayandpatiocompanyoxfordshire",
+    "services": "Block paving, concrete, driveway sealing"
+   },
+   {
+    "name": "Creative Drives Ltd",
+    "base": "Bampton",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "url": "https://www.checkatrade.com/trades/creativedrivesltd",
+    "services": "Block paving, resin bound and bonded, permeable paving"
+   },
+   {
+    "name": "Creative Driveways & Patios Ltd",
+    "base": "Oxford West",
+    "services": "Block paving, resin bound driveways",
+    "url": "https://trustatrader.com/traders/creative-driveways-patios-ltd-resin-bound-driveways-oxford-west"
+   },
+   {
+    "name": "MD Driveways & Patios",
+    "base": "Oxford",
+    "services": "Resin, block paving, groundwork",
+    "url": "https://www.trustatrader.com/traders/md-driveways-patios-resin-bound-driveways-oxford-west"
+   },
+   {
+    "name": "Parklane Driveways",
+    "base": "Yarnton",
+    "services": "Driveways, 17 years trading (self-stated)"
+   },
+   {
+    "name": "Eagle Paving",
+    "base": "Kidlington",
+    "services": "Block paving, resin driveways"
+   },
+   {
+    "name": "Apex Drives & Design",
+    "base": "Thame",
+    "services": "Resin, block paving, asphalt, tarmac"
+   }
+  ],
+  "driveways/abingdon": [
+   {
+    "name": "The Driveway and Patio Company Ltd",
+    "base": "Drayton",
+    "rating": 9.98,
+    "scale": 10,
+    "reviews": 173,
+    "source": "Checkatrade",
+    "url": "https://www.checkatrade.com/trades/thedrivewayandpatiocompanyoxfordshire",
+    "services": "Block paving, concrete, driveway sealing"
+   },
+   {
+    "name": "Berkshire Asphalt",
+    "base": "Berkshire / Oxfordshire",
+    "rating": 10,
+    "scale": 10,
+    "reviews": 48,
+    "source": "Checkatrade",
+    "services": "Resin bound, tarmac, block paving"
+   },
+   {
+    "name": "LOAL",
+    "base": "Oxfordshire",
+    "rating": 9.98,
+    "scale": 10,
+    "reviews": 30,
+    "source": "Checkatrade",
+    "services": "Block paving, landscaping"
+   },
+   {
+    "name": "B.C Driveways & Brickwork",
+    "base": "Abingdon area",
+    "services": "Resin bound, brickwork"
+   },
+   {
+    "name": "Street & Son Landscaping",
+    "base": "Abingdon area",
+    "services": "Block paving, landscaping"
+   },
+   {
+    "name": "Abingdon Driveways",
+    "base": "Abingdon",
+    "services": "Driveways"
+   }
+  ],
+  "driveways/didcot": [
+   {
+    "name": "Driveways4u",
+    "base": "Didcot area",
+    "rating": 5,
+    "scale": 5,
+    "reviews": 551,
+    "source": "MyBuilder",
+    "services": "Block paving driveways"
+   },
+   {
+    "name": "Greenscaping Ltd",
+    "base": "Didcot area",
+    "rating": 10,
+    "scale": 10,
+    "reviews": 139,
+    "source": "Checkatrade",
+    "services": "Block paving, landscaping"
+   },
+   {
+    "name": "JC Drives and Patios",
+    "base": "Didcot area",
+    "rating": 9.94,
+    "scale": 10,
+    "reviews": 79,
+    "source": "Checkatrade",
+    "services": "Driveways and patios"
+   },
+   {
+    "name": "Berkshire Asphalt",
+    "base": "Berkshire / Oxfordshire",
+    "rating": 10,
+    "scale": 10,
+    "reviews": 48,
+    "source": "Checkatrade",
+    "services": "Resin bound, tarmac, block paving"
+   },
+   {
+    "name": "Liberty Contractors",
+    "base": "Didcot area",
+    "rating": 9.97,
+    "scale": 10,
+    "reviews": 32,
+    "source": "Checkatrade",
+    "services": "Block paving"
+   },
+   {
+    "name": "LOAL",
+    "base": "Oxfordshire",
+    "rating": 9.98,
+    "scale": 10,
+    "reviews": 30,
+    "source": "Checkatrade",
+    "services": "Block paving, landscaping"
+   }
+  ],
+  "plumbers/oxford": [
+   {
+    "name": "Daglish Plumbing Limited",
+    "base": "Osney Mead, Oxford",
+    "rating": 9.85,
+    "scale": 10,
+    "reviews": 13,
+    "source": "Checkatrade (last 12 months)",
+    "url": "https://www.checkatrade.com/trades/daglishplumbinglimited",
+    "services": "Plumbing and heating"
+   },
+   {
+    "name": "Oxford Home Plumbing & Heating",
+    "base": "Oxford",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "url": "https://www.checkatrade.com/trades/oxfordhomeplumbingandheating",
+    "services": "Repairs, CP12 landlord certificates, emergency call-outs"
+   },
+   {
+    "name": "Blenheim Plumbing & Heating Ltd",
+    "base": "Kidlington",
+    "services": "Plumbing, heating, servicing, installs"
+   },
+   {
+    "name": "Steve Cross Plumbing & Heating Ltd",
+    "base": "Oxford",
+    "services": "Energy efficient heating installs"
+   },
+   {
+    "name": "Spires Plumbing & Heating Oxford Ltd",
+    "base": "Bicester",
+    "services": "Plumbing, Gas Safe heating (self-stated)"
+   }
+  ],
+  "plumbers/abingdon": [
+   {
+    "name": "Premier Heating Solutions",
+    "base": "Abingdon area",
+    "rating": 9.66,
+    "scale": 10,
+    "reviews": 543,
+    "source": "Checkatrade",
+    "services": "Boilers and heating"
+   },
+   {
+    "name": "Emberline Energy Solutions",
+    "base": "Abingdon area",
+    "rating": 9.93,
+    "scale": 10,
+    "reviews": 45,
+    "source": "Checkatrade",
+    "services": "Boilers and heating"
+   },
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Oxfordshire",
+    "services": "Plumbing and heating (389 reviews on one listing)"
+   },
+   {
+    "name": "Peter L Mansbridge & Son Ltd",
+    "base": "Abingdon",
+    "services": "Gas Safe and OFTEC (self-stated)",
+    "url": "https://www.checkatrade.com/trades/peterlmansbridgeandson"
+   },
+   {
+    "name": "Precision Heating Ltd",
+    "base": "Abingdon area",
+    "services": "Heating and plumbing"
+   },
+   {
+    "name": "CDC Plumbing",
+    "base": "Abingdon area",
+    "services": "Plumbing"
+   }
+  ],
+  "plumbers/didcot": [
+   {
+    "name": "ML Blakeman Plumbing & Heating Services Ltd",
+    "base": "Didcot",
+    "services": "Boiler installs, servicing, repairs, emergency heating",
+    "url": "https://www.checkatrade.com/trades/mlblakemanplumbingandheating"
+   },
+   {
+    "name": "Tom Houseman Heating and Plumbing",
+    "base": "Didcot area",
+    "services": "Heating and plumbing",
+    "url": "https://www.checkatrade.com/trades/tomhousemanheatingandplumbing"
+   },
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Oxfordshire",
+    "services": "Plumbing and heating"
+   },
+   {
+    "name": "CM Plumbing & Heating",
+    "base": "Didcot area",
+    "services": "Boilers, plumbing"
+   },
+   {
+    "name": "Same Day Plumbing & Electrics",
+    "base": "Didcot area",
+    "services": "Plumbing and electrics"
+   }
+  ],
+  "roofers/banbury": [
+   {
+    "name": "Colne Valley Roofing & Building Ltd",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.88,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 457
+   },
+   {
+    "name": "Banbury Roofing & Paving",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.85,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 152
+   },
+   {
+    "name": "KBS Oxford Ltd",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.87,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 221
+   },
+   {
+    "name": "Safeguard Roofing And Building Limited",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 8.57,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 546
+   },
+   {
+    "name": "J Jenkins Roofing",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 10
+   },
+   {
+    "name": "Hoods Roofing",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 6
+   },
+   {
+    "name": "GSR Roofing and Leadwork Specialists",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade"
+   }
+  ],
+  "driveways/banbury": [
+   {
+    "name": "Pavestone Driveways Limited",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.71,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 143
+   },
+   {
+    "name": "Greenscaping Ltd",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 140
+   },
+   {
+    "name": "Whiteoak Landscaping Limited",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.73,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 115
+   },
+   {
+    "name": "JC Drives and Patios Ltd",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.9,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 89
+   },
+   {
+    "name": "Radclive Paving",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 51
+   },
+   {
+    "name": "The Driveway Studio Ltd",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.85,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 24
+   }
+  ],
+  "plumbers/banbury": [
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.65,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 425
+   },
+   {
+    "name": "Potters Home Improvements",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 47
+   },
+   {
+    "name": "Bleuwave Plumbing & Heating",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 29
+   },
+   {
+    "name": "North Oxford Plumbing & Heating",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.77,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 21
+   },
+   {
+    "name": "LG Plumbing & Heating",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 17
+   },
+   {
+    "name": "Heating Solution Ltd",
+    "base": "Operates in Banbury",
+    "services": "",
+    "rating": 9.42,
+    "scale": 10,
+    "source": "Checkatrade"
+   }
+  ],
+  "roofers/bicester": [
+   {
+    "name": "KBS Oxford Ltd",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.87,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 221
+   },
+   {
+    "name": "MJS Roofing & Property Maintenance",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 207
+   },
+   {
+    "name": "Kingsway Property Solutions",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.78,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 82
+   },
+   {
+    "name": "Harris Roofing & Guttering Ltd",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 73
+   },
+   {
+    "name": "Johnny Roofing Ltd",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 54
+   },
+   {
+    "name": "Southeast Roofing",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.93,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 54
+   },
+   {
+    "name": "Forthright Roofing Ltd",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.77,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 42
+   }
+  ],
+  "driveways/bicester": [
+   {
+    "name": "Bellamay Paving and Landscaping",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 140
+   },
+   {
+    "name": "Whiteoak Landscaping Limited",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 114
+   },
+   {
+    "name": "JC Drives and Patios Ltd",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.9,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 89
+   },
+   {
+    "name": "Radclive Paving Ltd",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 57
+   },
+   {
+    "name": "BJB Landscapes",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.94,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 57
+   },
+   {
+    "name": "Liberty Contractors",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 32
+   },
+   {
+    "name": "S Eugen Ltd",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 18
+   }
+  ],
+  "plumbers/bicester": [
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.65,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 415
+   },
+   {
+    "name": "Cat Plumbers",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.87,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 155
+   },
+   {
+    "name": "Steele's Plumbing & Heating Ltd",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 106
+   },
+   {
+    "name": "Eversons Plumbing & Heating",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 72
+   },
+   {
+    "name": "Jon Plumbing and Heating",
+    "base": "Operates in Bicester",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 45
+   },
+   {
+    "name": "Ashton Plumbing and Heating Services Ltd",
+    "base": "Operates in Bicester",
+    "services": ""
+   }
+  ],
+  "roofers/witney": [
+   {
+    "name": "Colne Valley Roofing & Building Ltd",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.88,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 457
+   },
+   {
+    "name": "APM Roofing Contractors",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.78,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 274
+   },
+   {
+    "name": "ASAP Roofing & Exterior Maintenance",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 190
+   },
+   {
+    "name": "Alliance Roofing & Building",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.88,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 95
+   },
+   {
+    "name": "Pinewood Building",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.92,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 61
+   },
+   {
+    "name": "Premier Roofing & Gutters Limited",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade"
+   },
+   {
+    "name": "MT & Sons Roofing & Building",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.81,
+    "scale": 10,
+    "source": "Checkatrade"
+   }
+  ],
+  "driveways/witney": [
+   {
+    "name": "The Driveway and Patio Company Ltd",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 173
+   },
+   {
+    "name": "Greenscaping Ltd",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 139
+   },
+   {
+    "name": "Whiteoak Landscaping Limited",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.8,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 118
+   },
+   {
+    "name": "DJ Paving",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 68
+   },
+   {
+    "name": "Radclive Paving",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 55
+   },
+   {
+    "name": "The Driveway Studio Ltd",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.8,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 33
+   },
+   {
+    "name": "Liberty Contractors",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 32
+   }
+  ],
+  "plumbers/witney": [
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.7,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 383
+   },
+   {
+    "name": "MJP Plumbing and Heating",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.94,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 320
+   },
+   {
+    "name": "CDC Plumbing",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.94,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 142
+   },
+   {
+    "name": "N J Plumbing",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 114
+   },
+   {
+    "name": "Keshav The Plumber",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.92,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 97
+   },
+   {
+    "name": "Plumbing Bend - Heating Services Ltd",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 57
+   },
+   {
+    "name": "D.R Plumbing Limited",
+    "base": "Operates in Witney",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade"
+   }
+  ],
+  "roofers/wantage": [
+   {
+    "name": "Everlast Roofing Services",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.64,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 304
+   },
+   {
+    "name": "TTB Roofing & Landscaping",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.93,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 238
+   },
+   {
+    "name": "MGA Roofing Contractors Limited",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 112
+   },
+   {
+    "name": "Trustmark Roofing",
+    "base": "Operates in Wantage",
+    "services": ""
+   },
+   {
+    "name": "Luke Griffiths Roofing",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.93,
+    "scale": 10,
+    "source": "Checkatrade"
+   },
+   {
+    "name": "Safeguard Roofing And Building Limited",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 8.57,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 546
+   }
+  ],
+  "driveways/wantage": [
+   {
+    "name": "Interlock Paving",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 121
+   },
+   {
+    "name": "Whiteoak Landscaping Limited",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.8,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 118
+   },
+   {
+    "name": "DJ Paving",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 68
+   },
+   {
+    "name": "Berkshire Asphalt",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 51
+   },
+   {
+    "name": "LOAL",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 39
+   },
+   {
+    "name": "The Driveway and Patio Company Ltd",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 173
+   }
+  ],
+  "plumbers/wantage": [
+   {
+    "name": "Precision Heating Ltd",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 365
+   },
+   {
+    "name": "Northway Heating & Plumbing",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 250
+   },
+   {
+    "name": "ML Blakeman Plumbing & Heating Services",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 235
+   },
+   {
+    "name": "Cat Plumbers",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.87,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 160
+   },
+   {
+    "name": "MK Heating Solutions",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.93,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 59
+   },
+   {
+    "name": "Cottrell Plumbing and Heating Ltd",
+    "base": "Operates in Wantage",
+    "services": "",
+    "rating": 9.68,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 42
+   }
+  ],
+  "roofers/thame": [
+   {
+    "name": "CJB Roofing",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.79,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 182
+   },
+   {
+    "name": "Ruscombe Roofing & Property Maintenance",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 164
+   },
+   {
+    "name": "Premier Roofing & Gutters Limited",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 99
+   },
+   {
+    "name": "Broadoak Home Improvements Ltd",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 57
+   },
+   {
+    "name": "Mainline Roofing Limited",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.76,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 50
+   },
+   {
+    "name": "Weathershield Roofing",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 33
+   },
+   {
+    "name": "Marley Roofing & Building",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.39,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 22
+   }
+  ],
+  "driveways/thame": [
+   {
+    "name": "D and S Driveways & Roofing",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 306
+   },
+   {
+    "name": "J Wilkes Paving & Construction",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 223
+   },
+   {
+    "name": "The Driveway and Patio Company Ltd",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 160
+   },
+   {
+    "name": "Bellamay Paving and Landscaping",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 140
+   },
+   {
+    "name": "Interlock Paving",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 116
+   },
+   {
+    "name": "Radclive Paving",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 51
+   },
+   {
+    "name": "TP Resin Driveways Ltd",
+    "base": "Operates in Thame",
+    "services": ""
+   }
+  ],
+  "plumbers/thame": [
+   {
+    "name": "Heppelthwaite Plumbing Heating and Renewable Energy",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.82,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 818
+   },
+   {
+    "name": "Precision Heating Ltd",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 365
+   },
+   {
+    "name": "GK Plumbing & Heating",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 264
+   },
+   {
+    "name": "ML Blakeman Plumbing & Heating Services",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.87,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 243
+   },
+   {
+    "name": "Mason Plumbing & Heating Ltd",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.9,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 181
+   },
+   {
+    "name": "Plumbbob Limited",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 9.93,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 163
+   },
+   {
+    "name": "MW Plumbing & Heating Ltd",
+    "base": "Operates in Thame",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 56
+   }
+  ],
+  "roofers/henley": [
+   {
+    "name": "Countrywide Roofing & Insulation Ltd",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 538
+   },
+   {
+    "name": "RA Leadworks & Roofing",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.99,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 318
+   },
+   {
+    "name": "Pristine Roofing Services Ltd",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 251
+   },
+   {
+    "name": "FRC Roofing and Property Maintenance",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.71,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 254
+   },
+   {
+    "name": "Ruscombe Roofing & Property Maintenance",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 163
+   },
+   {
+    "name": "ThermoSeal Roofing Services Ltd",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.99,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 124
+   },
+   {
+    "name": "Thomas Collins Roofing",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.86,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 101
+   }
+  ],
+  "driveways/henley": [
+   {
+    "name": "D and S Driveways & Roofing",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 306
+   },
+   {
+    "name": "The Driveway and Patio Company Ltd",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 173
+   },
+   {
+    "name": "Resinprint Driveways Limited",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.18,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 21
+   },
+   {
+    "name": "Total Surfacing Limited",
+    "base": "Operates in Henley-on-Thames",
+    "services": ""
+   },
+   {
+    "name": "The Driveway Studio Ltd",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.8,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 33
+   },
+   {
+    "name": "Foundations Masters In Block Paving Limited",
+    "base": "Operates in Henley-on-Thames",
+    "services": ""
+   }
+  ],
+  "plumbers/henley": [
+   {
+    "name": "TG Heating & Plumbing",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 1033
+   },
+   {
+    "name": "Premier Heating Solutions",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.54,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 506
+   },
+   {
+    "name": "Reliable Heating & Plumbing Services",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.73,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 353
+   },
+   {
+    "name": "Hoopla Heating and Plumbing Ltd",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 345
+   },
+   {
+    "name": "Elite Plumbing & Gas Services",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.78,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 62
+   },
+   {
+    "name": "Mitchell Plumbing & Heating",
+    "base": "Operates in Henley-on-Thames",
+    "services": "",
+    "rating": 9.92,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 47
+   },
+   {
+    "name": "Chaps Plumbing & Heating",
+    "base": "Operates in Henley-on-Thames",
+    "services": ""
+   }
+  ],
+  "roofers/wallingford": [
+   {
+    "name": "Everlast Roofing Services",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.64,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 304
+   },
+   {
+    "name": "Tombs Lead Work and Roofing",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 116
+   },
+   {
+    "name": "RTD Roofing",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.87,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 87
+   },
+   {
+    "name": "R.J Collins Roofing Contractors Ltd",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.85,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 75
+   },
+   {
+    "name": "Tilney Roofing",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.93,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 50
+   },
+   {
+    "name": "Longpine Roofing & Property Maintenance",
+    "base": "Operates in Wallingford",
+    "services": ""
+   }
+  ],
+  "driveways/wallingford": [
+   {
+    "name": "The Driveway and Patio Company Ltd",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 173
+   },
+   {
+    "name": "Interlock Paving",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 121
+   },
+   {
+    "name": "DJ Paving",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 68
+   },
+   {
+    "name": "Berkshire Asphalt",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 51
+   },
+   {
+    "name": "LOAL",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 39
+   },
+   {
+    "name": "Resinprint Driveways Limited",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.18,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 21
+   }
+  ],
+  "plumbers/wallingford": [
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.65,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 425
+   },
+   {
+    "name": "CarlRight Plumbing and Heating",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.91,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 18
+   },
+   {
+    "name": "Optimus Ecoheat Ltd",
+    "base": "Operates in Wallingford",
+    "services": "",
+    "rating": 9.85,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 18
+   },
+   {
+    "name": "Avery Plumbing & Heating",
+    "base": "Operates in Wallingford",
+    "services": ""
+   },
+   {
+    "name": "M.Tutty Plumbing and Heating",
+    "base": "Operates in Wallingford",
+    "services": ""
+   }
+  ],
+  "roofers/kidlington": [
+   {
+    "name": "Countrywide Roofing & Insulation Ltd",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.78,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 332
+   },
+   {
+    "name": "KBS Oxford Ltd",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.87,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 221
+   },
+   {
+    "name": "ASAP Roofing & Exterior Maintenance",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 190
+   },
+   {
+    "name": "Southeast Roofing",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.92,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 35
+   },
+   {
+    "name": "North Oxford Roofing & Conversions Ltd",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 5
+   },
+   {
+    "name": "D J Walker Roofing Ltd",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade"
+   }
+  ],
+  "driveways/kidlington": [
+   {
+    "name": "Whiteoak Landscaping Limited",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.8,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 118
+   },
+   {
+    "name": "JC Drives and Patios Ltd",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.9,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 89
+   },
+   {
+    "name": "The Driveway Studio Ltd",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.8,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 33
+   },
+   {
+    "name": "Eagle Paving",
+    "base": "Operates in Kidlington",
+    "services": ""
+   },
+   {
+    "name": "Creative Driveways & Patios Ltd",
+    "base": "Operates in Kidlington",
+    "services": ""
+   },
+   {
+    "name": "Parklane Driveways",
+    "base": "Operates in Kidlington",
+    "services": ""
+   }
+  ],
+  "plumbers/kidlington": [
+   {
+    "name": "Anthony's Servicing & Heating",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 471
+   },
+   {
+    "name": "ML Blakeman Plumbing & Heating Services",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 235
+   },
+   {
+    "name": "Roy Barrett & Sons Limited",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.86,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 169
+   },
+   {
+    "name": "HYSA Plumbing & Heating",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.71,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 151
+   },
+   {
+    "name": "JCH Heating Services (Oxfordshire)",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 56
+   },
+   {
+    "name": "North Oxford Plumbing & Heating",
+    "base": "Operates in Kidlington",
+    "services": "",
+    "rating": 9.81,
+    "scale": 10,
+    "source": "Checkatrade"
+   },
+   {
+    "name": "Blenheim Plumbing & Heating Ltd",
+    "base": "Operates in Kidlington",
+    "services": ""
+   }
+  ],
+  "roofers/carterton": [
+   {
+    "name": "ASAP Roofing & Exterior Maintenance",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 190
+   },
+   {
+    "name": "MGA Roofing Contractors Limited",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 112
+   },
+   {
+    "name": "Harris Roofing & Guttering Ltd",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 73
+   },
+   {
+    "name": "FeltThatRoofing",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.69,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 56
+   },
+   {
+    "name": "Tilney Roofing",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.93,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 50
+   },
+   {
+    "name": "JDV Roofing and Maintenance",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.94,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 49
+   },
+   {
+    "name": "Halford Roofing & Property Maintenance",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 2
+   }
+  ],
+  "driveways/carterton": [
+   {
+    "name": "JC Drives and Patios Ltd",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 90
+   },
+   {
+    "name": "DJ Paving",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 68
+   },
+   {
+    "name": "RW Landscaping & Property Maintenance",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.89,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 39
+   },
+   {
+    "name": "Myter Construction Ltd",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 33
+   },
+   {
+    "name": "Creative Drives Ltd",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade"
+   },
+   {
+    "name": "D&B Construction & Groundworks Ltd",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 2
+   }
+  ],
+  "plumbers/carterton": [
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.65,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 425
+   },
+   {
+    "name": "MJP Plumbing and Heating",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 323
+   },
+   {
+    "name": "Northway Heating & Plumbing",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 261
+   },
+   {
+    "name": "CDC Plumbing",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.92,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 143
+   },
+   {
+    "name": "Plumbing Bend - Heating Services Ltd",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 61
+   },
+   {
+    "name": "JV Noble Gas & Heating Engineering Ltd",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 9.9,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 37
+   },
+   {
+    "name": "YK Plumbing and Heating",
+    "base": "Operates in Carterton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 13
+   }
+  ],
+  "roofers/chipping-norton": [
+   {
+    "name": "Safeguard Roofing And Building Limited",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 8.57,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 546
+   },
+   {
+    "name": "WDV Roofing & Property Maintenance",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 43
+   },
+   {
+    "name": "KC Roofing Specialists",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 9.52,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 38
+   },
+   {
+    "name": "JS Home Improvements",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 9.54,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 13
+   },
+   {
+    "name": "J Jenkins Roofing",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 10
+   },
+   {
+    "name": "Royal Roofing",
+    "base": "Operates in Chipping Norton",
+    "services": ""
+   }
+  ],
+  "driveways/chipping-norton": [
+   {
+    "name": "Whiteoak Landscaping Limited",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 9.74,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 115
+   },
+   {
+    "name": "JC Drives and Patios Ltd",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 90
+   },
+   {
+    "name": "Radclive Paving Ltd",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 57
+   },
+   {
+    "name": "Polybound Home Improvements Ltd",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 20
+   },
+   {
+    "name": "TP Resin Driveways Ltd",
+    "base": "Operates in Chipping Norton",
+    "services": ""
+   }
+  ],
+  "plumbers/chipping-norton": [
+   {
+    "name": "MJP Plumbing and Heating",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 323
+   },
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 9.65,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 425
+   },
+   {
+    "name": "N J Plumbing",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 9.02,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 16
+   },
+   {
+    "name": "Aron Yeardye Plumbing & Heating",
+    "base": "Operates in Chipping Norton",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 2
+   }
+  ],
+  "roofers/faringdon": [
+   {
+    "name": "Colne Valley Roofing & Building Ltd",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.88,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 457
+   },
+   {
+    "name": "ASAP Roofing & Exterior Maintenance",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 190
+   },
+   {
+    "name": "MGA Roofing Contractors Limited",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 112
+   },
+   {
+    "name": "Tilney Roofing",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.93,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 50
+   },
+   {
+    "name": "Oxford Roofing & Maintenance Ltd",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 2
+   }
+  ],
+  "driveways/faringdon": [
+   {
+    "name": "Creative Drives Ltd",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade"
+   },
+   {
+    "name": "The Driveway Studio Ltd",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.88,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 25
+   },
+   {
+    "name": "Creative Driveways & Patios Ltd",
+    "base": "Operates in Faringdon",
+    "services": ""
+   },
+   {
+    "name": "P&D Driveways",
+    "base": "Operates in Faringdon",
+    "services": ""
+   },
+   {
+    "name": "DJ Paving",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 68
+   }
+  ],
+  "plumbers/faringdon": [
+   {
+    "name": "SPE Maintenance",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.91,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 997
+   },
+   {
+    "name": "John Williams Heating Services Ltd",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.89,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 335
+   },
+   {
+    "name": "MJP Plumbing and Heating",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.99,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 302
+   },
+   {
+    "name": "Northway Heating & Plumbing",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 243
+   },
+   {
+    "name": "Priory Heating Ltd",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 203
+   },
+   {
+    "name": "BSK Plumbing & Heating",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.88,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 193
+   },
+   {
+    "name": "Reillys Plumbing and Heating",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 9.88,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 99
+   },
+   {
+    "name": "Spring Energy Heating",
+    "base": "Operates in Faringdon",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 95
+   }
+  ],
+  "roofers/woodstock": [
+   {
+    "name": "Countrywide Roofing & Insulation Ltd",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.79,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 334
+   },
+   {
+    "name": "ASAP Roofing & Exterior Maintenance",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 190
+   },
+   {
+    "name": "Roofline",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 145
+   },
+   {
+    "name": "Harris Roofing & Guttering Ltd",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 73
+   },
+   {
+    "name": "Moreland Roofing",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 27
+   },
+   {
+    "name": "KH Skyroofing",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.87,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 22
+   },
+   {
+    "name": "Premier Roofing, Repairs & Maintenance Ltd",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 18
+   }
+  ],
+  "driveways/woodstock": [
+   {
+    "name": "Whiteoak Landscaping Limited",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.8,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 118
+   },
+   {
+    "name": "JC Drives and Patios Ltd",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 90
+   },
+   {
+    "name": "Radclive Paving Ltd",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 60
+   },
+   {
+    "name": "Creative Drives Ltd",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade"
+   },
+   {
+    "name": "MD Driveways & Patios",
+    "base": "Operates in Woodstock",
+    "services": ""
+   },
+   {
+    "name": "D&B Construction & Groundworks Ltd",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 2
+   }
+  ],
+  "plumbers/woodstock": [
+   {
+    "name": "Same Day Plumbing & Electrics",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.32,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 534
+   },
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.65,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 415
+   },
+   {
+    "name": "MJP Plumbing and Heating",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.99,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 302
+   },
+   {
+    "name": "Mackie's Multi-Trade Plumbing",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 250
+   },
+   {
+    "name": "HYSA Plumbing & Heating",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.71,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 151
+   },
+   {
+    "name": "Heating Heroes London Limited",
+    "base": "Operates in Woodstock",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 52
+   }
+  ],
+  "roofers/burford": [
+   {
+    "name": "Safeguard Roofing And Building Limited",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 8.57,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 546
+   },
+   {
+    "name": "All Roofing",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.99,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 435
+   },
+   {
+    "name": "Corinium Roofing & Property Maintenance",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 257
+   },
+   {
+    "name": "Stormguard Roofing, Renovations And Construction Ltd",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.82,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 157
+   },
+   {
+    "name": "Roofline",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 152
+   },
+   {
+    "name": "MGA Roofing Contractors Limited",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 112
+   },
+   {
+    "name": "Harris Roofing & Guttering Ltd",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 73
+   },
+   {
+    "name": "EGA Roofing",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.92,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 25
+   }
+  ],
+  "driveways/burford": [
+   {
+    "name": "Whiteoak Landscaping Limited",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.57,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 109
+   },
+   {
+    "name": "DJ Paving",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 68
+   },
+   {
+    "name": "Radclive Paving Ltd",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 57
+   },
+   {
+    "name": "Creative Drives Ltd",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade"
+   },
+   {
+    "name": "Ardian Construction",
+    "base": "Operates in Burford",
+    "services": ""
+   }
+  ],
+  "plumbers/burford": [
+   {
+    "name": "Same Day Plumbing & Electrics",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.33,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 538
+   },
+   {
+    "name": "B & G Jenkins",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 8.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 374
+   },
+   {
+    "name": "D S Plumbing & Heating",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 236
+   },
+   {
+    "name": "Cat Plumbers",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 9.89,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 155
+   },
+   {
+    "name": "Ward Plumbing & Heating Ltd",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 5.0,
+    "scale": 5,
+    "source": "TrustATrader",
+    "reviews": 147
+   },
+   {
+    "name": "Shaun Layfield Heating Plumbing & Gas Services",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 95
+   },
+   {
+    "name": "IL Plumbing & Heating",
+    "base": "Operates in Burford",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 52
+   }
+  ],
+  "roofers/watlington": [
+   {
+    "name": "Colne Valley Roofing & Building Ltd",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.84,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 457
+   },
+   {
+    "name": "Everlast Roofing Services",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.64,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 304
+   },
+   {
+    "name": "LRS Roofing",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.85,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 262
+   },
+   {
+    "name": "MJS Roofing & Property Maintenance",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 207
+   },
+   {
+    "name": "Harris Roofing & Guttering Ltd",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.76,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 182
+   },
+   {
+    "name": "JLR Roofing Solutions",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.95,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 151
+   },
+   {
+    "name": "Coles Roofing Limited",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 145
+   },
+   {
+    "name": "Urban Roofing Ltd",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 98
+   }
+  ],
+  "driveways/watlington": [
+   {
+    "name": "D and S Driveways & Roofing",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.67,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 306
+   },
+   {
+    "name": "J Wilkes Paving & Construction",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 223
+   },
+   {
+    "name": "The Driveway and Patio Company Ltd",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.98,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 173
+   },
+   {
+    "name": "Bellamay Paving and Landscaping",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 140
+   },
+   {
+    "name": "Interlock Paving",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 116
+   }
+  ],
+  "plumbers/watlington": [
+   {
+    "name": "Shaws Plumbing and Heating Limited",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 602
+   },
+   {
+    "name": "Premier Heating Solutions",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.65,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 543
+   },
+   {
+    "name": "ML Blakeman Plumbing & Heating Services",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.87,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 243
+   },
+   {
+    "name": "Quick Heat",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.79,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 76
+   },
+   {
+    "name": "Optimus Ecoheat Ltd",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.81,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 68
+   },
+   {
+    "name": "Bobi Plumber",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.9,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 43
+   },
+   {
+    "name": "G-tech Heating & Plumbing Ltd",
+    "base": "Operates in Watlington and Chinnor",
+    "services": "",
+    "rating": 9.79,
+    "scale": 10,
+    "source": "Checkatrade"
+   }
+  ],
+  "roofers/wheatley": [
+   {
+    "name": "Pavillion Roofing",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 419
+   },
+   {
+    "name": "Delta Roofcare",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.75,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 121
+   },
+   {
+    "name": "SFR Roofing & Property Maintenance Limited",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 91
+   },
+   {
+    "name": "Elders Roofcraft",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.5,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 79
+   },
+   {
+    "name": "Oxfordshire Roofing & Building",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 4.9,
+    "scale": 5,
+    "source": "MyBuilder",
+    "reviews": 124
+   }
+  ],
+  "driveways/wheatley": [
+   {
+    "name": "J Wilkes Paving & Construction",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.96,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 223
+   },
+   {
+    "name": "Bellamay Paving and Landscaping",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 10,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 140
+   },
+   {
+    "name": "Whiteoak Landscaping Limited",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.8,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 118
+   },
+   {
+    "name": "Interlock Paving",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.97,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 116
+   },
+   {
+    "name": "The Driveway Studio Ltd",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.88,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 25
+   }
+  ],
+  "plumbers/wheatley": [
+   {
+    "name": "Mizzen Heating And Plumbing",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.59,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 393
+   },
+   {
+    "name": "MB Plumbing & Heating",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.18,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 97
+   },
+   {
+    "name": "A&E Plumbing Oxford Limited",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.76,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 91
+   },
+   {
+    "name": "Quick Heat",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.83,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 75
+   },
+   {
+    "name": "Bobi Plumber",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.88,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 37
+   },
+   {
+    "name": "Heating Heroes London Limited",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.78,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 35
+   },
+   {
+    "name": "Missel Plumbing & Heating",
+    "base": "Operates in Wheatley",
+    "services": "",
+    "rating": 9.9,
+    "scale": 10,
+    "source": "Checkatrade",
+    "reviews": 10
+   }
+  ]
+ },
+ "sponsors": {
+  "roofers": {
+   "name": "Revive Roofing & Building",
+   "base": "Covers all of Oxfordshire",
+   "services": "Re-roofs, roof repairs, flat roofs, leadwork, extensions. Fully insured, 20+ years' experience, up to 20-year guarantees on new roofs.",
+   "phone": "01865 537500"
+  },
+  "driveways": {
+   "name": "Revive Driveways & Landscaping",
+   "base": "Covers all of Oxfordshire",
+   "services": "Block paving, resin, patios, fencing and landscaping across Oxfordshire.",
+   "url": "https://www.checkatrade.com/trades/revivedrivewaysandlandscapingltd",
+   "phone": "01865 537008"
+  },
+  "plumbers": {
+   "name": "Revive Plumbing & Heating",
+   "base": "Covers all of Oxfordshire",
+   "rating": 4.9,
+   "scale": 5,
+   "reviews": 41,
+   "source": "Google",
+   "services": "New boilers, servicing, repairs, heating and plumbing across Oxfordshire. Gas Safe 986716.",
+   "url": "https://reviveplumbing.co.uk",
+   "phone": "01865 537560"
+  }
+ }
+}
