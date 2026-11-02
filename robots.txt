@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://toptradesnearme.co.uk/sitemap.xml
