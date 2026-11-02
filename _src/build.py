@@ -18,6 +18,8 @@ def L(t=None, tw=None):
     """Link to a page: folder URLs on the live site, flat files in the preview."""
     if t is None:
         return "/" if LIVE else "index.html"
+    if tw is None:
+        return f"/{t}/" if LIVE else f"{t}.html"
     return f"/{t}/{tw}/" if LIVE else f"{t}-{tw}.html"
 
 
@@ -37,7 +39,7 @@ def head(title, desc, path="/"):
 
 
 def header():
-    trades = "".join(f'<a href="{L(t, "oxford")}">{e(v["short"])}</a>' for t, v in D["trades"].items())
+    trades = "".join(f'<a href="{L(t)}">{e(v["short"])}</a>' for t, v in D["trades"].items())
     return (f'<header class="top"><div class="wrap bar"><a class="logo" href="{L()}"><span class="mark">10</span>{BRAND}</a>'
             f'<nav>{trades}<a class="getlisted" href="{L()}#get-listed">Get listed</a></nav></div></header>'
             + ("" if LIVE else '<div class="preview">Preview only. Listings checked ' + D["checked"] + '. Not live yet.</div>'))
@@ -89,7 +91,7 @@ def page(t, tw):
     lst = "".join(card(i + 1, b) for i, b in enumerate(items))
     body = f'''{header()}
 <main class="wrap">
-<p class="crumbs"><a href="{L()}">Home</a> / {e(tv["name"])} / {e(twv["name"])}</p>
+<p class="crumbs"><a href="{L()}">Home</a> / <a href="{L(t)}">{e(tv["name"])}</a> / {e(twv["name"])}</p>
 <section class="hero"><h1>Top {e(tv["name"].lower())} in {e(twv["name"])}</h1>
 <p class="lede">{e(tv["intro"])} Covering {e(twv["name"])} and nearby villages including {e(twv["villages"])}.</p>
 <p class="stamp">{len(items)} firms listed · ratings checked {D["checked"]}</p></section>
@@ -117,6 +119,33 @@ def page(t, tw):
         open(os.path.join(OUT, t, tw, "index.html"), "w").write(doc)
     else:
         open(os.path.join(OUT, f"{t}-{tw}.html"), "w").write(doc)
+
+
+def trade_index(t):
+    tv = D["trades"][t]
+    n = sum(len(D["listings"][f"{t}/{tw}"]) for tw in D["towns"])
+    towns = "".join(f'<a href="{L(t, tw)}">{e(twv["name"])} <span>{len(D["listings"][f"{t}/{tw}"])}</span></a>' for tw, twv in D["towns"].items())
+    tips = "".join(f"<li>{e(x)}</li>" for x in tv["tips"])
+    others = "".join(f'<a href="{L(o)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
+    title = f'{tv["name"]} in Oxfordshire, ranked by reviews ({D["checked"][-4:]})'
+    desc = f'Find {tv["name"].lower()} in {len(D["towns"])} Oxfordshire towns, ranked by public reviews. {tv["intro"]}'
+    body = f'''{header()}
+<main class="wrap">
+<p class="crumbs"><a href="{L()}">Home</a> / {e(tv["name"])}</p>
+<section class="hero"><h1>{e(tv["name"])} in Oxfordshire</h1>
+<p class="lede">{e(tv["intro"])} Pick your town to see local firms ranked by public reviews.</p>
+<p class="stamp">{n} listings · {len(D["towns"])} towns · checked {D["checked"]}</p></section>
+<div class="trade"><h2>Choose your town</h2><div class="towns">{towns}</div></div>
+<section class="tips"><h2>Before you hire a {e(tv["single"])}</h2><ul>{tips}</ul></section>
+<p class="also">Other trades: {others}</p>
+</main>
+{footer()}'''
+    doc = f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{head(title, desc, L(t))}</head><body>{body}</body></html>'
+    if LIVE:
+        os.makedirs(os.path.join(OUT, t), exist_ok=True)
+        open(os.path.join(OUT, t, "index.html"), "w").write(doc)
+    else:
+        open(os.path.join(OUT, f"{t}.html"), "w").write(doc)
 
 
 def index():
@@ -148,13 +177,14 @@ def index():
 
 
 for t in D["trades"]:
+    trade_index(t)
     for tw in D["towns"]:
         page(t, tw)
 index()
 if LIVE:
     import shutil
     shutil.copy(os.path.join(HERE, "site", "style.css"), os.path.join(OUT, "style.css"))
-    urls = ["/"] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
+    urls = ["/"] + [L(t) for t in D["trades"]] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
     open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     open(os.path.join(OUT, "CNAME"), "w").write("toptradesnearme.co.uk\n")
