@@ -218,7 +218,7 @@ def pages():
 <p>This notice explains what personal data Top Trades Near Me collects, why, who we share it with, how long we keep it and your rights. It covers people who ask for quotes, people who run businesses we list, and anyone who visits the site or contacts us.</p>
 
 <h2>Who we are</h2>
-<p>Top Trades Near Me (toptradesnearme.co.uk) is run by Buildster Digital, the trading name of John Collins, a sole trader, 12 Red Bridge Hollow, Oxford OX1 4XS. We are the controller of the personal data described here. ICO registration number: [ICO registration number].</p>
+<p>Top Trades Near Me (toptradesnearme.co.uk) is run by Buildster Digital, the trading name of John Collins, a sole trader, 12 Red Bridge Hollow, Oxford OX1 4XS. We are the controller of the personal data described here.</p>
 <p>Contact us about your data at listings@toptradesnearme.co.uk or by post to the address above. Buildster Digital is part of the same group as Revive Roofing, Revive Plumbing and Revive Driveways.</p>
 
 <h2>If you ask for quotes</h2>
