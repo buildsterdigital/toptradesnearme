@@ -23,7 +23,9 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; line-height: 1.15;
 .bar { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; padding-block: 14px; }
 .logo { display: inline-flex; align-items: center; gap: 10px; font: 800 20px var(--display); color: inherit; text-decoration: none; letter-spacing: -0.01em; }
 .logo.small { font-size: 17px; margin: 0 0 8px; }
-.mark { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 6px; background: var(--accent); color: var(--accent-ink); font: 500 15px var(--mono); }
+.mark { width: 36px; height: 36px; flex: none; }
+.logo.small .mark { width: 28px; height: 28px; }
+.logo b { color: var(--accent); font-weight: inherit; }
 .top nav { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; font-weight: 600; }
 .top nav a { color: #dfe7e5; text-decoration: none; }
 .top nav a:hover { color: #fff; text-decoration: underline; }
