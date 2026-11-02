@@ -218,7 +218,7 @@ def pages():
 <p>This notice explains what personal data Top Trades Near Me collects, why, who we share it with, how long we keep it and your rights. It covers people who ask for quotes, people who run businesses we list, and anyone who visits the site or contacts us.</p>
 
 <h2>Who we are</h2>
-<p>Top Trades Near Me (toptradesnearme.co.uk) is run by Buildster Digital, a trading name of [business owner], 12 Red Bridge Hollow, Oxford OX1 4XS. We are the controller of the personal data described here. ICO registration number: [ICO registration number].</p>
+<p>Top Trades Near Me (toptradesnearme.co.uk) is run by Buildster Digital, the trading name of John Collins, a sole trader, 12 Red Bridge Hollow, Oxford OX1 4XS. We are the controller of the personal data described here. ICO registration number: [ICO registration number].</p>
 <p>Contact us about your data at listings@toptradesnearme.co.uk or by post to the address above. Buildster Digital is part of the same group as Revive Roofing, Revive Plumbing and Revive Driveways.</p>
 
 <h2>If you ask for quotes</h2>
@@ -289,7 +289,7 @@ def pages():
     simple("terms", "Terms of use", "Terms for using Top Trades Near Me, how listings and rankings work, and terms for sponsored listings.", f'''
 <section class="hero"><h1>Terms of use</h1><p class="stamp">Last updated 2 November 2026</p></section>
 <div class="prose">
-<p>These terms apply to anyone using toptradesnearme.co.uk. Part 4 applies to businesses that buy a sponsored listing. The site is run by Buildster Digital, a trading name of [business owner], 12 Red Bridge Hollow, Oxford OX1 4XS (listings@toptradesnearme.co.uk).</p>
+<p>These terms apply to anyone using toptradesnearme.co.uk. Part 4 applies to businesses that buy a sponsored listing. The site is run by Buildster Digital, the trading name of John Collins, a sole trader, 12 Red Bridge Hollow, Oxford OX1 4XS (listings@toptradesnearme.co.uk).</p>
 
 <h2>1. What this site is</h2>
 <p>Top Trades Near Me is a free directory of local trades. It lists firms using publicly available information and ranks them by their public review ratings. It is an information service only. We are not a party to any work, quote or contract between you and a firm.</p>
