@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Builds the Top Trades Near preview site from data.json into ./site/"""
-import json, math, html, os, urllib.parse
+import json, math, html, os, shutil, urllib.parse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "data.json")))
@@ -10,6 +10,9 @@ OUT = os.path.join(HERE, "site-live" if LIVE else "site")
 os.makedirs(OUT, exist_ok=True)
 e = html.escape
 BRAND = "Top Trades Near Me"
+# Logo mark (map pin with a house), same drawing as brand/logo-mark.svg
+MARK = '<svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 1.5C11.2 1.5 4.5 8.3 4.5 16.8C4.5 27.8 20 38.5 20 38.5S35.5 27.8 35.5 16.8C35.5 8.3 28.8 1.5 20 1.5Z" fill="#f2c230"/><path d="M12.5 18.2L20 11.5L27.5 18.2V25.5H12.5Z" fill="#18252b" stroke="#18252b" stroke-width="1.5" stroke-linejoin="round"/><rect x="18.2" y="20" width="3.6" height="5.5" fill="#f2c230"/></svg>'
+BRAND_FILES = ["favicon.ico", "favicon.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "logo-mark.svg", "og-image.png"]
 
 # GoHighLevel forms in the Top Trades Near Me sub-account (rRAiUOKmHY43FAxBFsPm)
 FORMS = {"claim": "GPJqPB3I4ubYbyjVMrV9", "listed": "5D9mtepQQLMAKM11lmpK", "quote": "gUv916EvMBG5WQ7pqGPM"}
@@ -59,16 +62,24 @@ def score(b):
 
 
 def head(title, desc, path="/"):
-    extra = (f'<link rel="canonical" href="{SITE}{path}">\n<meta property="og:title" content="{e(title)}">\n' if LIVE
+    extra = (f'<link rel="canonical" href="{SITE}{path}">\n<meta property="og:title" content="{e(title)}">\n'
+             f'<meta property="og:description" content="{e(desc)}">\n<meta property="og:type" content="website">\n'
+             f'<meta property="og:url" content="{SITE}{path}">\n<meta property="og:site_name" content="{BRAND}">\n'
+             f'<meta property="og:image" content="{SITE}/og-image.png">\n<meta property="og:image:width" content="1200">\n'
+             f'<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="{BRAND}: local trades in Oxfordshire, ranked by public reviews">\n'
+             f'<meta name="twitter:card" content="summary_large_image">\n' if LIVE
              else '<meta name="claude:viewport-fit-sides" content="cover">\n')
-    css = "/style.css" if LIVE else "style.css"
+    r = "/" if LIVE else ""
+    css = r + "style.css"
+    icons = (f'<link rel="icon" href="{r}favicon.ico" sizes="48x48">\n<link rel="icon" href="{r}favicon.svg" type="image/svg+xml">\n'
+             f'<link rel="apple-touch-icon" href="{r}apple-touch-icon.png">\n<meta name="theme-color" content="#18252b">\n')
     return (f'<title>{e(title)}</title>\n<meta name="description" content="{e(desc)}">\n'
-            f'{extra}{FONTS}\n<link rel="stylesheet" href="{css}">\n')
+            f'{extra}{icons}{FONTS}\n<link rel="stylesheet" href="{css}">\n')
 
 
 def header():
     trades = "".join(f'<a href="{L(t)}">{e(v["short"])}</a>' for t, v in D["trades"].items())
-    return (f'<header class="top"><div class="wrap bar"><a class="logo" href="{L()}"><span class="mark">10</span>{BRAND}</a>'
+    return (f'<header class="top"><div class="wrap bar"><a class="logo" href="{L()}">{MARK}<span>Top Trades <b>Near Me</b></span></a>'
             f'<nav>{trades}<a class="getlisted" href="{P('get-listed')}">Get listed</a></nav></div></header>'
             + ("" if LIVE else '<div class="preview">Preview only. Listings checked ' + D["checked"] + '. Not live yet.</div>'))
 
@@ -78,7 +89,7 @@ def footer():
     for t, tv in D["trades"].items():
         for tw, twv in D["towns"].items():
             links.append(f'<a href="{L(t, tw)}">{e(tv["short"])} in {e(twv["name"])}</a>')
-    return ('<footer><div class="wrap foot"><div><p class="logo small"><span class="mark">10</span>' + BRAND + '</p>'
+    return ('<footer><div class="wrap foot"><div><p class="logo small">' + MARK + BRAND + '</p>'
             '<p>Local trades ranked by public reviews. Run by <strong>Buildster Digital</strong>, Oxford.</p>'
             '<p class="fine">How we rank: rating out of the maximum, weighted by how many reviews it is based on. Firms without a checked rating are listed after, in no order. Sponsored listings are paid placements, always labelled, and sit outside the ranking.</p>'
             '<p class="fine">Top Trades Near Me is run by Buildster Digital, part of the same group as Revive Roofing, Revive Plumbing and Revive Driveways.</p>'
@@ -258,4 +269,6 @@ if LIVE:
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     open(os.path.join(OUT, "CNAME"), "w").write("toptradesnearme.co.uk\n")
     open(os.path.join(OUT, "404.html"), "w").write('<!doctype html><meta charset="utf-8"><title>Page not found</title><p>Page not found. <a href="/">Go to Top Trades Near Me</a></p>')
+for f in BRAND_FILES:
+    shutil.copy(os.path.join(HERE, "brand", f), os.path.join(OUT, f))
 print("built", len(os.listdir(OUT)), "files")
