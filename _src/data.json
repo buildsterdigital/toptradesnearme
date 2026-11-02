@@ -1,76 +1,297 @@
 {
  "checked": "2 Nov 2026",
+ "areas": {
+  "oxfordshire": {
+   "name": "Oxfordshire",
+   "soon": []
+  },
+  "berkshire": {
+   "name": "Berkshire",
+   "soon": [
+    ["Reading", 51.454, -0.978],
+    ["Newbury", 51.401, -1.323],
+    ["Thatcham", 51.405, -1.264],
+    ["Hungerford", 51.414, -1.515],
+    ["Wokingham", 51.411, -0.834],
+    ["Bracknell", 51.416, -0.75],
+    ["Maidenhead", 51.522, -0.719],
+    ["Windsor", 51.483, -0.604],
+    ["Slough", 51.511, -0.595],
+    ["Sandhurst", 51.349, -0.8]
+   ]
+  },
+  "buckinghamshire": {
+   "name": "Buckinghamshire",
+   "soon": [
+    ["Aylesbury", 51.816, -0.812],
+    ["High Wycombe", 51.628, -0.748],
+    ["Marlow", 51.571, -0.776],
+    ["Beaconsfield", 51.611, -0.644],
+    ["Amersham", 51.667, -0.616],
+    ["Chesham", 51.705, -0.611],
+    ["Princes Risborough", 51.724, -0.834],
+    ["Wendover", 51.762, -0.742],
+    ["Buckingham", 51.999, -0.987],
+    ["Winslow", 51.943, -0.881],
+    ["Gerrards Cross", 51.586, -0.555],
+    ["Milton Keynes", 52.041, -0.759]
+   ]
+  },
+  "wiltshire": {
+   "name": "Wiltshire",
+   "soon": [
+    ["Swindon", 51.558, -1.782],
+    ["Highworth", 51.63, -1.712],
+    ["Royal Wootton Bassett", 51.54, -1.904],
+    ["Marlborough", 51.42, -1.729],
+    ["Pewsey", 51.341, -1.766],
+    ["Malmesbury", 51.584, -2.098],
+    ["Calne", 51.438, -2.004],
+    ["Tidworth", 51.24, -1.66],
+    ["Devizes", 51.351, -1.994],
+    ["Chippenham", 51.458, -2.116],
+    ["Corsham", 51.432, -2.186],
+    ["Melksham", 51.373, -2.138],
+    ["Trowbridge", 51.319, -2.208]
+   ]
+  },
+  "gloucestershire": {
+   "name": "Gloucestershire",
+   "soon": [
+    ["Lechlade", 51.693, -1.692],
+    ["Fairford", 51.708, -1.783],
+    ["Bourton-on-the-Water", 51.885, -1.759],
+    ["Stow-on-the-Wold", 51.93, -1.724],
+    ["Moreton-in-Marsh", 51.99, -1.703],
+    ["Cirencester", 51.718, -1.968],
+    ["Chipping Campden", 52.051, -1.78],
+    ["Winchcombe", 51.953, -1.966],
+    ["Cheltenham", 51.899, -2.078],
+    ["Tetbury", 51.638, -2.159],
+    ["Stroud", 51.745, -2.217],
+    ["Tewkesbury", 51.992, -2.157],
+    ["Gloucester", 51.864, -2.244],
+    ["Dursley", 51.681, -2.354]
+   ]
+  },
+  "northamptonshire": {
+   "name": "Northamptonshire",
+   "soon": [
+    ["Brackley", 52.032, -1.147],
+    ["Towcester", 52.134, -0.989],
+    ["Daventry", 52.257, -1.162],
+    ["Northampton", 52.24, -0.903],
+    ["Wellingborough", 52.302, -0.694],
+    ["Rushden", 52.29, -0.6],
+    ["Kettering", 52.398, -0.726],
+    ["Corby", 52.49, -0.7]
+   ]
+  },
+  "warwickshire": {
+   "name": "Warwickshire",
+   "soon": [
+    ["Shipston-on-Stour", 52.06, -1.623],
+    ["Southam", 52.252, -1.39],
+    ["Stratford-upon-Avon", 52.192, -1.707],
+    ["Leamington Spa", 52.292, -1.536],
+    ["Warwick", 52.282, -1.585],
+    ["Alcester", 52.215, -1.868],
+    ["Rugby", 52.37, -1.264],
+    ["Kenilworth", 52.343, -1.578],
+    ["Nuneaton", 52.523, -1.465]
+   ]
+  },
+  "hertfordshire": {
+   "name": "Hertfordshire",
+   "soon": [
+    ["Tring", 51.795, -0.66],
+    ["Berkhamsted", 51.76, -0.565],
+    ["Hemel Hempstead", 51.753, -0.449],
+    ["Rickmansworth", 51.639, -0.469],
+    ["Watford", 51.656, -0.39],
+    ["Harpenden", 51.816, -0.357],
+    ["St Albans", 51.752, -0.336],
+    ["Hitchin", 51.949, -0.283],
+    ["Hatfield", 51.763, -0.226],
+    ["Welwyn Garden City", 51.801, -0.206],
+    ["Stevenage", 51.903, -0.196],
+    ["Hertford", 51.796, -0.078]
+   ]
+  },
+  "bedfordshire": {
+   "name": "Bedfordshire",
+   "soon": [
+    ["Leighton Buzzard", 51.917, -0.66],
+    ["Dunstable", 51.886, -0.521],
+    ["Luton", 51.879, -0.417],
+    ["Ampthill", 52.027, -0.495],
+    ["Bedford", 52.136, -0.467],
+    ["Biggleswade", 52.086, -0.264]
+   ]
+  },
+  "hampshire": {
+   "name": "Hampshire",
+   "soon": [
+    ["Tadley", 51.35, -1.13],
+    ["Basingstoke", 51.267, -1.087],
+    ["Hook", 51.28, -0.96],
+    ["Fleet", 51.283, -0.842],
+    ["Farnborough", 51.294, -0.755],
+    ["Andover", 51.208, -1.48],
+    ["Aldershot", 51.248, -0.763],
+    ["Alton", 51.149, -0.974],
+    ["Winchester", 51.063, -1.308]
+   ]
+  },
+  "surrey": {
+   "name": "Surrey",
+   "soon": [
+    ["Camberley", 51.337, -0.742],
+    ["Egham", 51.431, -0.552],
+    ["Staines-upon-Thames", 51.434, -0.511],
+    ["Farnham", 51.215, -0.799],
+    ["Woking", 51.319, -0.558],
+    ["Weybridge", 51.372, -0.457],
+    ["Guildford", 51.236, -0.57]
+   ]
+  },
+  "worcestershire": {
+   "name": "Worcestershire",
+   "soon": [
+    ["Broadway", 52.037, -1.858],
+    ["Evesham", 52.092, -1.947],
+    ["Pershore", 52.11, -2.077],
+    ["Redditch", 52.306, -1.94],
+    ["Worcester", 52.193, -2.221],
+    ["Malvern", 52.112, -2.326]
+   ]
+  }
+ },
  "towns": {
   "oxford": {
    "name": "Oxford",
+   "area": "oxfordshire",
+   "lat": 51.752,
+   "lon": -1.258,
    "villages": "Headington, Cowley, Botley, Summertown, Marston, Iffley, Littlemore, Blackbird Leys, Wolvercote, Cumnor, Kennington, Horspath"
   },
   "abingdon": {
    "name": "Abingdon",
+   "area": "oxfordshire",
+   "lat": 51.671,
+   "lon": -1.283,
    "villages": "Drayton, Radley, Sutton Courtenay, Culham, Marcham, Steventon, Milton, Wootton, Shippon, Kennington"
   },
   "didcot": {
    "name": "Didcot",
+   "area": "oxfordshire",
+   "lat": 51.608,
+   "lon": -1.241,
    "villages": "Great Western Park, Harwell, East Hagbourne, West Hagbourne, Blewbury, Upton, Cholsey, Long Wittenham, Chilton, Milton Park"
   },
   "banbury": {
    "name": "Banbury",
+   "area": "oxfordshire",
+   "lat": 52.061,
+   "lon": -1.34,
    "villages": "Bodicote, Adderbury, Bloxham, Cropredy, Deddington, Hook Norton, King's Sutton, Middleton Cheney, Sibford Ferris, Wroxton"
   },
   "bicester": {
    "name": "Bicester",
+   "area": "oxfordshire",
+   "lat": 51.9,
+   "lon": -1.153,
    "villages": "Launton, Chesterton, Ambrosden, Arncott, Bucknell, Kirtlington, Weston-on-the-Green, Upper Heyford, Ardley, Graven Hill"
   },
   "witney": {
    "name": "Witney",
+   "area": "oxfordshire",
+   "lat": 51.785,
+   "lon": -1.485,
    "villages": "Eynsham, Ducklington, Hailey, Minster Lovell, North Leigh, Long Hanborough, Freeland, Standlake, Stanton Harcourt, Bampton"
   },
   "wantage": {
    "name": "Wantage",
+   "area": "oxfordshire",
+   "lat": 51.588,
+   "lon": -1.426,
    "villages": "Grove, East Hendred, Childrey, Letcombe Regis, Ardington, Denchworth, Stanford in the Vale, Uffington, Charney Bassett, East Challow"
   },
   "thame": {
    "name": "Thame",
+   "area": "oxfordshire",
+   "lat": 51.745,
+   "lon": -0.976,
    "villages": "Haddenham, Long Crendon, Tetsworth, Towersey, Great Milton, Little Milton, Sydenham, Shabbington, Moreton, Kingsey"
   },
   "henley": {
    "name": "Henley-on-Thames",
+   "area": "oxfordshire",
+   "lat": 51.536,
+   "lon": -0.903,
    "villages": "Sonning Common, Nettlebed, Shiplake, Peppard, Rotherfield Greys, Harpsden, Binfield Heath, Goring, Woodcote, Checkendon"
   },
   "wallingford": {
    "name": "Wallingford",
+   "area": "oxfordshire",
+   "lat": 51.6,
+   "lon": -1.125,
    "villages": "Cholsey, Benson, Crowmarsh Gifford, Brightwell-cum-Sotwell, North Moreton, South Moreton, Shillingford, Warborough, Dorchester-on-Thames, Berinsfield"
   },
   "kidlington": {
    "name": "Kidlington",
+   "area": "oxfordshire",
+   "lat": 51.823,
+   "lon": -1.29,
    "villages": "Yarnton, Begbroke, Islip, Thrupp, Gosford, Water Eaton, Bletchingdon, Shipton-on-Cherwell, Hampton Poyle, Kirtlington"
   },
   "carterton": {
    "name": "Carterton",
+   "area": "oxfordshire",
+   "lat": 51.759,
+   "lon": -1.594,
    "villages": "Brize Norton, Alvescot, Black Bourton, Clanfield, Kencot, Shilton, Aston, Curbridge, Bampton, Lew"
   },
   "chipping-norton": {
    "name": "Chipping Norton",
+   "area": "oxfordshire",
+   "lat": 51.942,
+   "lon": -1.545,
    "villages": "Charlbury, Enstone, Spelsbury, Over Norton, Kingham, Churchill, Great Tew, Salford, Chadlington, Little Compton"
   },
   "faringdon": {
    "name": "Faringdon",
+   "area": "oxfordshire",
+   "lat": 51.657,
+   "lon": -1.586,
    "villages": "Buckland, Shrivenham, Watchfield, Uffington, Longcot, Little Coxwell, Great Coxwell, Littleworth, Kingston Bagpuize, Southmoor"
   },
   "woodstock": {
    "name": "Woodstock",
+   "area": "oxfordshire",
+   "lat": 51.848,
+   "lon": -1.354,
    "villages": "Bladon, Wootton, Tackley, Stonesfield, Combe, Long Hanborough, Begbroke, Kiddington, Glympton, Old Woodstock"
   },
   "burford": {
    "name": "Burford",
+   "area": "oxfordshire",
+   "lat": 51.808,
+   "lon": -1.636,
    "villages": "Fulbrook, Shipton-under-Wychwood, Milton-under-Wychwood, Asthall, Swinbrook, Taynton, Leafield, Ascott-under-Wychwood, Filkins, Langford"
   },
   "watlington": {
    "name": "Watlington and Chinnor",
+   "area": "oxfordshire",
+   "lat": 51.645,
+   "lon": -1.009,
    "villages": "Chinnor, Pyrton, Christmas Common, Stoke Talmage, Shirburn, Lewknor, Postcombe, Aston Rowant, Kingston Blount, Cuxham"
   },
   "wheatley": {
    "name": "Wheatley",
+   "area": "oxfordshire",
+   "lat": 51.747,
+   "lon": -1.139,
    "villages": "Holton, Forest Hill, Stanton St John, Garsington, Horspath, Cuddesdon, Waterperry, Beckley, Waterstock, Littleworth"
   }
  },
