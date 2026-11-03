@@ -16,6 +16,15 @@ BRAND_FILES = ["favicon.ico", "favicon.svg", "apple-touch-icon.png", "icon-192.p
 
 # GoHighLevel forms in the Top Trades Near Me sub-account (rRAiUOKmHY43FAxBFsPm)
 FORMS = {"claim": "GPJqPB3I4ubYbyjVMrV9", "listed": "5D9mtepQQLMAKM11lmpK", "quote": "gUv916EvMBG5WQ7pqGPM"}
+# Firm accounts. Empty values mean that part is not switched on yet, and the
+# page falls back to email. PORTAL = GHL client portal login, BILLING = Stripe
+# customer portal login link, FORMS["change"] = "TT - Change my listing" form.
+PORTAL = D.get("portal", {}).get("login", "")
+BILLING = D.get("portal", {}).get("billing", "")
+FORMS["change"] = D.get("portal", {}).get("change_form", "")
+FORMS["review"] = D.get("portal", {}).get("review_form", "")
+FIRMS = D.get("firms", {})  # claimed firms that have a profile page, by slug
+CLAIMED = {n: slug for slug, f in FIRMS.items() for n in [f["name"]] + f.get("listed_as", [])}
 FORM_JS = '<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>'
 
 
@@ -37,6 +46,11 @@ def ghl(key, title, height, forward=False, **params):
 def P(name):
     """Link to a standalone page such as claim or privacy."""
     return f"/{name}/" if LIVE else f"{name}.html"
+
+
+def F(slug):
+    """Link to a claimed firm's profile page."""
+    return f"/firm/{slug}/" if LIVE else f"firm-{slug}.html"
 
 
 def claim_link(**params):
@@ -163,7 +177,7 @@ def head(title, desc, path="/"):
 def header():
     trades = "".join(f'<a href="{L(t)}">{e(v["short"])}</a>' for t, v in D["trades"].items())
     return (f'<header class="top"><div class="wrap bar"><a class="logo" href="{L()}">{MARK}<span>Top Trades <b>Near Me</b></span></a>'
-            f'<nav>{trades}<a class="getlisted" href="{P('get-listed')}">Get listed</a></nav></div></header>'
+            f'<nav>{trades}<a href="{P('for-firms')}">Firm login</a><a class="getlisted" href="{P('get-listed')}">Get listed</a></nav></div></header>'
             + ("" if LIVE else '<div class="preview">Preview only. Listings checked ' + D["checked"] + '. Not live yet.</div>'))
 
 
@@ -179,7 +193,7 @@ def footer():
             '<p class="fine">Top Trades Near Me is run by Buildster Digital, part of the same group as Revive Roofing, Revive Plumbing and Revive Driveways.</p>'
             '<p class="fine">We do not vet, endorse or guarantee any firm listed. Check insurance, certificates and written quotes before you hire.</p>'
             '<p class="fine">Your business listed and want it changed or removed, or want us to stop contacting you? Email listings@toptradesnearme.co.uk and we will do it within 48 hours.</p>'
-            f'<p class="fine"><a href="{P("claim")}">Claim your listing</a> · <a href="{P("get-listed")}">Get listed</a> · <a href="{P("privacy")}">Privacy</a> · <a href="{P("terms")}">Terms</a></p></div>'
+            f'<p class="fine"><a href="{P("for-firms")}">Firm login</a> · <a href="{P("review")}">Leave a review</a> · <a href="{P("claim")}">Claim your listing</a> · <a href="{P("get-listed")}">Get listed</a> · <a href="{P("privacy")}">Privacy</a> · <a href="{P("terms")}">Terms</a></p></div>'
             '<div class="sitemap">' + "".join(links) + '</div></div></footer>')
 
 
@@ -190,7 +204,11 @@ def card(i, b, t=None, tw=None):
         rate = f'<div class="rate"><b>{stars}</b><small>{cnt} · {e(b["source"])}</small></div>'
     else:
         rate = '<div class="rate none"><small>No Google rating found</small></div>'
-    own = (f'<p class="claim"><a href="{e(claim_link(organization=b["name"], trade=D["trades"][t]["short"], town=D["towns"][tw]["name"]))}" rel="nofollow">Your business? Claim this listing</a></p>' if t else "")
+    slug = CLAIMED.get(b["name"])
+    if slug:
+        own = f'<p class="claimed"><span class="ok">Claimed</span> <a href="{F(slug)}">See profile and photos</a></p>'
+    else:
+        own = (f'<p class="claim"><a href="{e(claim_link(organization=b["name"], trade=D["trades"][t]["short"], town=D["towns"][tw]["name"]))}" rel="nofollow">Your business? Claim this listing</a></p>' if t else "")
     link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="nofollow noopener">{"Google reviews" if b.get("source") == "Google" else "View profile"}</a>' if b.get("url") else ""
     pos = i if "rating" in b else "–"
     return (f'<li class="biz"><div class="pos">{pos}</div><div class="body"><h3>{e(b["name"])}</h3>'
@@ -367,7 +385,7 @@ def pages():
 <div class="formbox">{ghl("listed", "Get listed", 1000, forward=True)}</div>
 <p class="msg">We use these details to check and list your business and to contact you about it, including sponsored spots. <a href="{P('privacy')}">Privacy</a> · <a href="{P('terms')}">Terms</a></p>''')
     simple("privacy", "Privacy notice", "How Top Trades Near Me collects, uses and protects personal data, and your rights under UK GDPR.", f'''
-<section class="hero"><h1>Privacy notice</h1><p class="stamp">Last updated 2 November 2026</p></section>
+<section class="hero"><h1>Privacy notice</h1><p class="stamp">Last updated 3 November 2026</p></section>
 <div class="prose">
 <p>This notice explains what personal data Top Trades Near Me collects, why, who we share it with, how long we keep it and your rights. It covers people who ask for quotes, people who run businesses we list, and anyone who visits the site or contacts us.</p>
 
@@ -385,7 +403,9 @@ def pages():
 <p><strong>Where listing details come from:</strong> public sources such as the firm's own website, public review sites and trade directories, Google and social media pages, and Companies House. We record the business name, trading area, services, public contact details, website and public review ratings. For sole traders and partnerships, some of this (for example a name or mobile number) is personal data.</p>
 <p><strong>Why:</strong> to run a free public directory that helps people find local trades, and to tell listed firms about their listing, how to claim it, and our paid sponsored spots and marketing services from Buildster Digital. The legal basis is our legitimate interests in running the directory and in business-to-business marketing. We have weighed these against your interests: we only use business details that are already public, we only list them in a business context, and you can have your listing changed or removed at any time.</p>
 <p><strong>How we contact firms:</strong> by phone (we check numbers against the Telephone Preference Service and Corporate TPS first and do not call numbers registered there unless you have told us we may), by post, by messages through your own website contact form or business social media page, and by email to limited companies and LLPs. Every marketing email includes a simple way to opt out. We do not send marketing emails or texts to sole traders or partnerships unless they have asked for them.</p>
+<p><strong>If you leave a review:</strong> we use your name, email, town, the firm and your review to check it is yours, check it and publish it. We publish your first name, the first letter of your surname, your town and the review, never your email. We may pass your review (but not your email) to the firm so it can reply. The legal basis is our legitimate interest in running fair, checked reviews. You can ask us to take your review down at any time.</p>
 <p><strong>If you claim a listing, ask to be listed or buy a sponsored spot:</strong> we use the details you send (name, business, phone, email, trade, town, message) to check who you are, update your listing, contact you and provide the service. The legal basis is taking steps towards, and performing, a contract with you.</p>
+<p><strong>If you have a firm login:</strong> we also keep your login email, a record of when you log in, and the changes and photos you send us. Your password is held by HighLevel and we never see it. We use this to run your account and profile page, check changes before they go live, and keep your account secure. The legal basis is performing our contract with you.</p>
 <p><strong>Objecting and removal:</strong> you can tell us at any time to stop contacting you, or to change or remove your listing. Email listings@toptradesnearme.co.uk and we will do it within 48 hours. We keep a short note of your business name and contact details on a do-not-contact list, so that we do not add or contact you again by mistake.</p>
 
 <h2>If you pay us</h2>
@@ -402,7 +422,7 @@ def pages():
 <h2>Service providers we use</h2>
 <p>These providers process data on our behalf, under contracts that require them to keep it secure and use it only on our instructions:</p>
 <ul>
-<li>HighLevel (LeadConnector): forms, contact records and our customer system.</li>
+<li>HighLevel (LeadConnector): forms, contact records, firm logins and our customer system.</li>
 <li>Zoho: our email (for example listings@ and hello@toptradesnearme.co.uk).</li>
 <li>GitHub: website hosting.</li>
 <li>Google: website fonts, and search reporting.</li>
@@ -440,10 +460,10 @@ def pages():
 <h2>Changes</h2>
 <p>We will update this notice when what we do changes, and show the new date at the top. See also our <a href="{P('terms')}">terms of use and sponsored listing terms</a>.</p>
 </div>''')
-    simple("terms", "Terms of use", "Terms for using Top Trades Near Me, how listings and rankings work, and terms for sponsored listings.", f'''
-<section class="hero"><h1>Terms of use</h1><p class="stamp">Last updated 2 November 2026</p></section>
+    simple("terms", "Terms of use", "Terms for using Top Trades Near Me, how listings and rankings work, and terms for sponsored listings and firm accounts.", f'''
+<section class="hero"><h1>Terms of use</h1><p class="stamp">Last updated 3 November 2026</p></section>
 <div class="prose">
-<p>These terms apply to anyone using toptradesnearme.co.uk. Part 4 applies to businesses that buy a sponsored listing. The site is run by Buildster Digital, the trading name of John Collins, a sole trader, 12 Red Bridge Hollow, Oxford OX1 4XS (listings@toptradesnearme.co.uk).</p>
+<p>These terms apply to anyone using toptradesnearme.co.uk. Parts 4 to 6 apply to businesses that buy a sponsored listing, claim a listing, use a firm login or buy leads. The site is run by Buildster Digital, the trading name of John Collins, a sole trader, 12 Red Bridge Hollow, Oxford OX1 4XS (listings@toptradesnearme.co.uk).</p>
 
 <h2>1. What this site is</h2>
 <p>Top Trades Near Me is a free directory of local trades. It lists firms using publicly available information and ranks them by their public review ratings. It is an information service only. We are not a party to any work, quote or contract between you and a firm.</p>
@@ -469,16 +489,38 @@ def pages():
 <li><strong>Liability:</strong> we are not liable for loss of profit, business or opportunity, or for indirect loss. Our total liability to you under a sponsorship is limited to the fees you paid in the 12 months before the claim. Nothing in these terms limits liability that cannot be limited by law, such as for death or personal injury caused by negligence, or for fraud.</li>
 </ul>
 
-<h2>5. Listings and removal</h2>
+<h2>5. Claimed listings and firm accounts (for businesses)</h2>
+<p>These apply when a business claims its listing or uses a firm login. By claiming you confirm you are the owner of the business or allowed to act for it.</p>
+<ul>
+<li><strong>Your profile:</strong> once we have checked who you are, your business gets a profile page with the details, photos and areas you send us. We check every change before it goes live, usually within one working day.</li>
+<li><strong>Your login:</strong> keep your password private and tell us straight away if you think someone else has used it. You are responsible for what is done with your login.</li>
+<li><strong>Photos and content:</strong> only send photos of your own work that you have the right to use, with no customer's personal details, faces or house numbers on show unless they have agreed. Everything must be true and not misleading. You let us show it on the site and in our own posts about the site while you are listed. We may edit, refuse or remove anything that breaks these terms or the law.</li>
+<li><strong>Reviews:</strong> you must not write, buy or swap reviews of your own business or a rival, or offer anything in return for a good review. Breaking this ends your account and listing.</li>
+<li><strong>Ranking:</strong> claiming, a profile page or a login never changes your place in the ranked list.</li>
+<li><strong>Closing your account:</strong> you can close your login or ask us to take your profile down at any time by emailing listings@toptradesnearme.co.uk. Your free listing stays unless you ask us to remove it too. We may close an account that breaks these terms. Paid sponsored spots follow part 4.</li>
+</ul>
+
+<h2>6. Buying leads (for businesses)</h2>
+<p>These apply when a business buys a homeowner's job request (a lead) from us.</p>
+<ul>
+<li><strong>What a lead is:</strong> a job request from a homeowner who has asked us to pass their details to local firms. We check each request before we offer it. We tell you the trade, town, a summary of the job and when it came in before you buy.</li>
+<li><strong>How many firms:</strong> a shared lead is sold to no more than three firms. An exclusive lead is sold to one firm only. We tell you which it is before you buy.</li>
+<li><strong>Price and payment:</strong> the price is shown before you buy and is paid by card through Stripe. When payment goes through we send you the homeowner's name, phone, email and job details.</li>
+<li><strong>Using the homeowner's details:</strong> use them only to contact that homeowner about that job. Do not pass them on, add them to marketing lists or contact them about anything else. You become responsible for their data under data protection law once you have it.</li>
+<li><strong>Bad leads:</strong> if a lead has a wrong phone number and email, is a test or fake request, or is for work outside the trade or town shown, tell us within 7 days of buying it and we will give you a credit for another lead. We do not give credits because a homeowner chose another firm or did not go ahead.</li>
+<li><strong>No guaranteed jobs:</strong> a lead is an introduction. We do not promise the homeowner will reply, accept a quote or hire you.</li>
+</ul>
+
+<h2>7. Listings and removal</h2>
 <p>Any business can ask us to correct or remove its free listing, or to stop contacting it, by emailing listings@toptradesnearme.co.uk. We will do it within 48 hours. We may decline to list, or may remove, any business at our discretion.</p>
 
-<h2>6. Using the site</h2>
+<h2>8. Using the site</h2>
 <p>Do not copy the directory in bulk, scrape it, or use it to send spam. Links to other websites are provided for convenience and we are not responsible for their content.</p>
 
-<h2>7. Our liability to site users</h2>
+<h2>9. Our liability to site users</h2>
 <p>The site is free and provided as it is. We are not responsible for the work, conduct, prices or advice of any firm listed, or for any loss from your dealings with them. Nothing in these terms limits liability that cannot be limited by law, or affects your legal rights as a consumer.</p>
 
-<h2>8. General</h2>
+<h2>10. General</h2>
 <p>We may update these terms and will show the new date at the top. These terms are governed by the law of England and Wales, and the courts of England and Wales have jurisdiction. How we use personal data is explained in our <a href="{P('privacy')}">privacy notice</a>.</p>
 </div>''')
 
@@ -532,6 +574,147 @@ def index():
         doc = h + body
     open(os.path.join(OUT, "index.html"), "w").write(doc)
 
+def ranks(slug):
+    """Where a claimed firm sits in each ranked list, using the same score as the town pages."""
+    names = {n for n, sl in CLAIMED.items() if sl == slug}
+    out = []
+    for key, items in D["listings"].items():
+        t, tw = key.split("/")
+        ranked = sorted(items, key=score, reverse=True)
+        for i, b in enumerate(ranked):
+            if b["name"] in names:
+                out.append((t, tw, i + 1 if "rating" in b else None, len(ranked), b))
+    return out
+
+
+def firm_page(slug):
+    f = FIRMS[slug]
+    r = "/" if LIVE else ""
+    src = (lambda x: f"/firm/{slug}/{x}") if LIVE else (lambda x: f"firm/{slug}/{x}")
+    rs = ranks(slug)
+    trades = [t for t in f.get("trades", []) if t in D["trades"]] or sorted({t for t, *_ in rs})
+    tnames = ", ".join(D["trades"][t]["name"].lower() for t in trades)
+    rated = next((b for *_, b in rs if "rating" in b), None)
+    rate = (f'<div class="rate"><b>{rated["rating"]:g}<span>/{rated["scale"]}</span></b><small>{rated.get("reviews", "?")} reviews · {e(rated["source"])}</small></div>' if rated else "")
+    logo = f'<img class="firm-logo" src="{src(f["logo"])}" alt="{e(f["name"])} logo" width="96" height="96">' if f.get("logo") else ""
+    contact = []
+    if f.get("phone"):
+        contact.append(f'<a class="btn" href="tel:{e(f["phone"].replace(" ", ""))}">Call {e(f["phone"])}</a>')
+    if f.get("website"):
+        contact.append(f'<a class="btn ghost" href="{e(f["website"])}" target="_blank" rel="noopener">Website</a>')
+    services = "".join(f"<li>{e(x)}</li>" for x in f.get("services", []))
+    photos = "".join(f'<figure><img src="{src(ph["file"])}" alt="{e(ph.get("alt", ""))}" loading="lazy"><figcaption>{e(ph.get("alt", ""))}</figcaption></figure>' for ph in f.get("photos", []))
+    covers = f.get("towns") or sorted({tw for _, tw, *_ in rs})
+    towns = " ".join(f'<a href="{L(trades[0], tw)}">{e(D["towns"][tw]["name"])}</a>' for tw in covers if tw in D["towns"]) if trades else ""
+    rank_rows = "".join(f'<li><a href="{L(t, tw)}">{e(D["trades"][t]["name"])} in {e(D["towns"][tw]["name"])}</a>: '
+                        f'{f"number {pos} of {n}" if pos else f"listed, no Google rating found ({n} firms)"}</li>'
+                        for t, tw, pos, n, _ in sorted(rs, key=lambda x: (x[2] or 999, x[1])))
+    title = f'{f["name"]}: {tnames} in {f.get("base", region())}'
+    desc = (f.get("about") or f'{f["name"]}, {tnames} based in {f.get("base", "")}.')[:155]
+    body = f"""{header()}
+<main class="wrap narrow firm">
+<p class="crumbs"><a href="{L()}">Home</a>{f' / <a href="{L(trades[0])}">{e(D["trades"][trades[0]]["name"])}</a>' if trades else ""} / {e(f["name"])}</p>
+<section class="hero firm-head">{logo}<div><p class="claimed"><span class="ok">Claimed</span> by the business{(" on " + e(f["claimed"])) if f.get("claimed") else ""}</p>
+<h1>{e(f["name"])}</h1><p class="lede">{e(tnames.capitalize())}{(" · " + e(f["base"])) if f.get("base") else ""}</p></div>{rate}</section>
+<p class="cta">{" ".join(contact)}</p>
+{f'<section class="firm-sec"><h2>About</h2><p>{e(f["about"])}</p></section>' if f.get("about") else ""}
+{f'<section class="firm-sec"><h2>Services</h2><ul class="cols">{services}</ul></section>' if services else ""}
+{f'<section class="firm-sec"><h2>Photos of our work</h2><div class="gallery">{photos}</div></section>' if photos else ""}
+{reviews_block(slug, f)}
+{f'<section class="firm-sec"><h2>Towns covered</h2><p class="also">{towns}</p></section>' if towns else ""}
+{f'<section class="firm-sec"><h2>Where it ranks</h2><ul>{rank_rows}</ul><p class="msg">Ranked by Google rating, weighted by number of reviews. Claiming a listing or having this page does not change the ranking.</p></section>' if rank_rows else ""}
+<p class="msg">This page is written by the business and checked by us before it goes live. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">Log in to update it</a>.</p>
+</main>
+{footer()}"""
+    data = ld(crumbs_ld(("Home", "/"), (f["name"], F(slug))),
+              {"@type": TYPES.get(trades[0], "HomeAndConstructionBusiness") if trades else "HomeAndConstructionBusiness",
+               "@id": SITE + F(slug) + "#firm", "name": f["name"], "url": SITE + F(slug),
+               **({"telephone": f["phone"]} if f.get("phone") else {}), **({"sameAs": [f["website"]]} if f.get("website") else {}),
+               "areaServed": [D["towns"][tw]["name"] for tw in covers if tw in D["towns"]]})
+    write(wrap_doc(title, desc, F(slug), body, data), "firm", slug)
+    folder = os.path.join(HERE, "firms", slug)
+    if os.path.isdir(folder):
+        dest = os.path.join(OUT, "firm", slug)
+        os.makedirs(dest, exist_ok=True)
+        shutil.copytree(folder, dest, dirs_exist_ok=True)
+
+
+def stars(n):
+    return f'<span class="stars" aria-label="{n} out of 5">' + "★" * n + "☆" * (5 - n) + "</span>"
+
+
+def reviews_block(slug, f):
+    rv = sorted(f.get("reviews", []), key=lambda r: r.get("date_iso", ""), reverse=True)
+    ask = f'<p class="cta"><a class="btn ghost" href="{e(review_link(f["name"]))}" rel="nofollow">Used {e(f["name"])}? Leave a review</a></p>'
+    if not rv:
+        return f'<section class="firm-sec"><h2>Reviews on Top Trades</h2><p>No reviews here yet.</p>{ask}<p class="msg">Every review is checked before it goes live. Good and bad reviews are published the same way. <a href="{P("reviews-policy")}">How reviews work</a></p></section>'
+    avg = sum(r["rating"] for r in rv) / len(rv)
+    items = "".join(
+        f'<li class="review"><p class="rv-head">{stars(r["rating"])} <b>{e(r["name"])}</b>{(", " + e(r["town"])) if r.get("town") else ""} · {e(r["date"])}</p>'
+        f'<p>{e(r["text"])}</p>'
+        + (f'<p class="reply"><b>Reply from {e(f["name"])}:</b> {e(r["reply"])}</p>' if r.get("reply") else "")
+        + "</li>" for r in rv)
+    return (f'<section class="firm-sec"><h2>Reviews on Top Trades</h2><p class="rv-sum">{stars(round(avg))} {avg:.1f} out of 5 from {len(rv)} review{"s" if len(rv) != 1 else ""}</p>'
+            f'<ul class="reviews">{items}</ul>{ask}<p class="msg">Every review is checked before it goes live. Good and bad reviews are published the same way, and the firm can reply. These reviews do not change the ranking. <a href="{P("reviews-policy")}">How reviews work</a></p></section>')
+
+
+def review_link(name):
+    return P("review") + "?" + urllib.parse.urlencode({"firm": name})
+
+
+def review_pages():
+    form = (f'<div class="formbox">{ghl("review", "Leave a review", 1150, forward=True)}</div>' if FORMS["review"]
+            else '<p>Email your review to <a href="mailto:hello@toptradesnearme.co.uk?subject=Review">hello@toptradesnearme.co.uk</a> with the firm\'s name, the town and roughly when the work was done.</p>')
+    simple("review", "Leave a review", "Had work done by a local trade? Leave an honest review on Top Trades Near Me.", f"""
+<section class="hero"><h1>Leave a review</h1><p class="lede">Had work done by a firm on Top Trades Near Me? Tell other people how it went, good or bad.</p></section>
+{form}
+<p class="msg">We check every review before it goes live, usually within two working days, and may email you to check it is yours. We show your first name, the first letter of your surname and your town, never your email. <a href="{P('reviews-policy')}">How reviews work</a> · <a href="{P('privacy')}">Privacy</a></p>""")
+    simple("reviews-policy", "How reviews work", "How reviews on Top Trades Near Me are collected, checked and published.", f"""
+<section class="hero"><h1>How reviews work</h1><p class="stamp">Last updated 3 November 2026</p></section>
+<div class="prose">
+<h2>Who can leave a review</h2>
+<p>Anyone who has had work done, or had a quote, from a firm listed on this site. You must be the customer, or live in the home where the work was done. You must not work for the firm, be related to its owner, or work for a rival.</p>
+<h2>How we check reviews</h2>
+<ul>
+<li>We may email or call you to check the review is yours and that the work happened. If we cannot check it, we do not publish it.</li>
+<li>We read every review before it goes live, usually within two working days.</li>
+<li>We publish good and bad reviews in the same way. We never hide, edit or delay a review because of its rating or because a firm asks us to.</li>
+<li>We do not publish a review if it is abusive, discriminatory, gives someone's personal details, is about something other than the firm's work, or looks fake. If we turn a review down we tell you why.</li>
+<li>Nobody is paid or rewarded for a review. Firms cannot write, buy or swap reviews, and cannot pick which customers they ask.</li>
+<li>Staff of Top Trades Near Me, Buildster Digital and Revive firms cannot review any firm on this site.</li>
+</ul>
+<h2>How firms can respond</h2>
+<p>The firm can post one public reply under each review. If a firm thinks a review breaks these rules, it can ask us to look again. We check the facts with both sides and decide; we do not take a review down just because the firm disagrees with it.</p>
+<h2>Reviews and the ranking</h2>
+<p>The ranked lists on town pages use Google ratings only. Reviews left on this site show on the firm's profile page and do not change its place in the ranking.</p>
+<h2>Reporting a review</h2>
+<p>If you think a review is fake or breaks these rules, email listings@toptradesnearme.co.uk with the firm's name and the review.</p>
+</div>""")
+
+
+def for_firms():
+    login = (f'<p class="cta"><a class="btn" href="{e(PORTAL)}">Log in to your firm account</a></p>'
+             f'<p class="msg">First time? Use the email you claimed your listing with and choose "Forgot password" to set one.</p>' if PORTAL
+             else '<p class="msg"><strong>Firm logins open soon.</strong> Claim your listing now and we will email you your login as soon as it is ready.</p>')
+    change = (f'<div class="formbox">{ghl("change", "Change my listing", 1100)}</div>' if FORMS["change"]
+              else '<p>Email your changes and photos to <a href="mailto:listings@toptradesnearme.co.uk?subject=Change%20my%20listing">listings@toptradesnearme.co.uk</a> and we will update your page within one working day.</p>')
+    bill = (f'<p class="cta"><a class="btn ghost" href="{e(BILLING)}">Manage billing</a></p><p class="msg">Enter the email you pay with and Stripe emails you a one-time link. Update your card, download invoices, switch to yearly or cancel.</p>' if BILLING
+            else '<p>To update your card, get an invoice or cancel, email listings@toptradesnearme.co.uk. Online billing opens soon.</p>')
+    simple("for-firms", "Firm login", "Log in to manage your listing on Top Trades Near Me: your profile page, photos, sponsored spot, leads and billing.", f"""
+<section class="hero"><h1>Firm login</h1><p class="lede">Your listing on Top Trades Near Me is free. Claim it to get a profile page with your photos, and manage it all here.</p></section>
+<section class="firm-sec">{login}</section>
+<section class="firm-sec"><h2>What your firm account does</h2><ul>
+<li>Your own profile page: about you, services, towns covered, phone, website and photos of your work.</li>
+<li>Change your details and add photos. We check every change and put it live within one working day.</li>
+<li>See your sponsored spot, your plan and every enquiry we have passed to you.</li>
+<li>Manage billing through Stripe: card, invoices, yearly plan or cancel.</li>
+</ul><p class="msg">Claiming, a profile page or a login never changes your place in the ranking. See <a href="{P('terms')}">terms</a> part 5.</p></section>
+<section class="firm-sec"><h2>Change my listing or add photos</h2>{change}
+<p class="msg">Only send photos of your own work that you have the right to use, with no customer details on show. We use what you send to update your page. <a href="{P('privacy')}">Privacy</a></p></section>
+<section class="firm-sec"><h2>Billing</h2>{bill}</section>
+<section class="firm-sec"><h2>Not claimed yet?</h2><p class="cta"><a class="btn" href="{P('claim')}">Claim your listing</a> <a class="btn ghost" href="{P('get-listed')}">Not listed? Get listed free</a></p></section>""")
+
+
 for t in D["trades"]:
     trade_index(t)
     for a in LIVE_AREAS:
@@ -540,10 +723,14 @@ for t in D["trades"]:
         page(t, tw)
 index()
 pages()
+for_firms()
+review_pages()
+for slug in FIRMS:
+    firm_page(slug)
 if LIVE:
     import shutil
     shutil.copy(os.path.join(HERE, "site", "style.css"), os.path.join(OUT, "style.css"))
-    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "privacy", "terms")] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
+    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
     open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{iso_checked()}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     open(os.path.join(OUT, "CNAME"), "w").write("toptradesnearme.co.uk\n")
