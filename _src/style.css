@@ -168,3 +168,18 @@ footer { background: var(--surface); border-top: 1px solid var(--line); }
 main > .mapbox { margin-bottom: 22px; }
 main > .tips { margin-top: 26px; }
 main > .also { margin: 18px 0 40px; }
+
+/* Claimed firms: badge, profile page, firm login */
+.claimed { margin: 4px 0 0; font-size: 13px; }
+.ok { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: 0.06em; background: var(--ink); color: var(--bg); padding: 2px 6px; border-radius: 4px; }
+.firm-head { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.firm-head > div { flex: 1 1 260px; }
+.firm-logo { width: 96px; height: 96px; object-fit: contain; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); }
+.firm-sec { margin: 24px 0; }
+.firm-sec h2 { font-size: 22px; margin-bottom: 8px; }
+.firm-sec ul { padding-left: 20px; }
+.cols { columns: 2 200px; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; display: block; }
+.gallery figcaption { font-size: 13px; color: var(--muted); margin-top: 4px; }
