@@ -45,15 +45,14 @@
 
   function goNear(lat, lon) {
     var t = trade(), live = closest(D.towns, lat, lon), soon = closest(D.soon, lat, lon);
-    var ring = miles(lat, lon, D.hub[0], D.hub[1]);
     if (live && live.d <= 12 && !(soon && soon.d < live.d)) {
       say(["Nearest town we cover: " + live.t.n + ". Taking you there…"]);
       location.href = url(t, live.t.s);
       return;
     }
     var msg = [];
-    if (soon && soon.d <= 12 && ring <= 62) msg.push("We're adding " + soon.t.n + " soon. ");
-    else msg.push(ring > 62 ? "That's outside the area we cover so far. " : "We don't cover that spot yet. ");
+    if (soon && soon.d <= 12) msg.push("We're adding " + soon.t.n + " soon. ");
+    else msg.push(live.d > 25 ? "That's outside the area we cover so far. " : "We don't cover that spot yet. ");
     msg.push("The nearest town we cover is ");
     msg.push({ href: url(t, live.t.s), text: live.t.n });
     msg.push(", about " + Math.round(live.d) + " miles away.");
@@ -102,7 +101,6 @@
     maxZoom: 18,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
-  var ring = L.circle(D.hub, { radius: 96561, color: "#0d6577", weight: 2, dashArray: "6 6", fill: false, interactive: false }).addTo(map);
   var pts = [];
   D.soon.forEach(function (s) {
     if (area && s.a !== area) return;
@@ -117,6 +115,5 @@
     m.on("click", function () { location.href = url(trade(), s.s); });
     pts.push([s.lat, s.lon]);
   });
-  if (area && pts.length) map.fitBounds(pts, { padding: [24, 24] });
-  else map.fitBounds(ring.getBounds(), { padding: [8, 8] });
+  if (pts.length) map.fitBounds(pts, { padding: area ? [24, 24] : [8, 8] });
 })();
