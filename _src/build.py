@@ -403,7 +403,7 @@ def pages():
 <p><strong>Why:</strong> to run a free public directory that helps people find local trades, and to tell listed firms about their listing, how to claim it, and our paid sponsored spots and marketing services from Buildster Digital. The legal basis is our legitimate interests in running the directory and in business-to-business marketing. We have weighed these against your interests: we only use business details that are already public, we only list them in a business context, and you can have your listing changed or removed at any time.</p>
 <p><strong>How we contact firms:</strong> by phone (we check numbers against the Telephone Preference Service and Corporate TPS first and do not call numbers registered there unless you have told us we may), by post, by messages through your own website contact form or business social media page, and by email to limited companies and LLPs. Every marketing email includes a simple way to opt out. We do not send marketing emails or texts to sole traders or partnerships unless they have asked for them.</p>
 <p><strong>If you claim a listing, ask to be listed or buy a sponsored spot:</strong> we use the details you send (name, business, phone, email, trade, town, message) to check who you are, update your listing, contact you and provide the service. The legal basis is taking steps towards, and performing, a contract with you.</p>
-<p><strong>If you have a firm login:</strong> we also keep your login email, a record of when you log in, and the changes, photos and documents (such as an insurance certificate) you send us. Your password is held by HighLevel and we never see it. We use this to run your account and profile page, check changes before they go live, and keep your account secure. The legal basis is performing our contract with you.</p>
+<p><strong>If you have a firm login:</strong> we also keep your login email, a record of when you log in, and the changes and photos you send us. Your password is held by HighLevel and we never see it. We use this to run your account and profile page, check changes before they go live, and keep your account secure. The legal basis is performing our contract with you.</p>
 <p><strong>Objecting and removal:</strong> you can tell us at any time to stop contacting you, or to change or remove your listing. Email listings@toptradesnearme.co.uk and we will do it within 48 hours. We keep a short note of your business name and contact details on a do-not-contact list, so that we do not add or contact you again by mistake.</p>
 
 <h2>If you pay us</h2>
@@ -495,7 +495,6 @@ def pages():
 <li><strong>Photos and content:</strong> only send photos of your own work that you have the right to use, with no customer's personal details, faces or house numbers on show unless they have agreed. Everything must be true and not misleading. You let us show it on the site and in our own posts about the site while you are listed. We may edit, refuse or remove anything that breaks these terms or the law.</li>
 <li><strong>Reviews:</strong> you must not write, buy or swap reviews of your own business or a rival, or offer anything in return for a good review. Breaking this ends your account and listing.</li>
 <li><strong>Ranking:</strong> claiming, a profile page or a login never changes your place in the ranked list.</li>
-<li><strong>Checks we show:</strong> where your profile says we have checked something, such as your Companies House record or an insurance certificate, it means we saw it on the date shown. It is not a guarantee of your work.</li>
 <li><strong>Closing your account:</strong> you can close your login or ask us to take your profile down at any time by emailing listings@toptradesnearme.co.uk. Your free listing stays unless you ask us to remove it too. We may close an account that breaks these terms. Paid sponsored spots follow part 4.</li>
 </ul>
 
@@ -597,13 +596,6 @@ def firm_page(slug):
     rank_rows = "".join(f'<li><a href="{L(t, tw)}">{e(D["trades"][t]["name"])} in {e(D["towns"][tw]["name"])}</a>: '
                         f'{f"number {pos} of {n}" if pos else f"listed, no Google rating found ({n} firms)"}</li>'
                         for t, tw, pos, n, _ in sorted(rs, key=lambda x: (x[2] or 999, x[1])))
-    ch = f.get("checks", {})
-    checks = []
-    if ch.get("companies_house"):
-        checks.append(f'<li>Company number <a href="https://find-and-update.company-information.service.gov.uk/company/{e(ch["companies_house"])}" target="_blank" rel="noopener">{e(ch["companies_house"])}</a> on Companies House, active when we checked{(" on " + e(ch["companies_house_checked"])) if ch.get("companies_house_checked") else ""}.</li>')
-    if ch.get("insurance"):
-        checks.append(f'<li>Public liability insurance certificate seen by us on {e(ch["insurance"])}{(", valid to " + e(ch["insurance_to"])) if ch.get("insurance_to") else ""}.</li>')
-    checks_html = (f'<section class="firm-sec"><h2>What we have checked</h2><ul>{"".join(checks)}</ul><p class="msg">Checks show what we saw on that date. They are not a guarantee of the firm\'s work. Always get a written quote.</p></section>' if checks else "")
     title = f'{f["name"]}: {tnames} in {f.get("base", region())}'
     desc = (f.get("about") or f'{f["name"]}, {tnames} based in {f.get("base", "")}.')[:155]
     body = f"""{header()}
@@ -616,7 +608,6 @@ def firm_page(slug):
 {f'<section class="firm-sec"><h2>Services</h2><ul class="cols">{services}</ul></section>' if services else ""}
 {f'<section class="firm-sec"><h2>Photos of our work</h2><div class="gallery">{photos}</div></section>' if photos else ""}
 {f'<section class="firm-sec"><h2>Towns covered</h2><p class="also">{towns}</p></section>' if towns else ""}
-{checks_html}
 {f'<section class="firm-sec"><h2>Where it ranks</h2><ul>{rank_rows}</ul><p class="msg">Ranked by Google rating, weighted by number of reviews. Claiming a listing or having this page does not change the ranking.</p></section>' if rank_rows else ""}
 <p class="msg">This page is written by the business and checked by us before it goes live. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">Log in to update it</a>.</p>
 </main>
