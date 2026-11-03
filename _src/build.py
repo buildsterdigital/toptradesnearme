@@ -403,7 +403,7 @@ def pages():
 <p><strong>Where listing details come from:</strong> public sources such as the firm's own website, public review sites and trade directories, Google and social media pages, and Companies House. We record the business name, trading area, services, public contact details, website and public review ratings. For sole traders and partnerships, some of this (for example a name or mobile number) is personal data.</p>
 <p><strong>Why:</strong> to run a free public directory that helps people find local trades, and to tell listed firms about their listing, how to claim it, and our paid sponsored spots and marketing services from Buildster Digital. The legal basis is our legitimate interests in running the directory and in business-to-business marketing. We have weighed these against your interests: we only use business details that are already public, we only list them in a business context, and you can have your listing changed or removed at any time.</p>
 <p><strong>How we contact firms:</strong> by phone (we check numbers against the Telephone Preference Service and Corporate TPS first and do not call numbers registered there unless you have told us we may), by post, by messages through your own website contact form or business social media page, and by email to limited companies and LLPs. Every marketing email includes a simple way to opt out. We do not send marketing emails or texts to sole traders or partnerships unless they have asked for them.</p>
-<p><strong>If you leave a review:</strong> we use your name, email, town, the firm and your review to confirm it is yours, check it and publish it. We publish your first name, the first letter of your surname, your town and the review, never your email. We may pass your review (but not your email) to the firm so it can reply. The legal basis is our legitimate interest in running fair, checked reviews. You can ask us to take your review down at any time.</p>
+<p><strong>If you leave a review:</strong> we use your name, email, town, the firm and your review to check it is yours, check it and publish it. We publish your first name, the first letter of your surname, your town and the review, never your email. We may pass your review (but not your email) to the firm so it can reply. The legal basis is our legitimate interest in running fair, checked reviews. You can ask us to take your review down at any time.</p>
 <p><strong>If you claim a listing, ask to be listed or buy a sponsored spot:</strong> we use the details you send (name, business, phone, email, trade, town, message) to check who you are, update your listing, contact you and provide the service. The legal basis is taking steps towards, and performing, a contract with you.</p>
 <p><strong>If you have a firm login:</strong> we also keep your login email, a record of when you log in, and the changes and photos you send us. Your password is held by HighLevel and we never see it. We use this to run your account and profile page, check changes before they go live, and keep your account secure. The legal basis is performing our contract with you.</p>
 <p><strong>Objecting and removal:</strong> you can tell us at any time to stop contacting you, or to change or remove your listing. Email listings@toptradesnearme.co.uk and we will do it within 48 hours. We keep a short note of your business name and contact details on a do-not-contact list, so that we do not add or contact you again by mistake.</p>
@@ -648,7 +648,7 @@ def reviews_block(slug, f):
 
 
 def review_link(name):
-    return P("review") + "?" + urllib.parse.urlencode({"organization": name})
+    return P("review") + "?" + urllib.parse.urlencode({"firm": name})
 
 
 def review_pages():
@@ -657,7 +657,7 @@ def review_pages():
     simple("review", "Leave a review", "Had work done by a local trade? Leave an honest review on Top Trades Near Me.", f"""
 <section class="hero"><h1>Leave a review</h1><p class="lede">Had work done by a firm on Top Trades Near Me? Tell other people how it went, good or bad.</p></section>
 {form}
-<p class="msg">We email you to confirm your review, then check it before it goes live, usually within two working days. We show your first name, the first letter of your surname and your town, never your email. <a href="{P('reviews-policy')}">How reviews work</a> · <a href="{P('privacy')}">Privacy</a></p>""")
+<p class="msg">We check every review before it goes live, usually within two working days, and may email you to check it is yours. We show your first name, the first letter of your surname and your town, never your email. <a href="{P('reviews-policy')}">How reviews work</a> · <a href="{P('privacy')}">Privacy</a></p>""")
     simple("reviews-policy", "How reviews work", "How reviews on Top Trades Near Me are collected, checked and published.", f"""
 <section class="hero"><h1>How reviews work</h1><p class="stamp">Last updated 3 November 2026</p></section>
 <div class="prose">
@@ -665,7 +665,7 @@ def review_pages():
 <p>Anyone who has had work done, or had a quote, from a firm listed on this site. You must be the customer, or live in the home where the work was done. You must not work for the firm, be related to its owner, or work for a rival.</p>
 <h2>How we check reviews</h2>
 <ul>
-<li>We email you a link to confirm the review is yours. Reviews that are not confirmed are not published.</li>
+<li>We may email or call you to check the review is yours and that the work happened. If we cannot check it, we do not publish it.</li>
 <li>We read every review before it goes live, usually within two working days.</li>
 <li>We publish good and bad reviews in the same way. We never hide, edit or delay a review because of its rating or because a firm asks us to.</li>
 <li>We do not publish a review if it is abusive, discriminatory, gives someone's personal details, is about something other than the firm's work, or looks fake. If we turn a review down we tell you why.</li>
