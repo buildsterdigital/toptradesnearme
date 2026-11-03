@@ -91,7 +91,7 @@ def score(b):
 
 # Areas (counties) group towns. An area gets pages once it has at least one town with listings;
 # its "soon" towns only show on the map and area list as coming next. Villages never get pages.
-HUB = (51.752, -1.258)  # Oxford: centre of the 60-mile ring
+HUB = (51.752, -1.258)  # Oxford: where we started; Revive sponsor distance is measured from here
 for a in D["areas"]:
     assert a not in D["towns"], f"area slug {a} clashes with a town slug"
 LIVE_AREAS = [a for a in D["areas"] if any(v["area"] == a for v in D["towns"].values())]
@@ -118,7 +118,7 @@ def nearest(tw, n=8):
 
 def region():
     names = [D["areas"][a]["name"] for a in LIVE_AREAS]
-    return names[0] if len(names) == 1 else "around Oxford"
+    return names[0] if len(names) == 1 else "southern and central England"
 
 
 def count(t, tw):
@@ -138,7 +138,7 @@ def map_block(t="", a=""):
     """Map of towns (Leaflet + OpenStreetMap, both free). Live towns link to the trade's town page."""
     r = "/" if LIVE else ""
     return (f'<div class="map" id="map" data-trade="{t}" data-area="{a}" role="region" aria-label="Map of the towns we cover"></div>'
-            f'<p class="map-key"><span class="dot now"></span>Listed now {'<span class="dot later"></span>Coming soon ' if any(v["soon"] for v in D["areas"].values()) else ""}<span class="ring"></span>60 miles from Oxford</p>'
+            f'<p class="map-key"><span class="dot now"></span>Listed now {'<span class="dot later"></span>Coming soon ' if any(v["soon"] for v in D["areas"].values()) else ""}</p>'
             f'<link rel="stylesheet" href="{r}vendor/leaflet/leaflet.css">'
             f'<script type="application/json" id="finder-data">{finder_data()}</script>'
             f'<script src="{r}vendor/leaflet/leaflet.js" defer></script><script src="{r}finder.js" defer></script>')
@@ -149,7 +149,7 @@ def head(title, desc, path="/"):
              f'<meta property="og:description" content="{e(desc)}">\n<meta property="og:type" content="website">\n'
              f'<meta property="og:url" content="{SITE}{path}">\n<meta property="og:site_name" content="{BRAND}">\n'
              f'<meta property="og:image" content="{SITE}/og-image.png">\n<meta property="og:image:width" content="1200">\n'
-             f'<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="{BRAND}: local trades in Oxfordshire, ranked by public reviews">\n'
+             f'<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="{BRAND}: local trades across southern and central England, ranked by public reviews">\n'
              f'<meta name="twitter:card" content="summary_large_image">\n' if LIVE
              else '<meta name="claude:viewport-fit-sides" content="cover">\n')
     r = "/" if LIVE else ""
