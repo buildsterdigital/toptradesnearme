@@ -183,3 +183,9 @@ main > .also { margin: 18px 0 40px; }
 .gallery figure { margin: 0; }
 .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; display: block; }
 .gallery figcaption { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.stars { color: #c99a00; letter-spacing: 1px; }
+.firm-sec .reviews { list-style: none; padding: 0; margin: 12px 0; }
+.review { border-top: 1px solid var(--line); padding: 12px 0; }
+.review p { margin: 4px 0; }
+.rv-head { font-size: 15px; }
+.reply { background: var(--surface); border-left: 3px solid var(--accent); padding: 8px 12px; border-radius: 4px; font-size: 15px; }

@@ -22,6 +22,7 @@ FORMS = {"claim": "GPJqPB3I4ubYbyjVMrV9", "listed": "5D9mtepQQLMAKM11lmpK", "quo
 PORTAL = D.get("portal", {}).get("login", "")
 BILLING = D.get("portal", {}).get("billing", "")
 FORMS["change"] = D.get("portal", {}).get("change_form", "")
+FORMS["review"] = D.get("portal", {}).get("review_form", "")
 FIRMS = D.get("firms", {})  # claimed firms that have a profile page, by slug
 CLAIMED = {n: slug for slug, f in FIRMS.items() for n in [f["name"]] + f.get("listed_as", [])}
 FORM_JS = '<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>'
@@ -192,7 +193,7 @@ def footer():
             '<p class="fine">Top Trades Near Me is run by Buildster Digital, part of the same group as Revive Roofing, Revive Plumbing and Revive Driveways.</p>'
             '<p class="fine">We do not vet, endorse or guarantee any firm listed. Check insurance, certificates and written quotes before you hire.</p>'
             '<p class="fine">Your business listed and want it changed or removed, or want us to stop contacting you? Email listings@toptradesnearme.co.uk and we will do it within 48 hours.</p>'
-            f'<p class="fine"><a href="{P("for-firms")}">Firm login</a> · <a href="{P("claim")}">Claim your listing</a> · <a href="{P("get-listed")}">Get listed</a> · <a href="{P("privacy")}">Privacy</a> · <a href="{P("terms")}">Terms</a></p></div>'
+            f'<p class="fine"><a href="{P("for-firms")}">Firm login</a> · <a href="{P("review")}">Leave a review</a> · <a href="{P("claim")}">Claim your listing</a> · <a href="{P("get-listed")}">Get listed</a> · <a href="{P("privacy")}">Privacy</a> · <a href="{P("terms")}">Terms</a></p></div>'
             '<div class="sitemap">' + "".join(links) + '</div></div></footer>')
 
 
@@ -402,6 +403,7 @@ def pages():
 <p><strong>Where listing details come from:</strong> public sources such as the firm's own website, public review sites and trade directories, Google and social media pages, and Companies House. We record the business name, trading area, services, public contact details, website and public review ratings. For sole traders and partnerships, some of this (for example a name or mobile number) is personal data.</p>
 <p><strong>Why:</strong> to run a free public directory that helps people find local trades, and to tell listed firms about their listing, how to claim it, and our paid sponsored spots and marketing services from Buildster Digital. The legal basis is our legitimate interests in running the directory and in business-to-business marketing. We have weighed these against your interests: we only use business details that are already public, we only list them in a business context, and you can have your listing changed or removed at any time.</p>
 <p><strong>How we contact firms:</strong> by phone (we check numbers against the Telephone Preference Service and Corporate TPS first and do not call numbers registered there unless you have told us we may), by post, by messages through your own website contact form or business social media page, and by email to limited companies and LLPs. Every marketing email includes a simple way to opt out. We do not send marketing emails or texts to sole traders or partnerships unless they have asked for them.</p>
+<p><strong>If you leave a review:</strong> we use your name, email, town, the firm and your review to confirm it is yours, check it and publish it. We publish your first name, the first letter of your surname, your town and the review, never your email. We may pass your review (but not your email) to the firm so it can reply. The legal basis is our legitimate interest in running fair, checked reviews. You can ask us to take your review down at any time.</p>
 <p><strong>If you claim a listing, ask to be listed or buy a sponsored spot:</strong> we use the details you send (name, business, phone, email, trade, town, message) to check who you are, update your listing, contact you and provide the service. The legal basis is taking steps towards, and performing, a contract with you.</p>
 <p><strong>If you have a firm login:</strong> we also keep your login email, a record of when you log in, and the changes and photos you send us. Your password is held by HighLevel and we never see it. We use this to run your account and profile page, check changes before they go live, and keep your account secure. The legal basis is performing our contract with you.</p>
 <p><strong>Objecting and removal:</strong> you can tell us at any time to stop contacting you, or to change or remove your listing. Email listings@toptradesnearme.co.uk and we will do it within 48 hours. We keep a short note of your business name and contact details on a do-not-contact list, so that we do not add or contact you again by mistake.</p>
@@ -607,6 +609,7 @@ def firm_page(slug):
 {f'<section class="firm-sec"><h2>About</h2><p>{e(f["about"])}</p></section>' if f.get("about") else ""}
 {f'<section class="firm-sec"><h2>Services</h2><ul class="cols">{services}</ul></section>' if services else ""}
 {f'<section class="firm-sec"><h2>Photos of our work</h2><div class="gallery">{photos}</div></section>' if photos else ""}
+{reviews_block(slug, f)}
 {f'<section class="firm-sec"><h2>Towns covered</h2><p class="also">{towns}</p></section>' if towns else ""}
 {f'<section class="firm-sec"><h2>Where it ranks</h2><ul>{rank_rows}</ul><p class="msg">Ranked by Google rating, weighted by number of reviews. Claiming a listing or having this page does not change the ranking.</p></section>' if rank_rows else ""}
 <p class="msg">This page is written by the business and checked by us before it goes live. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">Log in to update it</a>.</p>
@@ -623,6 +626,59 @@ def firm_page(slug):
         dest = os.path.join(OUT, "firm", slug)
         os.makedirs(dest, exist_ok=True)
         shutil.copytree(folder, dest, dirs_exist_ok=True)
+
+
+def stars(n):
+    return f'<span class="stars" aria-label="{n} out of 5">' + "★" * n + "☆" * (5 - n) + "</span>"
+
+
+def reviews_block(slug, f):
+    rv = sorted(f.get("reviews", []), key=lambda r: r.get("date_iso", ""), reverse=True)
+    ask = f'<p class="cta"><a class="btn ghost" href="{e(review_link(f["name"]))}" rel="nofollow">Used {e(f["name"])}? Leave a review</a></p>'
+    if not rv:
+        return f'<section class="firm-sec"><h2>Reviews on Top Trades</h2><p>No reviews here yet.</p>{ask}<p class="msg">Every review is checked before it goes live. Good and bad reviews are published the same way. <a href="{P("reviews-policy")}">How reviews work</a></p></section>'
+    avg = sum(r["rating"] for r in rv) / len(rv)
+    items = "".join(
+        f'<li class="review"><p class="rv-head">{stars(r["rating"])} <b>{e(r["name"])}</b>{(", " + e(r["town"])) if r.get("town") else ""} · {e(r["date"])}</p>'
+        f'<p>{e(r["text"])}</p>'
+        + (f'<p class="reply"><b>Reply from {e(f["name"])}:</b> {e(r["reply"])}</p>' if r.get("reply") else "")
+        + "</li>" for r in rv)
+    return (f'<section class="firm-sec"><h2>Reviews on Top Trades</h2><p class="rv-sum">{stars(round(avg))} {avg:.1f} out of 5 from {len(rv)} review{"s" if len(rv) != 1 else ""}</p>'
+            f'<ul class="reviews">{items}</ul>{ask}<p class="msg">Every review is checked before it goes live. Good and bad reviews are published the same way, and the firm can reply. These reviews do not change the ranking. <a href="{P("reviews-policy")}">How reviews work</a></p></section>')
+
+
+def review_link(name):
+    return P("review") + "?" + urllib.parse.urlencode({"organization": name})
+
+
+def review_pages():
+    form = (f'<div class="formbox">{ghl("review", "Leave a review", 1150, forward=True)}</div>' if FORMS["review"]
+            else '<p>Email your review to <a href="mailto:hello@toptradesnearme.co.uk?subject=Review">hello@toptradesnearme.co.uk</a> with the firm\'s name, the town and roughly when the work was done.</p>')
+    simple("review", "Leave a review", "Had work done by a local trade? Leave an honest review on Top Trades Near Me.", f"""
+<section class="hero"><h1>Leave a review</h1><p class="lede">Had work done by a firm on Top Trades Near Me? Tell other people how it went, good or bad.</p></section>
+{form}
+<p class="msg">We email you to confirm your review, then check it before it goes live, usually within two working days. We show your first name, the first letter of your surname and your town, never your email. <a href="{P('reviews-policy')}">How reviews work</a> · <a href="{P('privacy')}">Privacy</a></p>""")
+    simple("reviews-policy", "How reviews work", "How reviews on Top Trades Near Me are collected, checked and published.", f"""
+<section class="hero"><h1>How reviews work</h1><p class="stamp">Last updated 3 November 2026</p></section>
+<div class="prose">
+<h2>Who can leave a review</h2>
+<p>Anyone who has had work done, or had a quote, from a firm listed on this site. You must be the customer, or live in the home where the work was done. You must not work for the firm, be related to its owner, or work for a rival.</p>
+<h2>How we check reviews</h2>
+<ul>
+<li>We email you a link to confirm the review is yours. Reviews that are not confirmed are not published.</li>
+<li>We read every review before it goes live, usually within two working days.</li>
+<li>We publish good and bad reviews in the same way. We never hide, edit or delay a review because of its rating or because a firm asks us to.</li>
+<li>We do not publish a review if it is abusive, discriminatory, gives someone's personal details, is about something other than the firm's work, or looks fake. If we turn a review down we tell you why.</li>
+<li>Nobody is paid or rewarded for a review. Firms cannot write, buy or swap reviews, and cannot pick which customers they ask.</li>
+<li>Staff of Top Trades Near Me, Buildster Digital and Revive firms cannot review any firm on this site.</li>
+</ul>
+<h2>How firms can respond</h2>
+<p>The firm can post one public reply under each review. If a firm thinks a review breaks these rules, it can ask us to look again. We check the facts with both sides and decide; we do not take a review down just because the firm disagrees with it.</p>
+<h2>Reviews and the ranking</h2>
+<p>The ranked lists on town pages use Google ratings only. Reviews left on this site show on the firm's profile page and do not change its place in the ranking.</p>
+<h2>Reporting a review</h2>
+<p>If you think a review is fake or breaks these rules, email listings@toptradesnearme.co.uk with the firm's name and the review.</p>
+</div>""")
 
 
 def for_firms():
@@ -657,12 +713,13 @@ for t in D["trades"]:
 index()
 pages()
 for_firms()
+review_pages()
 for slug in FIRMS:
     firm_page(slug)
 if LIVE:
     import shutil
     shutil.copy(os.path.join(HERE, "site", "style.css"), os.path.join(OUT, "style.css"))
-    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
+    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
     open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{iso_checked()}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     open(os.path.join(OUT, "CNAME"), "w").write("toptradesnearme.co.uk\n")
