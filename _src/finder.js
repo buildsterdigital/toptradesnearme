@@ -112,7 +112,7 @@
   });
   D.towns.forEach(function (s) {
     if (area && s.a !== area) return;
-    var m = L.circleMarker([s.lat, s.lon], { radius: 8, color: "#18252b", weight: 2, fillColor: "#f2c230", fillOpacity: 1 }).addTo(map);
+    var m = L.circleMarker([s.lat, s.lon], { radius: 6, color: "#18252b", weight: 1.5, fillColor: "#f2c230", fillOpacity: 1 }).addTo(map);
     m.bindTooltip(function () { var t = trade(); return s.n + " · " + s.c[t] + " " + D.trades[t].toLowerCase(); });
     m.on("click", function () { location.href = url(trade(), s.s); });
     pts.push([s.lat, s.lon]);

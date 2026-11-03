@@ -110,7 +110,7 @@ def map_block(t="", a=""):
     """Map of towns (Leaflet + OpenStreetMap, both free). Live towns link to the trade's town page."""
     r = "/" if LIVE else ""
     return (f'<div class="map" id="map" data-trade="{t}" data-area="{a}" role="region" aria-label="Map of the towns we cover"></div>'
-            f'<p class="map-key"><span class="dot now"></span>Listed now <span class="dot later"></span>Coming soon <span class="ring"></span>60 miles from Oxford</p>'
+            f'<p class="map-key"><span class="dot now"></span>Listed now {'<span class="dot later"></span>Coming soon ' if any(v["soon"] for v in D["areas"].values()) else ""}<span class="ring"></span>60 miles from Oxford</p>'
             f'<link rel="stylesheet" href="{r}vendor/leaflet/leaflet.css">'
             f'<script type="application/json" id="finder-data">{finder_data()}</script>'
             f'<script src="{r}vendor/leaflet/leaflet.js" defer></script><script src="{r}finder.js" defer></script>')
@@ -169,6 +169,13 @@ def card(i, b, t=None, tw=None):
             f'<p class="meta">{e(b["base"])}{(" · " + e(b["services"])) if b.get("services") else ""}</p>{own}</div>{rate}{link}</li>')
 
 
+SPONSOR_MILES = 30  # Revive covers towns up to 30 miles from Oxford (John, 3 Nov 2026)
+
+
+def sponsored_here(tw):
+    return miles(HUB, pos(tw)) <= SPONSOR_MILES
+
+
 def sponsor(t):
     b = D["sponsors"][t]
     rate = (f'<div class="rate"><b>{b["rating"]:g}<span>/{b["scale"]}</span></b><small>{b["reviews"]} reviews · {e(b["source"])}</small></div>' if "rating" in b else "")
@@ -195,8 +202,8 @@ def page(t, tw):
 <p class="stamp">{len(items)} firms listed · Google ratings checked {D["checked"]}</p></section>
 <div class="grid">
 <div class="main">
-{sponsor(t)}
-<div class="featured"><span class="tag">Sponsored spot</span><p><strong>One more sponsored spot free for a {e(tv["single"])} in {e(twv["name"])}.</strong> Top of the page, your photos, your number.</p><a href="{e(claim_link(trade=tv["short"], town=twv["name"]))}" rel="nofollow">Ask about it</a></div>
+{sponsor(t) if sponsored_here(tw) else ""}
+<div class="featured"><span class="tag">Sponsored spot</span><p><strong>{"One more sponsored spot" if sponsored_here(tw) else "Two sponsored spots"} free for a {e(tv["single"])} in {e(twv["name"])}.</strong> Top of the page, your photos, your number.</p><a href="{e(claim_link(trade=tv["short"], town=twv["name"]))}" rel="nofollow">Ask about it</a></div>
 <ol class="list">{lst}</ol>
 <section class="areas"><h2>Villages covered from {e(twv["name"])}</h2><div class="chips">{"".join(f"<span>{e(v.strip())}</span>" for v in twv["villages"].split(","))}</div></section>
 <section class="tips"><h2>Before you hire a {e(tv["single"])} in {e(twv["name"])}</h2><ul>{tips}</ul></section>
