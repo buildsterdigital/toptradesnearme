@@ -147,7 +147,7 @@ def footer():
             links.append(f'<a href="{L(t, a)}">{e(tv["short"])} in {e(D["areas"][a]["name"])}</a>')
     return ('<footer><div class="wrap foot"><div><p class="logo small">' + MARK + BRAND + '</p>'
             '<p>Local trades ranked by public reviews. Run by <strong>Buildster Digital</strong>, Oxford.</p>'
-            '<p class="fine">How we rank: rating out of the maximum, weighted by how many reviews it is based on. Firms without a checked rating are listed after, in no order. Sponsored listings are paid placements, always labelled, and sit outside the ranking.</p>'
+            '<p class="fine">How we rank: Google rating out of 5, weighted by how many Google reviews it is based on. Firms with no Google rating we could find are listed after, in no order. Sponsored listings are paid placements, always labelled, and sit outside the ranking.</p>'
             '<p class="fine">Top Trades Near Me is run by Buildster Digital, part of the same group as Revive Roofing, Revive Plumbing and Revive Driveways.</p>'
             '<p class="fine">We do not vet, endorse or guarantee any firm listed. Check insurance, certificates and written quotes before you hire.</p>'
             '<p class="fine">Your business listed and want it changed or removed, or want us to stop contacting you? Email listings@toptradesnearme.co.uk and we will do it within 48 hours.</p>'
@@ -161,9 +161,9 @@ def card(i, b, t=None, tw=None):
         cnt = f'{b["reviews"]} reviews' if "reviews" in b else "review count not shown"
         rate = f'<div class="rate"><b>{stars}</b><small>{cnt} · {e(b["source"])}</small></div>'
     else:
-        rate = '<div class="rate none"><small>Rating not checked yet</small></div>'
+        rate = '<div class="rate none"><small>No Google rating found</small></div>'
     own = (f'<p class="claim"><a href="{e(claim_link(organization=b["name"], trade=D["trades"][t]["short"], town=D["towns"][tw]["name"]))}" rel="nofollow">Your business? Claim this listing</a></p>' if t else "")
-    link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="nofollow noopener">View profile</a>' if b.get("url") else ""
+    link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="nofollow noopener">{"Google reviews" if b.get("source") == "Google" else "View profile"}</a>' if b.get("url") else ""
     pos = i if "rating" in b else "–"
     return (f'<li class="biz"><div class="pos">{pos}</div><div class="body"><h3>{e(b["name"])}</h3>'
             f'<p class="meta">{e(b["base"])}{(" · " + e(b["services"])) if b.get("services") else ""}</p>{own}</div>{rate}{link}</li>')
@@ -192,7 +192,7 @@ def page(t, tw):
 <p class="crumbs"><a href="{L()}">Home</a> / <a href="{L(t)}">{e(tv["name"])}</a> / <a href="{L(t, ar)}">{e(D["areas"][ar]["name"])}</a> / {e(twv["name"])}</p>
 <section class="hero"><h1>Top {e(tv["name"].lower())} in {e(twv["name"])}</h1>
 <p class="lede">{e(tv["intro"])} Covering {e(twv["name"])} and nearby villages including {e(twv["villages"])}.</p>
-<p class="stamp">{len(items)} firms listed · ratings checked {D["checked"]}</p></section>
+<p class="stamp">{len(items)} firms listed · Google ratings checked {D["checked"]}</p></section>
 <div class="grid">
 <div class="main">
 {sponsor(t)}
@@ -400,7 +400,7 @@ def pages():
 <p>We try to keep the information accurate and up to date but cannot promise that it always is. If something is wrong, email listings@toptradesnearme.co.uk.</p>
 
 <h2>3. How the ranking works</h2>
-<p>Firms with a checked rating are sorted by their rating as a share of the maximum, weighted by how many reviews it is based on. Firms without a checked rating are listed after, in no order. Nobody can pay to change their place in the ranking. Claiming a listing does not change its place.</p>
+<p>Firms with a Google rating are sorted by that rating out of 5, weighted by how many Google reviews it is based on. Firms with no Google rating we could find are listed after, in no order. Nobody can pay to change their place in the ranking. Claiming a listing does not change its place.</p>
 <p>Sponsored listings are paid advertisements. They are always labelled "Sponsored" and shown in a separate box outside the ranked list. Some sponsored spots are taken by Revive Roofing, Revive Plumbing and Revive Driveways, which are in the same group as Buildster Digital.</p>
 
 <h2>4. Sponsored listing terms (for businesses)</h2>
