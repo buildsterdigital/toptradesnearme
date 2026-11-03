@@ -80301,7 +80301,7 @@
  },
  "portal": {
   "login": "",
-  "billing": "",
+  "billing": "https://billing.stripe.com/p/login/8x29AM7uIeIObzD6pi5Vu00",
   "change_form": "Qs6SHeooStFWNdA3EGhD",
   "review_form": "waYbSyWQpfuu34qUcOUz"
  },
