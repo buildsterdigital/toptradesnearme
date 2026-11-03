@@ -16,7 +16,7 @@ BRAND_FILES = ["favicon.ico", "favicon.svg", "apple-touch-icon.png", "icon-192.p
 
 # GoHighLevel forms in the Top Trades Near Me sub-account (rRAiUOKmHY43FAxBFsPm)
 FORMS = {"claim": "GPJqPB3I4ubYbyjVMrV9", "listed": "5D9mtepQQLMAKM11lmpK", "quote": "gUv916EvMBG5WQ7pqGPM"}
-FORM_JS = '<script src="https://link.msgsndr.com/js/form_embed.js"></script>'
+FORM_JS = '<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>'
 
 
 def ghl(key, title, height, forward=False, **params):
@@ -28,7 +28,7 @@ def ghl(key, title, height, forward=False, **params):
     attrs = (f'src="{e(src)}" id="inline-{fid}" data-layout="{{\'id\':\'INLINE\'}}" data-trigger-type="alwaysShow" data-trigger-value="" '
              f'data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" '
              f'data-form-name="{e(title)}" data-height="{height}" data-layout-iframe-id="inline-{fid}" data-form-id="{fid}" title="{e(title)}" '
-             f'class="ghl" style="width:100%;height:{height}px;border:none;border-radius:8px"')
+             f'class="ghl" loading="lazy" style="width:100%;height:{height}px;border:none;border-radius:8px"')
     fwd = ("<script>(function(f){if(location.search)f.src=f.src.split('?')[0]+location.search;})"
            f"(document.getElementById('inline-{fid}'));</script>") if forward else ""
     return f"<iframe {attrs}></iframe>{fwd}{FORM_JS}"
@@ -42,7 +42,35 @@ def P(name):
 def claim_link(**params):
     return P("claim") + "?" + urllib.parse.urlencode(params)
 
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">'
+FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>'
+
+
+# Structured data (schema.org JSON-LD). No ratings in it: Google does not allow review
+# stars taken from other sites, and the ranking on the page stays the only place ratings show.
+TYPES = {"roofers": "RoofingContractor", "plumbers": "Plumber", "driveways": "HomeAndConstructionBusiness"}
+ORG_ID = "https://toptradesnearme.co.uk/#org"
+
+
+def ld(*objs):
+    if not LIVE:
+        return ""
+    data = {"@context": "https://schema.org", "@graph": list(objs)}
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + "</script>"
+
+
+def crumbs_ld(*steps):
+    """steps: (name, path) pairs from Home down to this page."""
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + u} for i, (n, u) in enumerate(steps)]}
+
+
+def iso_checked():
+    import datetime
+    return datetime.datetime.strptime(D["checked"], "%d %b %Y").date().isoformat()
+
+
+def villages(tw):
+    return [v.strip() for v in D["towns"][tw]["villages"].split(",") if v.strip()]
 
 
 def L(t=None, tw=None):
@@ -188,7 +216,12 @@ def page(t, tw):
     tv, twv = D["trades"][t], D["towns"][tw]
     items = sorted(D["listings"][f"{t}/{tw}"], key=score, reverse=True)
     title = f'{len(items)} best {tv["name"].lower()} in {twv["name"]} ({D["checked"][-4:]})'
-    desc = f'Compare {tv["name"].lower()} in {twv["name"]}: ratings, review counts and what to check before you hire. {tv["intro"]}'
+    vs = villages(tw)
+    for k in range(4, 0, -1):  # name as many villages as fit in about 160 characters
+        desc = (f'{len(items)} {tv["name"].lower()} in {twv["name"]} ranked by Google reviews. '
+                f'Also covering {", ".join(vs[:k])} and nearby villages. Free quotes.')
+        if len(desc) <= 160:
+            break
     others = " ".join(f'<a href="{L(t, o)}">{e(D["towns"][o]["name"])}</a>' for o in nearest(tw))
     ar = twv["area"]
     other_trades = " ".join(f'<a href="{L(o, tw)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
@@ -205,7 +238,7 @@ def page(t, tw):
 {sponsor(t) if sponsored_here(tw) else ""}
 <div class="featured"><span class="tag">Sponsored spot</span><p><strong>{"One more sponsored spot" if sponsored_here(tw) else "Two sponsored spots"} free for a {e(tv["single"])} in {e(twv["name"])}.</strong> Top of the page, your photos, your number.</p><a href="{e(claim_link(trade=tv["short"], town=twv["name"]))}" rel="nofollow">Ask about it</a></div>
 <ol class="list">{lst}</ol>
-<section class="areas"><h2>Villages covered from {e(twv["name"])}</h2><div class="chips">{"".join(f"<span>{e(v.strip())}</span>" for v in twv["villages"].split(","))}</div></section>
+<section class="areas"><h2>{e(tv["name"])} for villages near {e(twv["name"])}</h2><p>Need a {e(tv["single"])} in {e(", ".join(vs[:-1]))} or {e(vs[-1])}? These villages are close to {e(twv["name"])}, so the firms above usually work there too. Check with the firm when you ask for a quote.</p></section>
 <section class="tips"><h2>Before you hire a {e(tv["single"])} in {e(twv["name"])}</h2><ul>{tips}</ul></section>
 <p class="also">{e(tv["name"])} nearby: {others} <a href="{L(t, ar)}">All of {e(D["areas"][ar]["name"])}</a></p>
 <p class="also">Other trades in {e(twv["name"])}: {other_trades}</p>
@@ -215,7 +248,16 @@ def page(t, tw):
 <p class="msg">Free, no obligation. We share your details only with the up to three firms we pass your job to, which may include sponsored firms. We do not vet or guarantee firms. <a href="{P('privacy')}">Privacy</a> · <a href="{P('terms')}">Terms</a></p></aside>
 </div></main>
 {footer()}'''
-    doc = f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{head(title, desc, L(t, tw))}</head><body>{body}</body></html>'
+    data = ld(crumbs_ld(("Home", "/"), (tv["name"], L(t)), (D["areas"][ar]["name"], L(t, ar)), (twv["name"], L(t, tw))),
+              {"@type": "CollectionPage", "@id": SITE + L(t, tw), "url": SITE + L(t, tw), "name": title, "description": desc,
+               "isPartOf": {"@id": SITE + "/#site"}, "dateModified": iso_checked(),
+               "spatialCoverage": [{"@type": "City", "name": twv["name"]}] + [{"@type": "Place", "name": v} for v in vs],
+               "mainEntity": {"@type": "ItemList", "name": f'{tv["name"]} in {twv["name"]}', "numberOfItems": len(items),
+                              "itemListOrder": "https://schema.org/ItemListOrderDescending",
+                              "itemListElement": [{"@type": "ListItem", "position": i + 1,
+                                                   "item": {"@type": TYPES.get(t, "HomeAndConstructionBusiness"), "name": b["name"],
+                                                            "areaServed": twv["name"]}} for i, b in enumerate(items)]}})
+    doc = f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{head(title, desc, L(t, tw))}{data}</head><body>{body}</body></html>'
     if LIVE:
         os.makedirs(os.path.join(OUT, t, tw), exist_ok=True)
         open(os.path.join(OUT, t, tw, "index.html"), "w").write(doc)
@@ -232,8 +274,8 @@ def write(doc, *parts):
         open(os.path.join(OUT, "-".join(parts) + ".html"), "w").write(doc)
 
 
-def wrap_doc(title, desc, path, body):
-    return f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{head(title, desc, path)}</head><body>{body}</body></html>'
+def wrap_doc(title, desc, path, body, data=""):
+    return f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{head(title, desc, path)}{data}</head><body>{body}</body></html>'
 
 
 def town_links(t, a):
@@ -262,7 +304,7 @@ def trade_index(t):
 <p class="also">Other trades: {others}</p>
 </main>
 {footer()}'''
-    write(wrap_doc(title, desc, L(t), body), t)
+    write(wrap_doc(title, desc, L(t), body, ld(crumbs_ld(("Home", "/"), (tv["name"], L(t))))), t)
 
 
 def area_page(t, a):
@@ -274,7 +316,11 @@ def area_page(t, a):
     other_trades = " ".join(f'<a href="{L(o, a)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
     other_areas = " ".join(f'<a href="{L(t, o)}">{e(D["areas"][o]["name"])}</a>' for o in LIVE_AREAS if o != a)
     title = f'{tv["name"]} in {av["name"]}: {len(towns)} towns ranked by reviews ({D["checked"][-4:]})'
-    desc = f'Choose your town to compare {tv["name"].lower()} in {av["name"]} by public rating and review count. {tv["intro"]}'
+    names = [D["towns"][x]["name"] for x in towns]
+    for k in range(4, 0, -1):  # name as many towns as fit in about 160 characters
+        desc = f'{tv["name"]} in {av["name"]}, ranked by Google reviews, in {len(towns)} towns including {", ".join(names[:k])}. Free quotes.'
+        if len(desc) <= 160:
+            break
     body = f'''{header()}
 <main class="wrap">
 <p class="crumbs"><a href="{L()}">Home</a> / <a href="{L(t)}">{e(tv["name"])}</a> / {e(av["name"])}</p>
@@ -291,7 +337,7 @@ def area_page(t, a):
 {f'<p class="also">{e(tv["name"])} in other areas: {other_areas}</p>' if other_areas else ""}
 </main>
 {footer()}'''
-    write(wrap_doc(title, desc, L(t, a), body), t, a)
+    write(wrap_doc(title, desc, L(t, a), body, ld(crumbs_ld(("Home", "/"), (tv["name"], L(t)), (av["name"], L(t, a))))), t, a)
 
 
 def simple(name, title, desc, inner):
@@ -475,7 +521,13 @@ def index():
 {footer()}'''
     h = head(f"{BRAND}: local roofers, driveways and plumbers ranked by reviews", f"Find roofers, driveway firms and plumbers in {region()}, ranked by public reviews. Search by postcode or pick your area on the map.", "/")
     if LIVE:
-        doc = f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">\n{h}</head><body>{body}</body></html>'
+        org = {"@type": "Organization", "@id": ORG_ID, "name": BRAND, "url": SITE + "/", "logo": SITE + "/icon-512.png",
+               "email": "listings@toptradesnearme.co.uk",
+               "parentOrganization": {"@type": "Organization", "name": "Buildster Digital"}}
+        if D.get("social"):
+            org["sameAs"] = D["social"]
+        site = {"@type": "WebSite", "@id": SITE + "/#site", "url": SITE + "/", "name": BRAND, "publisher": {"@id": ORG_ID}, "inLanguage": "en-GB"}
+        doc = f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">\n{h}{ld(org, site)}</head><body>{body}</body></html>'
     else:
         doc = h + body
     open(os.path.join(OUT, "index.html"), "w").write(doc)
@@ -492,7 +544,7 @@ if LIVE:
     import shutil
     shutil.copy(os.path.join(HERE, "site", "style.css"), os.path.join(OUT, "style.css"))
     urls = ["/"] + [P(x) for x in ("claim", "get-listed", "privacy", "terms")] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
-    open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+    open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{iso_checked()}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     open(os.path.join(OUT, "CNAME"), "w").write("toptradesnearme.co.uk\n")
     open(os.path.join(OUT, "404.html"), "w").write('<!doctype html><meta charset="utf-8"><title>Page not found</title><p>Page not found. <a href="/">Go to Top Trades Near Me</a></p>')
