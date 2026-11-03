@@ -463,7 +463,7 @@ def pages():
     simple("terms", "Terms of use", "Terms for using Top Trades Near Me, how listings and rankings work, and terms for sponsored listings and firm accounts.", f'''
 <section class="hero"><h1>Terms of use</h1><p class="stamp">Last updated 3 November 2026</p></section>
 <div class="prose">
-<p>These terms apply to anyone using toptradesnearme.co.uk. Parts 4 and 5 apply to businesses that buy a sponsored listing, claim a listing or use a firm login. The site is run by Buildster Digital, the trading name of John Collins, a sole trader, 12 Red Bridge Hollow, Oxford OX1 4XS (listings@toptradesnearme.co.uk).</p>
+<p>These terms apply to anyone using toptradesnearme.co.uk. Parts 4 to 6 apply to businesses that buy a sponsored listing, claim a listing, use a firm login or buy leads. The site is run by Buildster Digital, the trading name of John Collins, a sole trader, 12 Red Bridge Hollow, Oxford OX1 4XS (listings@toptradesnearme.co.uk).</p>
 
 <h2>1. What this site is</h2>
 <p>Top Trades Near Me is a free directory of local trades. It lists firms using publicly available information and ranks them by their public review ratings. It is an information service only. We are not a party to any work, quote or contract between you and a firm.</p>
@@ -500,16 +500,27 @@ def pages():
 <li><strong>Closing your account:</strong> you can close your login or ask us to take your profile down at any time by emailing listings@toptradesnearme.co.uk. Your free listing stays unless you ask us to remove it too. We may close an account that breaks these terms. Paid sponsored spots follow part 4.</li>
 </ul>
 
-<h2>6. Listings and removal</h2>
+<h2>6. Buying leads (for businesses)</h2>
+<p>These apply when a business buys a homeowner's job request (a lead) from us.</p>
+<ul>
+<li><strong>What a lead is:</strong> a job request from a homeowner who has asked us to pass their details to local firms. We check each request before we offer it. We tell you the trade, town, a summary of the job and when it came in before you buy.</li>
+<li><strong>How many firms:</strong> a shared lead is sold to no more than three firms. An exclusive lead is sold to one firm only. We tell you which it is before you buy.</li>
+<li><strong>Price and payment:</strong> the price is shown before you buy and is paid by card through Stripe. When payment goes through we send you the homeowner's name, phone, email and job details.</li>
+<li><strong>Using the homeowner's details:</strong> use them only to contact that homeowner about that job. Do not pass them on, add them to marketing lists or contact them about anything else. You become responsible for their data under data protection law once you have it.</li>
+<li><strong>Bad leads:</strong> if a lead has a wrong phone number and email, is a test or fake request, or is for work outside the trade or town shown, tell us within 7 days of buying it and we will give you a credit for another lead. We do not give credits because a homeowner chose another firm or did not go ahead.</li>
+<li><strong>No guaranteed jobs:</strong> a lead is an introduction. We do not promise the homeowner will reply, accept a quote or hire you.</li>
+</ul>
+
+<h2>7. Listings and removal</h2>
 <p>Any business can ask us to correct or remove its free listing, or to stop contacting it, by emailing listings@toptradesnearme.co.uk. We will do it within 48 hours. We may decline to list, or may remove, any business at our discretion.</p>
 
-<h2>7. Using the site</h2>
+<h2>8. Using the site</h2>
 <p>Do not copy the directory in bulk, scrape it, or use it to send spam. Links to other websites are provided for convenience and we are not responsible for their content.</p>
 
-<h2>8. Our liability to site users</h2>
+<h2>9. Our liability to site users</h2>
 <p>The site is free and provided as it is. We are not responsible for the work, conduct, prices or advice of any firm listed, or for any loss from your dealings with them. Nothing in these terms limits liability that cannot be limited by law, or affects your legal rights as a consumer.</p>
 
-<h2>9. General</h2>
+<h2>10. General</h2>
 <p>We may update these terms and will show the new date at the top. These terms are governed by the law of England and Wales, and the courts of England and Wales have jurisdiction. How we use personal data is explained in our <a href="{P('privacy')}">privacy notice</a>.</p>
 </div>''')
 
