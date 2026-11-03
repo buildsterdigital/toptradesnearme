@@ -692,6 +692,24 @@ def review_pages():
 </div>""")
 
 
+def dashboard():
+    sbc = D.get("portal", {}).get("supabase", {})
+    cfg = {"url": sbc.get("url", ""), "anon": sbc.get("key", ""), "billing": BILLING,
+           "towns": {k: v["name"] for k, v in sorted(D["towns"].items(), key=lambda x: x[1]["name"])},
+           "trades": {k: v["name"] for k, v in D["trades"].items()}}
+    lib = (f'<script src="{"/" if LIVE else ""}vendor/supabase/supabase.js"></script>' if cfg["url"] else "")
+    inner = f"""
+<section class="hero"><h1>Firm dashboard</h1><p class="lede">Your leads, your page and your account in one place.</p></section>
+<div id="dash" class="dash"><p class="msg">Loading…</p></div>
+<script type="application/json" id="dash-config">{json.dumps(cfg, ensure_ascii=False).replace("</", "<\\/")}</script>
+{lib}<script src="{'/' if LIVE else ''}dashboard.js" defer></script>
+<noscript><p>The dashboard needs JavaScript turned on.</p></noscript>"""
+    simple("dashboard", "Firm dashboard", "Log in to your Top Trades Near Me firm dashboard.", inner)
+    path = os.path.join(OUT, "dashboard", "index.html") if LIVE else os.path.join(OUT, "dashboard.html")
+    doc = open(path).read().replace("<head>", '<head><meta name="robots" content="noindex">', 1)
+    open(path, "w").write(doc)
+
+
 def for_firms():
     login = (f'<p class="cta"><a class="btn" href="{e(PORTAL)}">Log in to your firm account</a></p>'
              f'<p class="msg">First time? Use the email you claimed your listing with and choose "Forgot password" to set one.</p>' if PORTAL
@@ -725,6 +743,7 @@ index()
 pages()
 for_firms()
 review_pages()
+dashboard()
 for slug in FIRMS:
     firm_page(slug)
 if LIVE:
@@ -738,5 +757,6 @@ if LIVE:
 for f in BRAND_FILES:
     shutil.copy(os.path.join(HERE, "brand", f), os.path.join(OUT, f))
 shutil.copy(os.path.join(HERE, "finder.js"), os.path.join(OUT, "finder.js"))
+shutil.copy(os.path.join(HERE, "dashboard.js"), os.path.join(OUT, "dashboard.js"))
 shutil.copytree(os.path.join(HERE, "vendor"), os.path.join(OUT, "vendor"), dirs_exist_ok=True)
 print("built", len(os.listdir(OUT)), "files")
