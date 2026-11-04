@@ -80300,10 +80300,14 @@
   }
  },
  "portal": {
-  "login": "",
+  "login": "/dashboard/",
   "billing": "https://billing.stripe.com/p/login/8x29AM7uIeIObzD6pi5Vu00",
   "change_form": "Qs6SHeooStFWNdA3EGhD",
-  "review_form": "waYbSyWQpfuu34qUcOUz"
+  "review_form": "waYbSyWQpfuu34qUcOUz",
+  "supabase": {
+   "url": "https://elcxpcfmkkpomluqrmgb.supabase.co",
+   "key": "sb_publishable_ax-Hl3_1UMGYkR20dYtqOg_3xUVwPc_"
+  }
  },
  "firms": {}
 }
