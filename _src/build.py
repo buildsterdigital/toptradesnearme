@@ -245,12 +245,35 @@ def page(t, tw):
     other_trades = " ".join(f'<a href="{L(o, tw)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
     tips = "".join(f"<li>{e(x)}</li>" for x in tv["tips"])
     lst = "".join(card(i + 1, b, t, tw) for i, b in enumerate(items))
+    trade_l = tv["name"].lower()
+    rated = [b for b in items if "rating" in b][:3]
+
+    def rate_txt(b):
+        return f'{b["rating"]:g} out of {b["scale"]}' + (f' from {b["reviews"]} reviews' if "reviews" in b else "")
+    if rated:
+        best = "; ".join(f'{b["name"]} ({rate_txt(b)})' for b in rated)
+        answer = (f'The highest-rated {trade_l} in {twv["name"]} on Google are {best}. '
+                  f'Ratings checked {D["checked"]}.')
+    else:
+        answer = f'We could not find Google ratings for the {trade_l} listed in {twv["name"]} yet, so they are shown in no order.'
+    faqs = [
+        (f'Who are the best-rated {trade_l} in {twv["name"]}?', answer),
+        ("How is this list ranked?",
+         "By Google star rating, weighted by how many reviews it is based on, so 4.8 stars from 200 reviews ranks above 5 stars from 2. "
+         "Firms cannot pay to move up. Sponsored spots are labelled and sit outside the ranked list."),
+        (f'Do these {trade_l} cover villages near {twv["name"]}?',
+         f'Usually, yes. Villages near {twv["name"]} include {", ".join(vs)}. Check with the firm when you ask for a quote.'),
+        (f'How do I get quotes from {trade_l} in {twv["name"]}?',
+         f'Use the free quote form on this page. We pass your job to up to three {trade_l} in {twv["name"]}, or you can contact any firm above directly.'),
+    ]
+    faq_html = "".join(f"<h3>{e(q)}</h3><p>{e(a)}</p>" for q, a in faqs)
     body = f'''{header()}
 <main class="wrap">
 <p class="crumbs"><a href="{L()}">Home</a> / <a href="{L(t)}">{e(tv["name"])}</a> / <a href="{L(t, ar)}">{e(D["areas"][ar]["name"])}</a> / {e(twv["name"])}</p>
 <section class="hero"><h1>Top {e(tv["name"].lower())} in {e(twv["name"])}</h1>
 <p class="lede">{e(tv["intro"])} Covering {e(twv["name"])} and nearby villages including {e(twv["villages"])}.</p>
-<p class="stamp">{len(items)} firms listed · Google ratings checked {D["checked"]}</p></section>
+<p class="stamp">{len(items)} firms listed · Google ratings checked {D["checked"]}</p>
+<p class="answer">{e(answer)}</p></section>
 <div class="grid">
 <div class="main">
 {sponsor(t) if sponsored_here(tw) else ""}
@@ -258,6 +281,7 @@ def page(t, tw):
 <ol class="list">{lst}</ol>
 <section class="areas"><h2>{e(tv["name"])} for villages near {e(twv["name"])}</h2><p>Need a {e(tv["single"])} in {e(", ".join(vs[:-1]))} or {e(vs[-1])}? These villages are close to {e(twv["name"])}, so the firms above usually work there too. Check with the firm when you ask for a quote.</p></section>
 <section class="tips"><h2>Before you hire a {e(tv["single"])} in {e(twv["name"])}</h2><ul>{tips}</ul></section>
+<section class="faq"><h2>Questions about {e(trade_l)} in {e(twv["name"])}</h2>{faq_html}</section>
 <p class="also">{e(tv["name"])} nearby: {others} <a href="{L(t, ar)}">All of {e(D["areas"][ar]["name"])}</a></p>
 <p class="also">Other trades in {e(twv["name"])}: {other_trades}</p>
 </div>
@@ -274,7 +298,9 @@ def page(t, tw):
                               "itemListOrder": "https://schema.org/ItemListOrderDescending",
                               "itemListElement": [{"@type": "ListItem", "position": i + 1,
                                                    "item": {"@type": TYPES.get(t, "HomeAndConstructionBusiness"), "name": b["name"],
-                                                            "areaServed": twv["name"]}} for i, b in enumerate(items)]}})
+                                                            "areaServed": twv["name"]}} for i, b in enumerate(items)]}},
+              {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q,
+                                                   "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]})
     doc = f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{head(title, desc, L(t, tw))}{data}</head><body>{body}</body></html>'
     if LIVE:
         os.makedirs(os.path.join(OUT, t, tw), exist_ok=True)
@@ -715,6 +741,31 @@ def for_firms():
 <section class="firm-sec"><h2>Not claimed yet?</h2><p class="cta"><a class="btn" href="{P('claim')}">Claim your listing</a> <a class="btn ghost" href="{P('get-listed')}">Not listed? Get listed free</a></p></section>""")
 
 
+def llms_txt():
+    """Plain summary for AI assistants (llmstxt.org format)."""
+    n = sum(len(v) for v in D["listings"].values())
+    out = [f"# {BRAND}", "",
+           f"> Local roofers, driveway companies and plumbers in {len(D['towns'])} towns across {region()}, ranked by their Google rating "
+           f"weighted by review count. {n} listings, ratings checked {D['checked']}. Run by Buildster Digital, Oxford.", "",
+           "How the ranking works: Google star rating (out of 5) multiplied by log10(number of reviews + 1). Firms cannot pay to move up. "
+           "Sponsored spots are labelled and sit outside the ranked list. Firms with no Google rating are listed after, in no order. "
+           "Each town page also covers the villages around it.",
+           "Disclosure: Buildster Digital is in the same group as Revive Roofing, Revive Plumbing and Revive Driveways, which appear only in labelled sponsored boxes.",
+           "Homeowners can ask for free quotes from up to three local firms on any town page.", "",
+           "## Trades", ""]
+    for t, tv in D["trades"].items():
+        out.append(f"- [{tv['name']}]({SITE}{L(t)}): {tv['intro']}")
+    for t, tv in D["trades"].items():
+        out += ["", f"## {tv['name']} by area", ""]
+        out += [f"- [{tv['name']} in {D['areas'][a]['name']}]({SITE}{L(t, a)}): " + ", ".join(D["towns"][x]["name"] for x in area_towns(a))
+                for a in LIVE_AREAS]
+    out += ["", "## Optional", "",
+            f"- [Privacy notice]({SITE}{P('privacy')})", f"- [Terms]({SITE}{P('terms')})",
+            f"- [Claim a listing (for firms)]({SITE}{P('claim')})", "",
+            f"Town pages follow the pattern {SITE}/<trade>/<town>/, for example {SITE}{L(next(iter(D['trades'])), next(iter(D['towns'])))}.", ""]
+    return "\n".join(out)
+
+
 for t in D["trades"]:
     trade_index(t)
     for a in LIVE_AREAS:
@@ -732,7 +783,12 @@ if LIVE:
     shutil.copy(os.path.join(HERE, "site", "style.css"), os.path.join(OUT, "style.css"))
     urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
     open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{iso_checked()}</lastmod></url>\n" for u in urls) + "</urlset>\n")
-    open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
+    bots = ["Googlebot", "Bingbot", "Google-Extended", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot",
+            "Claude-User", "PerplexityBot", "Perplexity-User", "Applebot", "Applebot-Extended", "DuckAssistBot", "Amazonbot", "meta-externalagent"]
+    open(os.path.join(OUT, "robots.txt"), "w").write(
+        "# Search engines and AI assistants are welcome to read and cite this site.\n"
+        + "".join(f"User-agent: {b}\n" for b in bots) + "Allow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: " + SITE + "/sitemap.xml\n")
+    open(os.path.join(OUT, "llms.txt"), "w").write(llms_txt())
     open(os.path.join(OUT, "CNAME"), "w").write("toptradesnearme.co.uk\n")
     open(os.path.join(OUT, "404.html"), "w").write('<!doctype html><meta charset="utf-8"><title>Page not found</title><p>Page not found. <a href="/">Go to Top Trades Near Me</a></p>')
 for f in BRAND_FILES:

@@ -1,0 +1,99 @@
+# Top Trades Near Me
+
+> Local roofers, driveway companies and plumbers in 312 towns across southern and central England, ranked by their Google rating weighted by review count. 8597 listings, ratings checked 3 Nov 2026. Run by Buildster Digital, Oxford.
+
+How the ranking works: Google star rating (out of 5) multiplied by log10(number of reviews + 1). Firms cannot pay to move up. Sponsored spots are labelled and sit outside the ranked list. Firms with no Google rating are listed after, in no order. Each town page also covers the villages around it.
+Disclosure: Buildster Digital is in the same group as Revive Roofing, Revive Plumbing and Revive Driveways, which appear only in labelled sponsored boxes.
+Homeowners can ask for free quotes from up to three local firms on any town page.
+
+## Trades
+
+- [Roofers](https://toptradesnearme.co.uk/roofers/): Re-roofs, slipped tiles, flat roofs, leadwork, chimneys, fascias and gutters.
+- [Driveway companies](https://toptradesnearme.co.uk/driveways/): Block paving, resin bound, tarmac, gravel, patios and dropped kerbs.
+- [Plumbers and heating engineers](https://toptradesnearme.co.uk/plumbers/): Boiler installs and repairs, servicing, leaks, bathrooms, cylinders and landlord gas certificates.
+
+## Roofers by area
+
+- [Roofers in Oxfordshire](https://toptradesnearme.co.uk/roofers/oxfordshire/): Oxford, Abingdon, Didcot, Banbury, Bicester, Witney, Wantage, Thame, Henley-on-Thames, Wallingford, Kidlington, Carterton, Chipping Norton, Faringdon, Woodstock, Burford, Watlington and Chinnor, Wheatley, Charlbury
+- [Roofers in Berkshire](https://toptradesnearme.co.uk/roofers/berkshire/): Reading, Thatcham, Newbury, Hungerford, Maidenhead, Wokingham, Bracknell, Windsor, Slough, Sandhurst
+- [Roofers in Buckinghamshire](https://toptradesnearme.co.uk/roofers/buckinghamshire/): Princes Risborough, Aylesbury, Buckingham, Winslow, Wendover, High Wycombe, Marlow, Chesham, Beaconsfield, Amersham, Milton Keynes, Gerrards Cross, Woburn Sands, Olney
+- [Roofers in Wiltshire](https://toptradesnearme.co.uk/roofers/wiltshire/): Highworth, Swindon, Royal Wootton Bassett, Marlborough, Pewsey, Malmesbury, Calne, Tidworth, Devizes, Chippenham, Corsham, Melksham, Trowbridge, Cricklade, Amesbury, Salisbury, Westbury, Wilton, Warminster, Mere
+- [Roofers in Gloucestershire](https://toptradesnearme.co.uk/roofers/gloucestershire/): Lechlade, Fairford, Bourton-on-the-Water, Stow-on-the-Wold, Moreton-in-Marsh, Cirencester, Chipping Campden, Winchcombe, Cheltenham, Tetbury, Stroud, Tewkesbury, Gloucester, Dursley, Northleach, Newent, Yate, Mitcheldean, Cinderford, Lydney, Thornbury, Coleford, Filton
+- [Roofers in Northamptonshire](https://toptradesnearme.co.uk/roofers/northamptonshire/): Brackley, Towcester, Daventry, Northampton, Wellingborough, Rushden, Kettering, Corby
+- [Roofers in Warwickshire](https://toptradesnearme.co.uk/roofers/warwickshire/): Shipston-on-Stour, Southam, Stratford-upon-Avon, Leamington Spa, Warwick, Alcester, Rugby, Kenilworth, Nuneaton
+- [Roofers in Hertfordshire](https://toptradesnearme.co.uk/roofers/hertfordshire/): Tring, Berkhamsted, Hemel Hempstead, Rickmansworth, Watford, Harpenden, St Albans, Hitchin, Hatfield, Welwyn Garden City, Stevenage, Hertford, Borehamwood, Potters Bar, Baldock, Cheshunt, Buntingford, Royston, Sawbridgeworth, Bishop's Stortford
+- [Roofers in Bedfordshire](https://toptradesnearme.co.uk/roofers/bedfordshire/): Leighton Buzzard, Dunstable, Luton, Ampthill, Bedford, Biggleswade, Shefford, Stotfold
+- [Roofers in Hampshire](https://toptradesnearme.co.uk/roofers/hampshire/): Tadley, Basingstoke, Hook, Fleet, Farnborough, Andover, Aldershot, Alton, Winchester, New Alresford, Bordon, Romsey, Petersfield, Bishop's Waltham, Eastleigh, Southampton, Totton, Wickham, Horndean, Fordingbridge, Fareham, Havant, Portsmouth, Gosport, Ringwood, Lymington, New Milton
+- [Roofers in Surrey](https://toptradesnearme.co.uk/roofers/surrey/): Camberley, Egham, Staines-upon-Thames, Farnham, Woking, Weybridge, Guildford, Esher, Leatherhead, Ewell, Haslemere, Dorking, Banstead, Redhill, Warlingham, Horley, Oxted
+- [Roofers in Worcestershire](https://toptradesnearme.co.uk/roofers/worcestershire/): Broadway, Evesham, Pershore, Redditch, Worcester, Malvern
+- [Roofers in London](https://toptradesnearme.co.uk/roofers/london/): Hillingdon, Ruislip, Hayes, Feltham, Stanmore, Wembley, Twickenham, Hendon, Brentford, Willesden, Barnet, Surbiton, Hampstead, Kensington, Putney, Friern Barnet, Enfield, Merton, Stoke Newington, Edmonton, Sutton, Streatham, Bermondsey, Walthamstow, Bow, Croydon, Penge, Coulsdon, East Ham, Ilford, Eltham, Bromley, Sidcup, Romford, Biggin Hill, Orpington, Erith, Upminster
+- [Roofers in Cambridgeshire](https://toptradesnearme.co.uk/roofers/cambridgeshire/): St Neots, Huntingdon, St Ives, Cambridge, Ramsey, Peterborough, Whittlesey, Chatteris, Ely, Soham, March
+- [Roofers in Somerset](https://toptradesnearme.co.uk/roofers/somerset/): Bath, Frome, Keynsham, Radstock, Portishead, Shepton Mallet, Bruton, Nailsea, Wincanton, Wells, Castle Cary, Clevedon, Axbridge, Glastonbury, Weston-Super-Mare, Somerton
+- [Roofers in Essex](https://toptradesnearme.co.uk/roofers/essex/): Waltham Abbey, Loughton, Chigwell, Harlow, Epping, Stansted Mountfitchet, Chipping Ongar, Saffron Walden, Brentwood, Great Dunmow, Thaxted, Grays, Billericay, Chelmsford, Stanford-le-Hope, Basildon, Wickford, Braintree
+- [Roofers in West Sussex](https://toptradesnearme.co.uk/roofers/west-sussex/): Midhurst, Petworth, Crawley, Horsham, Chichester, East Grinstead, Arundel, Bognor Regis, Haywards Heath, Littlehampton, Steyning, Selsey, Burgess Hill, Worthing, Shoreham-by-Sea
+- [Roofers in City of Bristol](https://toptradesnearme.co.uk/roofers/city-of-bristol/): Bristol
+- [Roofers in Dorset](https://toptradesnearme.co.uk/roofers/dorset/): Shaftesbury, Verwood, Ferndown, Stalbridge, Wimborne Minster, Sturminster Newton, Blandford Forum, Christchurch, Bournemouth, Poole, Sherborne
+- [Roofers in Kent](https://toptradesnearme.co.uk/roofers/kent/): Swanley, Westerham, Dartford, Edenbridge, Sevenoaks, Northfleet, Tonbridge, Royal Tunbridge Wells, Snodland, Rochester
+- [Roofers in Isle of Wight](https://toptradesnearme.co.uk/roofers/isle-of-wight/): Cowes, Ryde, Newport, Yarmouth, Sandown
+- [Roofers in Suffolk](https://toptradesnearme.co.uk/roofers/suffolk/): Haverhill, Newmarket
+- [Roofers in East Sussex](https://toptradesnearme.co.uk/roofers/east-sussex/): Crowborough, Lewes, Brighton & Hove, Uckfield
+
+## Driveway companies by area
+
+- [Driveway companies in Oxfordshire](https://toptradesnearme.co.uk/driveways/oxfordshire/): Oxford, Abingdon, Didcot, Banbury, Bicester, Witney, Wantage, Thame, Henley-on-Thames, Wallingford, Kidlington, Carterton, Chipping Norton, Faringdon, Woodstock, Burford, Watlington and Chinnor, Wheatley, Charlbury
+- [Driveway companies in Berkshire](https://toptradesnearme.co.uk/driveways/berkshire/): Reading, Thatcham, Newbury, Hungerford, Maidenhead, Wokingham, Bracknell, Windsor, Slough, Sandhurst
+- [Driveway companies in Buckinghamshire](https://toptradesnearme.co.uk/driveways/buckinghamshire/): Princes Risborough, Aylesbury, Buckingham, Winslow, Wendover, High Wycombe, Marlow, Chesham, Beaconsfield, Amersham, Milton Keynes, Gerrards Cross, Woburn Sands, Olney
+- [Driveway companies in Wiltshire](https://toptradesnearme.co.uk/driveways/wiltshire/): Highworth, Swindon, Royal Wootton Bassett, Marlborough, Pewsey, Malmesbury, Calne, Tidworth, Devizes, Chippenham, Corsham, Melksham, Trowbridge, Cricklade, Amesbury, Salisbury, Westbury, Wilton, Warminster, Mere
+- [Driveway companies in Gloucestershire](https://toptradesnearme.co.uk/driveways/gloucestershire/): Lechlade, Fairford, Bourton-on-the-Water, Stow-on-the-Wold, Moreton-in-Marsh, Cirencester, Chipping Campden, Winchcombe, Cheltenham, Tetbury, Stroud, Tewkesbury, Gloucester, Dursley, Northleach, Newent, Yate, Mitcheldean, Cinderford, Lydney, Thornbury, Coleford, Filton
+- [Driveway companies in Northamptonshire](https://toptradesnearme.co.uk/driveways/northamptonshire/): Brackley, Towcester, Daventry, Northampton, Wellingborough, Rushden, Kettering, Corby
+- [Driveway companies in Warwickshire](https://toptradesnearme.co.uk/driveways/warwickshire/): Shipston-on-Stour, Southam, Stratford-upon-Avon, Leamington Spa, Warwick, Alcester, Rugby, Kenilworth, Nuneaton
+- [Driveway companies in Hertfordshire](https://toptradesnearme.co.uk/driveways/hertfordshire/): Tring, Berkhamsted, Hemel Hempstead, Rickmansworth, Watford, Harpenden, St Albans, Hitchin, Hatfield, Welwyn Garden City, Stevenage, Hertford, Borehamwood, Potters Bar, Baldock, Cheshunt, Buntingford, Royston, Sawbridgeworth, Bishop's Stortford
+- [Driveway companies in Bedfordshire](https://toptradesnearme.co.uk/driveways/bedfordshire/): Leighton Buzzard, Dunstable, Luton, Ampthill, Bedford, Biggleswade, Shefford, Stotfold
+- [Driveway companies in Hampshire](https://toptradesnearme.co.uk/driveways/hampshire/): Tadley, Basingstoke, Hook, Fleet, Farnborough, Andover, Aldershot, Alton, Winchester, New Alresford, Bordon, Romsey, Petersfield, Bishop's Waltham, Eastleigh, Southampton, Totton, Wickham, Horndean, Fordingbridge, Fareham, Havant, Portsmouth, Gosport, Ringwood, Lymington, New Milton
+- [Driveway companies in Surrey](https://toptradesnearme.co.uk/driveways/surrey/): Camberley, Egham, Staines-upon-Thames, Farnham, Woking, Weybridge, Guildford, Esher, Leatherhead, Ewell, Haslemere, Dorking, Banstead, Redhill, Warlingham, Horley, Oxted
+- [Driveway companies in Worcestershire](https://toptradesnearme.co.uk/driveways/worcestershire/): Broadway, Evesham, Pershore, Redditch, Worcester, Malvern
+- [Driveway companies in London](https://toptradesnearme.co.uk/driveways/london/): Hillingdon, Ruislip, Hayes, Feltham, Stanmore, Wembley, Twickenham, Hendon, Brentford, Willesden, Barnet, Surbiton, Hampstead, Kensington, Putney, Friern Barnet, Enfield, Merton, Stoke Newington, Edmonton, Sutton, Streatham, Bermondsey, Walthamstow, Bow, Croydon, Penge, Coulsdon, East Ham, Ilford, Eltham, Bromley, Sidcup, Romford, Biggin Hill, Orpington, Erith, Upminster
+- [Driveway companies in Cambridgeshire](https://toptradesnearme.co.uk/driveways/cambridgeshire/): St Neots, Huntingdon, St Ives, Cambridge, Ramsey, Peterborough, Whittlesey, Chatteris, Ely, Soham, March
+- [Driveway companies in Somerset](https://toptradesnearme.co.uk/driveways/somerset/): Bath, Frome, Keynsham, Radstock, Portishead, Shepton Mallet, Bruton, Nailsea, Wincanton, Wells, Castle Cary, Clevedon, Axbridge, Glastonbury, Weston-Super-Mare, Somerton
+- [Driveway companies in Essex](https://toptradesnearme.co.uk/driveways/essex/): Waltham Abbey, Loughton, Chigwell, Harlow, Epping, Stansted Mountfitchet, Chipping Ongar, Saffron Walden, Brentwood, Great Dunmow, Thaxted, Grays, Billericay, Chelmsford, Stanford-le-Hope, Basildon, Wickford, Braintree
+- [Driveway companies in West Sussex](https://toptradesnearme.co.uk/driveways/west-sussex/): Midhurst, Petworth, Crawley, Horsham, Chichester, East Grinstead, Arundel, Bognor Regis, Haywards Heath, Littlehampton, Steyning, Selsey, Burgess Hill, Worthing, Shoreham-by-Sea
+- [Driveway companies in City of Bristol](https://toptradesnearme.co.uk/driveways/city-of-bristol/): Bristol
+- [Driveway companies in Dorset](https://toptradesnearme.co.uk/driveways/dorset/): Shaftesbury, Verwood, Ferndown, Stalbridge, Wimborne Minster, Sturminster Newton, Blandford Forum, Christchurch, Bournemouth, Poole, Sherborne
+- [Driveway companies in Kent](https://toptradesnearme.co.uk/driveways/kent/): Swanley, Westerham, Dartford, Edenbridge, Sevenoaks, Northfleet, Tonbridge, Royal Tunbridge Wells, Snodland, Rochester
+- [Driveway companies in Isle of Wight](https://toptradesnearme.co.uk/driveways/isle-of-wight/): Cowes, Ryde, Newport, Yarmouth, Sandown
+- [Driveway companies in Suffolk](https://toptradesnearme.co.uk/driveways/suffolk/): Haverhill, Newmarket
+- [Driveway companies in East Sussex](https://toptradesnearme.co.uk/driveways/east-sussex/): Crowborough, Lewes, Brighton & Hove, Uckfield
+
+## Plumbers and heating engineers by area
+
+- [Plumbers and heating engineers in Oxfordshire](https://toptradesnearme.co.uk/plumbers/oxfordshire/): Oxford, Abingdon, Didcot, Banbury, Bicester, Witney, Wantage, Thame, Henley-on-Thames, Wallingford, Kidlington, Carterton, Chipping Norton, Faringdon, Woodstock, Burford, Watlington and Chinnor, Wheatley, Charlbury
+- [Plumbers and heating engineers in Berkshire](https://toptradesnearme.co.uk/plumbers/berkshire/): Reading, Thatcham, Newbury, Hungerford, Maidenhead, Wokingham, Bracknell, Windsor, Slough, Sandhurst
+- [Plumbers and heating engineers in Buckinghamshire](https://toptradesnearme.co.uk/plumbers/buckinghamshire/): Princes Risborough, Aylesbury, Buckingham, Winslow, Wendover, High Wycombe, Marlow, Chesham, Beaconsfield, Amersham, Milton Keynes, Gerrards Cross, Woburn Sands, Olney
+- [Plumbers and heating engineers in Wiltshire](https://toptradesnearme.co.uk/plumbers/wiltshire/): Highworth, Swindon, Royal Wootton Bassett, Marlborough, Pewsey, Malmesbury, Calne, Tidworth, Devizes, Chippenham, Corsham, Melksham, Trowbridge, Cricklade, Amesbury, Salisbury, Westbury, Wilton, Warminster, Mere
+- [Plumbers and heating engineers in Gloucestershire](https://toptradesnearme.co.uk/plumbers/gloucestershire/): Lechlade, Fairford, Bourton-on-the-Water, Stow-on-the-Wold, Moreton-in-Marsh, Cirencester, Chipping Campden, Winchcombe, Cheltenham, Tetbury, Stroud, Tewkesbury, Gloucester, Dursley, Northleach, Newent, Yate, Mitcheldean, Cinderford, Lydney, Thornbury, Coleford, Filton
+- [Plumbers and heating engineers in Northamptonshire](https://toptradesnearme.co.uk/plumbers/northamptonshire/): Brackley, Towcester, Daventry, Northampton, Wellingborough, Rushden, Kettering, Corby
+- [Plumbers and heating engineers in Warwickshire](https://toptradesnearme.co.uk/plumbers/warwickshire/): Shipston-on-Stour, Southam, Stratford-upon-Avon, Leamington Spa, Warwick, Alcester, Rugby, Kenilworth, Nuneaton
+- [Plumbers and heating engineers in Hertfordshire](https://toptradesnearme.co.uk/plumbers/hertfordshire/): Tring, Berkhamsted, Hemel Hempstead, Rickmansworth, Watford, Harpenden, St Albans, Hitchin, Hatfield, Welwyn Garden City, Stevenage, Hertford, Borehamwood, Potters Bar, Baldock, Cheshunt, Buntingford, Royston, Sawbridgeworth, Bishop's Stortford
+- [Plumbers and heating engineers in Bedfordshire](https://toptradesnearme.co.uk/plumbers/bedfordshire/): Leighton Buzzard, Dunstable, Luton, Ampthill, Bedford, Biggleswade, Shefford, Stotfold
+- [Plumbers and heating engineers in Hampshire](https://toptradesnearme.co.uk/plumbers/hampshire/): Tadley, Basingstoke, Hook, Fleet, Farnborough, Andover, Aldershot, Alton, Winchester, New Alresford, Bordon, Romsey, Petersfield, Bishop's Waltham, Eastleigh, Southampton, Totton, Wickham, Horndean, Fordingbridge, Fareham, Havant, Portsmouth, Gosport, Ringwood, Lymington, New Milton
+- [Plumbers and heating engineers in Surrey](https://toptradesnearme.co.uk/plumbers/surrey/): Camberley, Egham, Staines-upon-Thames, Farnham, Woking, Weybridge, Guildford, Esher, Leatherhead, Ewell, Haslemere, Dorking, Banstead, Redhill, Warlingham, Horley, Oxted
+- [Plumbers and heating engineers in Worcestershire](https://toptradesnearme.co.uk/plumbers/worcestershire/): Broadway, Evesham, Pershore, Redditch, Worcester, Malvern
+- [Plumbers and heating engineers in London](https://toptradesnearme.co.uk/plumbers/london/): Hillingdon, Ruislip, Hayes, Feltham, Stanmore, Wembley, Twickenham, Hendon, Brentford, Willesden, Barnet, Surbiton, Hampstead, Kensington, Putney, Friern Barnet, Enfield, Merton, Stoke Newington, Edmonton, Sutton, Streatham, Bermondsey, Walthamstow, Bow, Croydon, Penge, Coulsdon, East Ham, Ilford, Eltham, Bromley, Sidcup, Romford, Biggin Hill, Orpington, Erith, Upminster
+- [Plumbers and heating engineers in Cambridgeshire](https://toptradesnearme.co.uk/plumbers/cambridgeshire/): St Neots, Huntingdon, St Ives, Cambridge, Ramsey, Peterborough, Whittlesey, Chatteris, Ely, Soham, March
+- [Plumbers and heating engineers in Somerset](https://toptradesnearme.co.uk/plumbers/somerset/): Bath, Frome, Keynsham, Radstock, Portishead, Shepton Mallet, Bruton, Nailsea, Wincanton, Wells, Castle Cary, Clevedon, Axbridge, Glastonbury, Weston-Super-Mare, Somerton
+- [Plumbers and heating engineers in Essex](https://toptradesnearme.co.uk/plumbers/essex/): Waltham Abbey, Loughton, Chigwell, Harlow, Epping, Stansted Mountfitchet, Chipping Ongar, Saffron Walden, Brentwood, Great Dunmow, Thaxted, Grays, Billericay, Chelmsford, Stanford-le-Hope, Basildon, Wickford, Braintree
+- [Plumbers and heating engineers in West Sussex](https://toptradesnearme.co.uk/plumbers/west-sussex/): Midhurst, Petworth, Crawley, Horsham, Chichester, East Grinstead, Arundel, Bognor Regis, Haywards Heath, Littlehampton, Steyning, Selsey, Burgess Hill, Worthing, Shoreham-by-Sea
+- [Plumbers and heating engineers in City of Bristol](https://toptradesnearme.co.uk/plumbers/city-of-bristol/): Bristol
+- [Plumbers and heating engineers in Dorset](https://toptradesnearme.co.uk/plumbers/dorset/): Shaftesbury, Verwood, Ferndown, Stalbridge, Wimborne Minster, Sturminster Newton, Blandford Forum, Christchurch, Bournemouth, Poole, Sherborne
+- [Plumbers and heating engineers in Kent](https://toptradesnearme.co.uk/plumbers/kent/): Swanley, Westerham, Dartford, Edenbridge, Sevenoaks, Northfleet, Tonbridge, Royal Tunbridge Wells, Snodland, Rochester
+- [Plumbers and heating engineers in Isle of Wight](https://toptradesnearme.co.uk/plumbers/isle-of-wight/): Cowes, Ryde, Newport, Yarmouth, Sandown
+- [Plumbers and heating engineers in Suffolk](https://toptradesnearme.co.uk/plumbers/suffolk/): Haverhill, Newmarket
+- [Plumbers and heating engineers in East Sussex](https://toptradesnearme.co.uk/plumbers/east-sussex/): Crowborough, Lewes, Brighton & Hove, Uckfield
+
+## Optional
+
+- [Privacy notice](https://toptradesnearme.co.uk/privacy/)
+- [Terms](https://toptradesnearme.co.uk/terms/)
+- [Claim a listing (for firms)](https://toptradesnearme.co.uk/claim/)
+
+Town pages follow the pattern https://toptradesnearme.co.uk/<trade>/<town>/, for example https://toptradesnearme.co.uk/roofers/oxford/.
