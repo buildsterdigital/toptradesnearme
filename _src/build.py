@@ -12,7 +12,7 @@ e = html.escape
 BRAND = "Top Trades Near Me"
 # Logo mark (map pin with a house), same drawing as brand/logo-mark.svg
 MARK = '<svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 1.5C11.2 1.5 4.5 8.3 4.5 16.8C4.5 27.8 20 38.5 20 38.5S35.5 27.8 35.5 16.8C35.5 8.3 28.8 1.5 20 1.5Z" fill="#f2c230"/><path d="M12.5 18.2L20 11.5L27.5 18.2V25.5H12.5Z" fill="#18252b" stroke="#18252b" stroke-width="1.5" stroke-linejoin="round"/><rect x="18.2" y="20" width="3.6" height="5.5" fill="#f2c230"/></svg>'
-BRAND_FILES = ["favicon.ico", "favicon.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "logo-mark.svg", "og-image.png"]
+BRAND_FILES = ["favicon.ico", "favicon.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "logo-mark.svg", "og-image.png", "badge.svg"]
 
 # GoHighLevel forms in the Top Trades Near Me sub-account (rRAiUOKmHY43FAxBFsPm)
 FORMS = {"claim": "GPJqPB3I4ubYbyjVMrV9", "listed": "5D9mtepQQLMAKM11lmpK", "quote": "gUv916EvMBG5WQ7pqGPM"}
@@ -756,7 +756,27 @@ def for_firms():
 <section class="firm-sec"><h2>Change my listing or add photos</h2>{change}
 <p class="msg">Only send photos of your own work that you have the right to use, with no customer details on show. We use what you send to update your page. <a href="{P('privacy')}">Privacy</a></p></section>
 <section class="firm-sec"><h2>Billing</h2>{bill}</section>
+<section class="firm-sec"><h2>Badge for your website</h2><p>Show customers you're listed with a free badge that links to your town page. <a href="{P('badge')}">Get your badge</a></p></section>
 <section class="firm-sec"><h2>Not claimed yet?</h2><p class="cta"><a class="btn" href="{P('claim')}">Claim your listing</a> <a class="btn ghost" href="{P('get-listed')}">Not listed? Get listed free</a></p></section>""")
+
+
+def badge_page():
+    """Badge firms can put on their own site, linking back to their town page."""
+    towns = sorted(((v["name"], k) for k, v in D["towns"].items()))
+    topts = "".join(f'<option value="{k}">{e(n)}</option>' for n, k in towns)
+    tr = "".join(f'<option value="{t}" data-n="{e(v["name"].lower())}">{e(v["name"])}</option>' for t, v in D["trades"].items())
+    simple("badge", "Show you're listed", "Free badge for firms listed on Top Trades Near Me. Add it to your website so customers can see your rating and reviews.", f"""
+<section class="hero"><h1>Show customers you're listed</h1><p class="lede">Put this free badge on your website. It links to your town page, where customers can see your Google rating next to other local firms.</p></section>
+<section class="firm-sec"><p><img src="{SITE}/badge.svg" alt="Listed on Top Trades Near Me" width="220" height="64"></p>
+<p><label>Your trade <select id="bt">{tr}</select></label> <label>Your town <select id="bw">{topts}</select></label></p>
+<p>Copy this code and paste it into your website, for example in the footer. Your web designer can do it in a minute.</p>
+<textarea id="bc" rows="4" readonly style="width:100%;font:13px var(--mono)"></textarea>
+<p class="cta"><button type="button" class="btn" id="bcopy">Copy code</button></p>
+<p class="msg">The badge says you are listed. It does not say you are recommended, vetted or top rated, and it never changes your place in the ranking. Not listed yet? <a href="{P('get-listed')}">Get listed free</a>.</p></section>
+<script>(function(){{var t=document.getElementById("bt"),w=document.getElementById("bw"),c=document.getElementById("bc");
+function up(){{var n=t.options[t.selectedIndex].dataset.n,tn=w.options[w.selectedIndex].text;
+c.value='<a href="{SITE}/'+t.value+'/'+w.value+'/" title="'+t.options[t.selectedIndex].text+' in '+tn+' on Top Trades Near Me"><img src="{SITE}/badge.svg" alt="Listed on Top Trades Near Me: '+n+' in '+tn+'" width="220" height="64"></a>';}}
+t.onchange=w.onchange=up;up();document.getElementById("bcopy").onclick=function(){{c.select();try{{navigator.clipboard.writeText(c.value)}}catch(x){{document.execCommand("copy")}}this.textContent="Copied";}};}})();</script>""")
 
 
 def llms_txt():
@@ -793,6 +813,7 @@ for t in D["trades"]:
 index()
 pages()
 for_firms()
+badge_page()
 review_pages()
 dashboard()
 for slug in FIRMS:
@@ -800,7 +821,7 @@ for slug in FIRMS:
 if LIVE:
     import shutil
     shutil.copy(os.path.join(HERE, "site", "style.css"), os.path.join(OUT, "style.css"))
-    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
+    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "badge", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
     open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{iso_checked()}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     bots = ["Googlebot", "Bingbot", "Google-Extended", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot",
             "Claude-User", "PerplexityBot", "Perplexity-User", "Applebot", "Applebot-Extended", "DuckAssistBot", "Amazonbot", "meta-externalagent"]
