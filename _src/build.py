@@ -25,6 +25,7 @@ FORMS["change"] = D.get("portal", {}).get("change_form", "")
 FORMS["review"] = D.get("portal", {}).get("review_form", "")
 FIRMS = D.get("firms", {})  # claimed firms that have a profile page, by slug
 CLAIMED = {n: slug for slug, f in FIRMS.items() for n in [f["name"]] + f.get("listed_as", [])}
+INDEXNOW_KEY = "7437c4ec36f61a7c86dc2cd2e2ca6ef5"  # public by design: served at /<key>.txt
 FORM_JS = '<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>'
 
 
@@ -56,7 +57,7 @@ def F(slug):
 def claim_link(**params):
     return P("claim") + "?" + urllib.parse.urlencode(params)
 
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>'
+FONTS = '' # fonts are self-hosted: @font-face rules at the top of style.css, files in fonts/
 
 
 # Structured data (schema.org JSON-LD). No ratings in it: Google does not allow review
@@ -158,6 +159,11 @@ def map_block(t="", a=""):
             f'<script src="{r}vendor/leaflet/leaflet.js" defer></script><script src="{r}finder.js" defer></script>')
 
 
+def fit(*options, limit=60):
+    """First option that fits in a search result title (about 60 characters), else the shortest."""
+    return next((o for o in options if len(o) <= limit), min(options, key=len))
+
+
 def head(title, desc, path="/"):
     extra = (f'<link rel="canonical" href="{SITE}{path}">\n<meta property="og:title" content="{e(title)}">\n'
              f'<meta property="og:description" content="{e(desc)}">\n<meta property="og:type" content="website">\n'
@@ -171,7 +177,9 @@ def head(title, desc, path="/"):
     icons = (f'<link rel="icon" href="{r}favicon.ico" sizes="48x48">\n<link rel="icon" href="{r}favicon.svg" type="image/svg+xml">\n'
              f'<link rel="apple-touch-icon" href="{r}apple-touch-icon.png">\n<meta name="theme-color" content="#18252b">\n')
     return (f'<title>{e(title)}</title>\n<meta name="description" content="{e(desc)}">\n'
-            f'{extra}{icons}{FONTS}\n<link rel="stylesheet" href="{css}">\n')
+            f'{extra}{icons}<link rel="preload" href="{r}fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+            f'<link rel="preload" href="{r}fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+            f'<link rel="stylesheet" href="{css}">\n')
 
 
 def header():
@@ -233,13 +241,26 @@ def sponsor(t):
 def page(t, tw):
     tv, twv = D["trades"][t], D["towns"][tw]
     items = sorted(D["listings"][f"{t}/{tw}"], key=score, reverse=True)
-    title = f'{len(items)} best {tv["name"].lower()} in {twv["name"]} ({D["checked"][-4:]})'
+    yr = D["checked"][-4:]
+    title = fit(f'{len(items)} best {tv["name"].lower()} in {twv["name"]} ({yr})',
+                f'{len(items)} best {tv["short"].lower()} in {twv["name"]} ({yr})',
+                f'Best {tv["short"].lower()} in {twv["name"]} ({yr})')
     vs = villages(tw)
-    for k in range(4, 0, -1):  # name as many villages as fit in about 160 characters
-        desc = (f'{len(items)} {tv["name"].lower()} in {twv["name"]} ranked by Google reviews. '
-                f'Also covering {", ".join(vs[:k])} and nearby villages. Free quotes.')
-        if len(desc) <= 160:
+    top = next((b for b in items if "rating" in b and "reviews" in b), None)
+    lead = (f'{len(items)} {tv["name"].lower()} in {twv["name"]} ranked by Google reviews. '
+            + (f'Top rated: {top["name"]}, {top["rating"]:g}/{top["scale"]} from {top["reviews"]} reviews. ' if top else ''))
+    desc = lead + 'Free quotes.'
+    for k in range(4, 0, -1):  # then name as many villages as fit in about 160 characters
+        cand = lead + f'Covers {", ".join(vs[:k])}. Free quotes.'
+        if len(cand) <= 160:
+            desc = cand
             break
+    if len(desc) > 160:  # very long firm names: fall back to villages only
+        for k in range(4, 0, -1):
+            desc = (f'{len(items)} {tv["name"].lower()} in {twv["name"]} ranked by Google reviews. '
+                    f'Also covering {", ".join(vs[:k])} and nearby villages. Free quotes.')
+            if len(desc) <= 160:
+                break
     others = " ".join(f'<a href="{L(t, o)}">{e(D["towns"][o]["name"])}</a>' for o in nearest(tw))
     ar = twv["area"]
     other_trades = " ".join(f'<a href="{L(o, tw)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
@@ -333,8 +354,13 @@ def trade_index(t):
     soon = "".join(f"<span>{e(D['areas'][a]['name'])}</span>" for a in D["areas"] if a not in LIVE_AREAS)
     tips = "".join(f"<li>{e(x)}</li>" for x in tv["tips"])
     others = "".join(f'<a href="{L(o)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
-    title = f'{tv["name"]} in {region()}, ranked by reviews ({D["checked"][-4:]})'
+    title = fit(f'{tv["name"]} in {region()}, ranked by reviews ({D["checked"][-4:]})',
+                f'{tv["short"]} in {region()}, ranked by reviews ({D["checked"][-4:]})',
+                f'{tv["name"]}: {len(D["towns"])} towns ranked by reviews ({D["checked"][-4:]})',
+                f'{tv["short"]}: {len(D["towns"])} towns ranked by reviews ({D["checked"][-4:]})')
     desc = f'Find {tv["name"].lower()} in {len(D["towns"])} towns in {region()}, ranked by public reviews. {tv["intro"]}'
+    if len(desc) > 160:
+        desc = f'Find {tv["name"].lower()} in {len(D["towns"])} towns in {region()}, ranked by Google reviews. Free quotes.'
     body = f'''{header()}
 <main class="wrap">
 <p class="crumbs"><a href="{L()}">Home</a> / {e(tv["name"])}</p>
@@ -359,7 +385,11 @@ def area_page(t, a):
     tips = "".join(f"<li>{e(x)}</li>" for x in tv["tips"])
     other_trades = " ".join(f'<a href="{L(o, a)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
     other_areas = " ".join(f'<a href="{L(t, o)}">{e(D["areas"][o]["name"])}</a>' for o in LIVE_AREAS if o != a)
-    title = f'{tv["name"]} in {av["name"]}: {len(towns)} towns ranked by reviews ({D["checked"][-4:]})'
+    yr = D["checked"][-4:]
+    title = fit(f'{tv["name"]} in {av["name"]}: {len(towns)} towns ranked by reviews ({yr})',
+                f'{tv["name"]} in {av["name"]}: {len(towns)} towns ranked ({yr})',
+                f'{tv["short"]} in {av["name"]}: {len(towns)} towns ranked ({yr})',
+                f'{tv["short"]} in {av["name"]} ranked by reviews ({yr})')
     names = [D["towns"][x]["name"] for x in towns]
     for k in range(4, 0, -1):  # name as many towns as fit in about 160 characters
         desc = f'{tv["name"]} in {av["name"]}, ranked by Google reviews, in {len(towns)} towns including {", ".join(names[:k])}. Free quotes.'
@@ -822,7 +852,26 @@ if LIVE:
     import shutil
     shutil.copy(os.path.join(HERE, "site", "style.css"), os.path.join(OUT, "style.css"))
     urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "badge", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
-    open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{iso_checked()}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+    # lastmod = the day a page's content last changed, so Google can see what is new.
+    import datetime, hashlib
+    state_file = os.path.join(HERE, "lastmod.json")
+    state = json.load(open(state_file)) if os.path.exists(state_file) else {}
+    today = os.environ.get("BUILD_DATE") or datetime.date.today().isoformat()
+    lastmod = {}
+    for u in urls:
+        fp = os.path.join(OUT, u.strip("/"), "index.html") if u != "/" else os.path.join(OUT, "index.html")
+        h = hashlib.sha1(open(fp, "rb").read()).hexdigest()
+        old = state.get(u)
+        lastmod[u] = old[1] if old and old[0] == h else today
+        state[u] = [h, lastmod[u]]
+    json.dump({u: state[u] for u in urls}, open(state_file, "w"), indent=0, sort_keys=True)
+    open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{lastmod[u]}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+    # IndexNow: lets Bing (and Yandex, Seznam, Naver) know about changed pages straight away
+    open(os.path.join(OUT, INDEXNOW_KEY + ".txt"), "w").write(INDEXNOW_KEY)
+    open(os.path.join(OUT, "_redirects"), "w").write(
+        "https://toptradesnearme.com/* https://toptradesnearme.co.uk/:splat 301!\n"
+        "https://www.toptradesnearme.com/* https://toptradesnearme.co.uk/:splat 301!\n"
+        "https://www.toptradesnearme.co.uk/* https://toptradesnearme.co.uk/:splat 301!\n")
     bots = ["Googlebot", "Bingbot", "Google-Extended", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot",
             "Claude-User", "PerplexityBot", "Perplexity-User", "Applebot", "Applebot-Extended", "DuckAssistBot", "Amazonbot", "meta-externalagent"]
     open(os.path.join(OUT, "robots.txt"), "w").write(
@@ -836,4 +885,5 @@ for f in BRAND_FILES:
 shutil.copy(os.path.join(HERE, "finder.js"), os.path.join(OUT, "finder.js"))
 shutil.copy(os.path.join(HERE, "dashboard.js"), os.path.join(OUT, "dashboard.js"))
 shutil.copytree(os.path.join(HERE, "vendor"), os.path.join(OUT, "vendor"), dirs_exist_ok=True)
+shutil.copytree(os.path.join(HERE, "fonts"), os.path.join(OUT, "fonts"), dirs_exist_ok=True)
 print("built", len(os.listdir(OUT)), "files")
