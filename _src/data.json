@@ -163717,5 +163717,22 @@
    "key": "sb_publishable_ax-Hl3_1UMGYkR20dYtqOg_3xUVwPc_"
   }
  },
- "firms": {}
+ "firms": {},
+ "extra_sponsors": [
+  {
+   "trade": "roofers",
+   "towns": [
+    "oxford"
+   ],
+   "name": "Prime Roofing & Guttering",
+   "base": "Littlemore, Oxford",
+   "services": "Roof repairs, new roofs, flat roofs, guttering, fascias and soffits across Oxford. Free quotes.",
+   "phone": "01865 587212",
+   "rating": 5.0,
+   "scale": 5,
+   "reviews": 4,
+   "source": "Google",
+   "url": "https://www.primeroofingandguttering.co.uk"
+  }
+ ]
 }

@@ -230,12 +230,35 @@ def sponsored_here(tw):
     return miles(HUB, pos(tw)) <= SPONSOR_MILES
 
 
-def sponsor(t):
-    b = D["sponsors"][t]
+def extra_sponsors(t, tw):
+    return [b for b in D.get("extra_sponsors", []) if b["trade"] == t and tw in b["towns"]]
+
+
+def sponsor_box(t, tw):
+    out = [sponsor(t)] if sponsored_here(tw) else []
+    out += [sponsor(t, b) for b in extra_sponsors(t, tw)]
+    return "\n".join(out)
+
+
+def spots_left(t, tw):
+    return 2 - (1 if sponsored_here(tw) else 0) - len(extra_sponsors(t, tw))
+
+
+def sponsor(t, b=None):
+    b = b or D["sponsors"][t]
     rate = (f'<div class="rate"><b>{b["rating"]:g}<span>/{b["scale"]}</span></b><small>{b["reviews"]} reviews · {e(b["source"])}</small></div>' if "rating" in b else "")
-    link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="noopener">Visit website</a>' if b.get("url") else ""
+    link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="sponsored noopener">Visit website</a>' if b.get("url") else ""
     return (f'<div class="sponsored"><span class="tag">Sponsored</span><div class="sp-row"><div class="body"><h3>{e(b["name"])}</h3>'
             f'<p class="meta">{e(b["base"])}</p><p>{e(b["services"])}</p><p class="phone">{e(b["phone"])}</p></div>{rate}</div>{link}</div>')
+
+
+def featured_box(t, tw, tv, twv):
+    n = spots_left(t, tw)
+    if n <= 0:
+        return ""
+    lead = "One more sponsored spot" if n == 1 else "Two sponsored spots"
+    return (f'<div class="featured"><span class="tag">Sponsored spot</span><p><strong>{lead} free for a {e(tv["single"])} in {e(twv["name"])}.</strong> '
+            f'Top of the page, your photos, your number.</p><a href="{e(claim_link(trade=tv["short"], town=twv["name"]))}" rel="nofollow">Ask about it</a></div>')
 
 
 def page(t, tw):
@@ -297,8 +320,8 @@ def page(t, tw):
 <p class="answer">{e(answer)}</p></section>
 <div class="grid">
 <div class="main">
-{sponsor(t) if sponsored_here(tw) else ""}
-<div class="featured"><span class="tag">Sponsored spot</span><p><strong>{"One more sponsored spot" if sponsored_here(tw) else "Two sponsored spots"} free for a {e(tv["single"])} in {e(twv["name"])}.</strong> Top of the page, your photos, your number.</p><a href="{e(claim_link(trade=tv["short"], town=twv["name"]))}" rel="nofollow">Ask about it</a></div>
+{sponsor_box(t, tw)}
+{featured_box(t, tw, tv, twv)}
 <ol class="list">{lst}</ol>
 <section class="areas"><h2>{e(tv["name"])} for villages near {e(twv["name"])}</h2><p>Need a {e(tv["single"])} in {e(", ".join(vs[:-1]))} or {e(vs[-1])}? These villages are close to {e(twv["name"])}, so the firms above usually work there too. Check with the firm when you ask for a quote.</p></section>
 <section class="tips"><h2>Before you hire a {e(tv["single"])} in {e(twv["name"])}</h2><ul>{tips}</ul></section>
