@@ -163717,7 +163717,175 @@
    "key": "sb_publishable_ax-Hl3_1UMGYkR20dYtqOg_3xUVwPc_"
   }
  },
- "firms": {},
+ "firms": {
+  "revive-roofing": {
+   "name": "Revive Roofing & Building",
+   "listed_as": [
+    "Revive Roofing & Building Services"
+   ],
+   "trades": [
+    "roofers"
+   ],
+   "base": "Headington, Oxford",
+   "phone": "01865 537500",
+   "website": "https://www.reviveroofingandbuilding.com/",
+   "rating": 4.9,
+   "scale": 5,
+   "source": "Google",
+   "about": "Family-run roofing and building firm based in Headington, Oxford. Revive works on homes across Oxfordshire, from small repairs to full new roofs, with free surveys, emergency call-outs and up to a 20-year guarantee on new tile and slate roofs. Fully insured.",
+   "services": [
+    "Roof repairs",
+    "New roofs (tile and slate)",
+    "Flat roofing: EPDM, GRP and felt",
+    "Chimney repairs and leadwork",
+    "Fascias, soffits and guttering",
+    "Damp proofing",
+    "Roof cleaning",
+    "Drone roof inspections",
+    "Building work and extensions"
+   ],
+   "towns": [
+    "oxford",
+    "abingdon",
+    "didcot",
+    "banbury",
+    "bicester",
+    "kidlington",
+    "witney",
+    "wantage",
+    "wallingford",
+    "carterton",
+    "thame",
+    "woodstock"
+   ],
+   "claimed": "9 Nov 2026",
+   "note": "Revive is in the same group as Buildster Digital, which runs Top Trades Near Me. It appears only in labelled sponsored spots and does not affect the rankings.",
+   "google_reviews": 14
+  },
+  "revive-plumbing": {
+   "name": "Revive Plumbing & Heating",
+   "trades": [
+    "plumbers"
+   ],
+   "base": "Headington, Oxford",
+   "phone": "01865 537560",
+   "website": "https://reviveplumbing.co.uk",
+   "rating": 4.9,
+   "scale": 5,
+   "source": "Google",
+   "about": "Gas Safe registered plumbing and heating engineers (Gas Safe 986716) based in Headington, Oxford. Revive fits and repairs boilers, services heating systems and handles everyday plumbing across Oxfordshire, with a 24/7 emergency service.",
+   "services": [
+    "New boilers and boiler replacement (Vaillant, Worcester Bosch)",
+    "Boiler repairs",
+    "Boiler servicing",
+    "Central heating and power flushing",
+    "Hot water cylinders",
+    "Radiators and heating controls",
+    "24/7 emergency plumbing",
+    "Leaks and burst pipes",
+    "Bathrooms and showers",
+    "General plumbing"
+   ],
+   "towns": [
+    "oxford",
+    "kidlington",
+    "abingdon",
+    "didcot",
+    "witney",
+    "bicester",
+    "banbury",
+    "wantage",
+    "thame",
+    "wallingford",
+    "woodstock",
+    "carterton",
+    "henley"
+   ],
+   "claimed": "9 Nov 2026",
+   "note": "Revive is in the same group as Buildster Digital, which runs Top Trades Near Me. It appears only in labelled sponsored spots and does not affect the rankings.",
+   "google_reviews": 46
+  },
+  "revive-driveways": {
+   "name": "Revive Driveways & Landscaping",
+   "listed_as": [
+    "Revive Driveways And Landscaping"
+   ],
+   "trades": [
+    "driveways"
+   ],
+   "base": "London Road, Oxford",
+   "phone": "01865 537008",
+   "website": "https://www.revivedrivesandlandscaping.com",
+   "rating": 5.0,
+   "scale": 5,
+   "source": "Google",
+   "about": "Local Oxfordshire team for new driveways, patios and landscaping. Revive offers a free home survey, a fixed-price quote with no hidden costs and a 10-year guarantee, and has completed over 100 jobs. Fully insured.",
+   "services": [
+    "Block paving driveways",
+    "Resin bound driveways",
+    "Tarmac driveways",
+    "Shingle driveways",
+    "Porcelain patios",
+    "Indian sandstone patios",
+    "Fencing",
+    "Composite decking",
+    "Artificial grass",
+    "Turfing"
+   ],
+   "towns": [
+    "oxford",
+    "didcot",
+    "abingdon",
+    "bicester",
+    "kidlington",
+    "witney",
+    "banbury",
+    "wantage",
+    "wallingford",
+    "thame",
+    "carterton",
+    "woodstock"
+   ],
+   "claimed": "9 Nov 2026",
+   "note": "Revive is in the same group as Buildster Digital, which runs Top Trades Near Me. It appears only in labelled sponsored spots and does not affect the rankings.",
+   "google_reviews": 10
+  },
+  "prime-roofing-guttering": {
+   "name": "Prime Roofing & Guttering",
+   "trades": [
+    "roofers"
+   ],
+   "base": "Littlemore, Oxford",
+   "phone": "01865 587212",
+   "website": "https://www.primeroofingandguttering.co.uk",
+   "rating": 5.0,
+   "scale": 5,
+   "source": "Google",
+   "about": "Roofing and guttering firm based in Littlemore, Oxford. Prime handles roof repairs, new roofs, flat roofs and all guttering work across Oxfordshire. Free quotes and surveys, open 6am to 8pm, with 24/7 emergency call-outs.",
+   "services": [
+    "Roof repairs",
+    "New roofs",
+    "Flat roofing",
+    "Chimney repairs and leadwork",
+    "Gutter repairs",
+    "Gutter cleaning",
+    "New uPVC guttering",
+    "Fascias and soffits"
+   ],
+   "towns": [
+    "oxford",
+    "didcot",
+    "abingdon",
+    "bicester",
+    "witney",
+    "banbury",
+    "kidlington",
+    "wantage"
+   ],
+   "claimed": "9 Nov 2026",
+   "google_reviews": 4
+  }
+ },
  "extra_sponsors": [
   {
    "trade": "roofers",

@@ -248,6 +248,9 @@ def sponsor(t, b=None):
     b = b or D["sponsors"][t]
     rate = (f'<div class="rate"><b>{b["rating"]:g}<span>/{b["scale"]}</span></b><small>{b["reviews"]} reviews · {e(b["source"])}</small></div>' if "rating" in b else "")
     link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="sponsored noopener">Visit website</a>' if b.get("url") else ""
+    slug = CLAIMED.get(b["name"])
+    if slug:
+        link = f'<a class="more" href="{F(slug)}">See profile</a> ' + link
     return (f'<div class="sponsored"><span class="tag">Sponsored</span><div class="sp-row"><div class="body"><h3>{e(b["name"])}</h3>'
             f'<p class="meta">{e(b["base"])}</p><p>{e(b["services"])}</p><p class="phone">{e(b["phone"])}</p></div>{rate}</div>{link}</div>')
 
@@ -673,7 +676,7 @@ def firm_page(slug):
     rs = ranks(slug)
     trades = [t for t in f.get("trades", []) if t in D["trades"]] or sorted({t for t, *_ in rs})
     tnames = ", ".join(D["trades"][t]["name"].lower() for t in trades)
-    rated = next((b for *_, b in rs if "rating" in b), None)
+    rated = next((b for *_, b in rs if "rating" in b), None) or ({"rating": f["rating"], "scale": f.get("scale", 5), "reviews": f.get("google_reviews", "?"), "source": f.get("source", "Google")} if "rating" in f else None)
     rate = (f'<div class="rate"><b>{rated["rating"]:g}<span>/{rated["scale"]}</span></b><small>{rated.get("reviews", "?")} reviews · {e(rated["source"])}</small></div>' if rated else "")
     logo = f'<img class="firm-logo" src="{src(f["logo"])}" alt="{e(f["name"])} logo" width="96" height="96">' if f.get("logo") else ""
     contact = []
@@ -697,12 +700,13 @@ def firm_page(slug):
 <h1>{e(f["name"])}</h1><p class="lede">{e(tnames.capitalize())}{(" · " + e(f["base"])) if f.get("base") else ""}</p></div>{rate}</section>
 <p class="cta">{" ".join(contact)}</p>
 {f'<section class="firm-sec"><h2>About</h2><p>{e(f["about"])}</p></section>' if f.get("about") else ""}
+{f'<p class="msg">{e(f["note"])}</p>' if f.get("note") else ""}
 {f'<section class="firm-sec"><h2>Services</h2><ul class="cols">{services}</ul></section>' if services else ""}
 {f'<section class="firm-sec"><h2>Photos of our work</h2><div class="gallery">{photos}</div></section>' if photos else ""}
 {reviews_block(slug, f)}
 {f'<section class="firm-sec"><h2>Towns covered</h2><p class="also">{towns}</p></section>' if towns else ""}
 {f'<section class="firm-sec"><h2>Where it ranks</h2><ul>{rank_rows}</ul><p class="msg">Ranked by Google rating, weighted by number of reviews. Claiming a listing or having this page does not change the ranking.</p></section>' if rank_rows else ""}
-<p class="msg">This page is written by the business and checked by us before it goes live. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">Log in to update it</a>.</p>
+<p class="msg">This page is written from details the business gave us. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">Log in to update it</a>.</p>
 </main>
 {footer()}"""
     data = ld(crumbs_ld(("Home", "/"), (f["name"], F(slug))),
