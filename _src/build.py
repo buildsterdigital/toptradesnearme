@@ -25,6 +25,7 @@ FORMS["change"] = D.get("portal", {}).get("change_form", "")
 FORMS["review"] = D.get("portal", {}).get("review_form", "")
 FIRMS = D.get("firms", {})  # claimed firms that have a profile page, by slug
 CLAIMED = {n: slug for slug, f in FIRMS.items() for n in [f["name"]] + f.get("listed_as", [])}
+INDEXNOW_KEY = "7437c4ec36f61a7c86dc2cd2e2ca6ef5"  # public by design: served at /<key>.txt
 FORM_JS = '<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>'
 
 
@@ -56,7 +57,7 @@ def F(slug):
 def claim_link(**params):
     return P("claim") + "?" + urllib.parse.urlencode(params)
 
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>'
+FONTS = '' # fonts are self-hosted: @font-face rules at the top of style.css, files in fonts/
 
 
 # Structured data (schema.org JSON-LD). No ratings in it: Google does not allow review
@@ -158,6 +159,11 @@ def map_block(t="", a=""):
             f'<script src="{r}vendor/leaflet/leaflet.js" defer></script><script src="{r}finder.js" defer></script>')
 
 
+def fit(*options, limit=60):
+    """First option that fits in a search result title (about 60 characters), else the shortest."""
+    return next((o for o in options if len(o) <= limit), min(options, key=len))
+
+
 def head(title, desc, path="/"):
     extra = (f'<link rel="canonical" href="{SITE}{path}">\n<meta property="og:title" content="{e(title)}">\n'
              f'<meta property="og:description" content="{e(desc)}">\n<meta property="og:type" content="website">\n'
@@ -171,7 +177,9 @@ def head(title, desc, path="/"):
     icons = (f'<link rel="icon" href="{r}favicon.ico" sizes="48x48">\n<link rel="icon" href="{r}favicon.svg" type="image/svg+xml">\n'
              f'<link rel="apple-touch-icon" href="{r}apple-touch-icon.png">\n<meta name="theme-color" content="#18252b">\n')
     return (f'<title>{e(title)}</title>\n<meta name="description" content="{e(desc)}">\n'
-            f'{extra}{icons}{FONTS}\n<link rel="stylesheet" href="{css}">\n')
+            f'{extra}{icons}<link rel="preload" href="{r}fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+            f'<link rel="preload" href="{r}fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+            f'<link rel="stylesheet" href="{css}">\n')
 
 
 def header():
@@ -206,7 +214,10 @@ def card(i, b, t=None, tw=None):
         rate = '<div class="rate none"><small>No Google rating found</small></div>'
     slug = CLAIMED.get(b["name"])
     if slug:
-        own = f'<p class="claimed"><span class="ok">Claimed</span> <a href="{F(slug)}">See profile and photos</a></p>'
+        if FIRMS[slug].get("claimed"):
+            own = f'<p class="claimed"><span class="ok">Claimed</span> <a href="{F(slug)}">See profile and photos</a></p>'
+        else:
+            own = f'<p class="claimed"><span class="ok no">Not yet claimed</span> <a href="{F(slug)}">See profile and photos</a></p>'
     else:
         own = (f'<p class="claim"><a href="{e(claim_link(organization=b["name"], trade=D["trades"][t]["short"], town=D["towns"][tw]["name"]))}" rel="nofollow">Your business? Claim this listing</a></p>' if t else "")
     link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="nofollow noopener">{"Google reviews" if b.get("source") == "Google" else "View profile"}</a>' if b.get("url") else ""
@@ -222,24 +233,63 @@ def sponsored_here(tw):
     return miles(HUB, pos(tw)) <= SPONSOR_MILES
 
 
-def sponsor(t):
-    b = D["sponsors"][t]
+def extra_sponsors(t, tw):
+    return [b for b in D.get("extra_sponsors", []) if b["trade"] == t and tw in b["towns"]]
+
+
+def sponsor_box(t, tw):
+    out = [sponsor(t)] if sponsored_here(tw) else []
+    out += [sponsor(t, b) for b in extra_sponsors(t, tw)]
+    return "\n".join(out)
+
+
+def spots_left(t, tw):
+    return 2 - (1 if sponsored_here(tw) else 0) - len(extra_sponsors(t, tw))
+
+
+def sponsor(t, b=None):
+    b = b or D["sponsors"][t]
     rate = (f'<div class="rate"><b>{b["rating"]:g}<span>/{b["scale"]}</span></b><small>{b["reviews"]} reviews · {e(b["source"])}</small></div>' if "rating" in b else "")
-    link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="noopener">Visit website</a>' if b.get("url") else ""
+    link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="sponsored noopener">Visit website</a>' if b.get("url") else ""
+    slug = CLAIMED.get(b["name"])
+    if slug:
+        link = f'<a class="more" href="{F(slug)}">See profile</a> ' + link
     return (f'<div class="sponsored"><span class="tag">Sponsored</span><div class="sp-row"><div class="body"><h3>{e(b["name"])}</h3>'
             f'<p class="meta">{e(b["base"])}</p><p>{e(b["services"])}</p><p class="phone">{e(b["phone"])}</p></div>{rate}</div>{link}</div>')
+
+
+def featured_box(t, tw, tv, twv):
+    n = spots_left(t, tw)
+    if n <= 0:
+        return ""
+    lead = "One more sponsored spot" if n == 1 else "Two sponsored spots"
+    return (f'<div class="featured"><span class="tag">Sponsored spot</span><p><strong>{lead} free for a {e(tv["single"])} in {e(twv["name"])}.</strong> '
+            f'Top of the page, your photos, your number.</p><a href="{e(claim_link(trade=tv["short"], town=twv["name"]))}" rel="nofollow">Ask about it</a></div>')
 
 
 def page(t, tw):
     tv, twv = D["trades"][t], D["towns"][tw]
     items = sorted(D["listings"][f"{t}/{tw}"], key=score, reverse=True)
-    title = f'{len(items)} best {tv["name"].lower()} in {twv["name"]} ({D["checked"][-4:]})'
+    yr = D["checked"][-4:]
+    title = fit(f'{len(items)} best {tv["name"].lower()} in {twv["name"]} ({yr})',
+                f'{len(items)} best {tv["short"].lower()} in {twv["name"]} ({yr})',
+                f'Best {tv["short"].lower()} in {twv["name"]} ({yr})')
     vs = villages(tw)
-    for k in range(4, 0, -1):  # name as many villages as fit in about 160 characters
-        desc = (f'{len(items)} {tv["name"].lower()} in {twv["name"]} ranked by Google reviews. '
-                f'Also covering {", ".join(vs[:k])} and nearby villages. Free quotes.')
-        if len(desc) <= 160:
+    top = next((b for b in items if "rating" in b and "reviews" in b), None)
+    lead = (f'{len(items)} {tv["name"].lower()} in {twv["name"]} ranked by Google reviews. '
+            + (f'Top rated: {top["name"]}, {top["rating"]:g}/{top["scale"]} from {top["reviews"]} reviews. ' if top else ''))
+    desc = lead + 'Free quotes.'
+    for k in range(4, 0, -1):  # then name as many villages as fit in about 160 characters
+        cand = lead + f'Covers {", ".join(vs[:k])}. Free quotes.'
+        if len(cand) <= 160:
+            desc = cand
             break
+    if len(desc) > 160:  # very long firm names: fall back to villages only
+        for k in range(4, 0, -1):
+            desc = (f'{len(items)} {tv["name"].lower()} in {twv["name"]} ranked by Google reviews. '
+                    f'Also covering {", ".join(vs[:k])} and nearby villages. Free quotes.')
+            if len(desc) <= 160:
+                break
     others = " ".join(f'<a href="{L(t, o)}">{e(D["towns"][o]["name"])}</a>' for o in nearest(tw))
     ar = twv["area"]
     other_trades = " ".join(f'<a href="{L(o, tw)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
@@ -276,8 +326,8 @@ def page(t, tw):
 <p class="answer">{e(answer)}</p></section>
 <div class="grid">
 <div class="main">
-{sponsor(t) if sponsored_here(tw) else ""}
-<div class="featured"><span class="tag">Sponsored spot</span><p><strong>{"One more sponsored spot" if sponsored_here(tw) else "Two sponsored spots"} free for a {e(tv["single"])} in {e(twv["name"])}.</strong> Top of the page, your photos, your number.</p><a href="{e(claim_link(trade=tv["short"], town=twv["name"]))}" rel="nofollow">Ask about it</a></div>
+{sponsor_box(t, tw)}
+{featured_box(t, tw, tv, twv)}
 <ol class="list">{lst}</ol>
 <section class="areas"><h2>{e(tv["name"])} for villages near {e(twv["name"])}</h2><p>Need a {e(tv["single"])} in {e(", ".join(vs[:-1]))} or {e(vs[-1])}? These villages are close to {e(twv["name"])}, so the firms above usually work there too. Check with the firm when you ask for a quote.</p></section>
 <section class="tips"><h2>Before you hire a {e(tv["single"])} in {e(twv["name"])}</h2><ul>{tips}</ul></section>
@@ -333,8 +383,13 @@ def trade_index(t):
     soon = "".join(f"<span>{e(D['areas'][a]['name'])}</span>" for a in D["areas"] if a not in LIVE_AREAS)
     tips = "".join(f"<li>{e(x)}</li>" for x in tv["tips"])
     others = "".join(f'<a href="{L(o)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
-    title = f'{tv["name"]} in {region()}, ranked by reviews ({D["checked"][-4:]})'
+    title = fit(f'{tv["name"]} in {region()}, ranked by reviews ({D["checked"][-4:]})',
+                f'{tv["short"]} in {region()}, ranked by reviews ({D["checked"][-4:]})',
+                f'{tv["name"]}: {len(D["towns"])} towns ranked by reviews ({D["checked"][-4:]})',
+                f'{tv["short"]}: {len(D["towns"])} towns ranked by reviews ({D["checked"][-4:]})')
     desc = f'Find {tv["name"].lower()} in {len(D["towns"])} towns in {region()}, ranked by public reviews. {tv["intro"]}'
+    if len(desc) > 160:
+        desc = f'Find {tv["name"].lower()} in {len(D["towns"])} towns in {region()}, ranked by Google reviews. Free quotes.'
     body = f'''{header()}
 <main class="wrap">
 <p class="crumbs"><a href="{L()}">Home</a> / {e(tv["name"])}</p>
@@ -359,7 +414,11 @@ def area_page(t, a):
     tips = "".join(f"<li>{e(x)}</li>" for x in tv["tips"])
     other_trades = " ".join(f'<a href="{L(o, a)}">{e(ov["name"])}</a>' for o, ov in D["trades"].items() if o != t)
     other_areas = " ".join(f'<a href="{L(t, o)}">{e(D["areas"][o]["name"])}</a>' for o in LIVE_AREAS if o != a)
-    title = f'{tv["name"]} in {av["name"]}: {len(towns)} towns ranked by reviews ({D["checked"][-4:]})'
+    yr = D["checked"][-4:]
+    title = fit(f'{tv["name"]} in {av["name"]}: {len(towns)} towns ranked by reviews ({yr})',
+                f'{tv["name"]} in {av["name"]}: {len(towns)} towns ranked ({yr})',
+                f'{tv["short"]} in {av["name"]}: {len(towns)} towns ranked ({yr})',
+                f'{tv["short"]} in {av["name"]} ranked by reviews ({yr})')
     names = [D["towns"][x]["name"] for x in towns]
     for k in range(4, 0, -1):  # name as many towns as fit in about 160 characters
         desc = f'{tv["name"]} in {av["name"]}, ranked by Google reviews, in {len(towns)} towns including {", ".join(names[:k])}. Free quotes.'
@@ -620,7 +679,7 @@ def firm_page(slug):
     rs = ranks(slug)
     trades = [t for t in f.get("trades", []) if t in D["trades"]] or sorted({t for t, *_ in rs})
     tnames = ", ".join(D["trades"][t]["name"].lower() for t in trades)
-    rated = next((b for *_, b in rs if "rating" in b), None)
+    rated = next((b for *_, b in rs if "rating" in b), None) or ({"rating": f["rating"], "scale": f.get("scale", 5), "reviews": f.get("google_reviews", "?"), "source": f.get("source", "Google")} if "rating" in f else None)
     rate = (f'<div class="rate"><b>{rated["rating"]:g}<span>/{rated["scale"]}</span></b><small>{rated.get("reviews", "?")} reviews · {e(rated["source"])}</small></div>' if rated else "")
     logo = f'<img class="firm-logo" src="{src(f["logo"])}" alt="{e(f["name"])} logo" width="96" height="96">' if f.get("logo") else ""
     contact = []
@@ -635,27 +694,39 @@ def firm_page(slug):
     rank_rows = "".join(f'<li><a href="{L(t, tw)}">{e(D["trades"][t]["name"])} in {e(D["towns"][tw]["name"])}</a>: '
                         f'{f"number {pos} of {n}" if pos else f"listed, no Google rating found ({n} firms)"}</li>'
                         for t, tw, pos, n, _ in sorted(rs, key=lambda x: (x[2] or 999, x[1])))
+    if f.get("claimed"):
+        status = f'<p class="claimed"><span class="ok">Claimed</span> by the business on {e(f["claimed"])}</p>' if f["claimed"] is not True else '<p class="claimed"><span class="ok">Claimed</span> by the business</p>'
+    else:
+        status = (f'<p class="claimed"><span class="ok no">Not yet claimed</span> '
+                  f'<a href="{e(claim_link(organization=f["name"], trade=D["trades"][trades[0]]["short"] if trades else "", town=D["towns"][covers[0]]["name"] if covers and covers[0] in D["towns"] else ""))}" rel="nofollow">Your business? Claim this page</a></p>')
+    if f.get("email"):
+        contact.append(f'<a class="btn ghost" href="mailto:{e(f["email"])}">Email</a>')
+    facts = "".join(f"<li>{e(x)}</li>" for x in f.get("highlights", []))
+    hours = "".join(f"<li>{e(x)}</li>" for x in f.get("hours", []))
     title = f'{f["name"]}: {tnames} in {f.get("base", region())}'
     desc = (f.get("about") or f'{f["name"]}, {tnames} based in {f.get("base", "")}.')[:155]
     body = f"""{header()}
 <main class="wrap narrow firm">
 <p class="crumbs"><a href="{L()}">Home</a>{f' / <a href="{L(trades[0])}">{e(D["trades"][trades[0]]["name"])}</a>' if trades else ""} / {e(f["name"])}</p>
-<section class="hero firm-head">{logo}<div><p class="claimed"><span class="ok">Claimed</span> by the business{(" on " + e(f["claimed"])) if f.get("claimed") else ""}</p>
+<section class="hero firm-head">{logo}<div>{status}
 <h1>{e(f["name"])}</h1><p class="lede">{e(tnames.capitalize())}{(" · " + e(f["base"])) if f.get("base") else ""}</p></div>{rate}</section>
 <p class="cta">{" ".join(contact)}</p>
 {f'<section class="firm-sec"><h2>About</h2><p>{e(f["about"])}</p></section>' if f.get("about") else ""}
+{f'<p class="msg">{e(f["note"])}</p>' if f.get("note") else ""}
+{f'<section class="firm-sec"><h2>At a glance</h2><ul>{facts}</ul></section>' if facts else ""}
 {f'<section class="firm-sec"><h2>Services</h2><ul class="cols">{services}</ul></section>' if services else ""}
 {f'<section class="firm-sec"><h2>Photos of our work</h2><div class="gallery">{photos}</div></section>' if photos else ""}
+{f'<section class="firm-sec"><h2>Opening hours and address</h2><ul>{hours}</ul>{("<p>" + e(f["address"]) + "</p>") if f.get("address") else ""}</section>' if hours else ""}
 {reviews_block(slug, f)}
 {f'<section class="firm-sec"><h2>Towns covered</h2><p class="also">{towns}</p></section>' if towns else ""}
 {f'<section class="firm-sec"><h2>Where it ranks</h2><ul>{rank_rows}</ul><p class="msg">Ranked by Google rating, weighted by number of reviews. Claiming a listing or having this page does not change the ranking.</p></section>' if rank_rows else ""}
-<p class="msg">This page is written by the business and checked by us before it goes live. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">Log in to update it</a>.</p>
+<p class="msg">This page is written from details {"the business gave us" if f.get("claimed") else "about the business"}. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">{"Log in to update it" if f.get("claimed") else "Claim it and log in to update it"}</a>.</p>
 </main>
 {footer()}"""
     data = ld(crumbs_ld(("Home", "/"), (f["name"], F(slug))),
               {"@type": TYPES.get(trades[0], "HomeAndConstructionBusiness") if trades else "HomeAndConstructionBusiness",
                "@id": SITE + F(slug) + "#firm", "name": f["name"], "url": SITE + F(slug),
-               **({"telephone": f["phone"]} if f.get("phone") else {}), **({"sameAs": [f["website"]]} if f.get("website") else {}),
+               **({"telephone": f["phone"]} if f.get("phone") else {}), **({"sameAs": [f["website"]]} if f.get("website") else {}), **({"address": {"@type": "PostalAddress", "streetAddress": f["address"], "addressCountry": "GB"}} if f.get("address") else {}),
                "areaServed": [D["towns"][tw]["name"] for tw in covers if tw in D["towns"]]})
     write(wrap_doc(title, desc, F(slug), body, data), "firm", slug)
     folder = os.path.join(HERE, "firms", slug)
@@ -820,9 +891,28 @@ for slug in FIRMS:
     firm_page(slug)
 if LIVE:
     import shutil
-    shutil.copy(os.path.join(HERE, "site", "style.css"), os.path.join(OUT, "style.css"))
+    shutil.copy(os.path.join(HERE, "style.css"), os.path.join(OUT, "style.css"))
     urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "badge", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
-    open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{iso_checked()}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+    # lastmod = the day a page's content last changed, so Google can see what is new.
+    import datetime, hashlib
+    state_file = os.path.join(HERE, "lastmod.json")
+    state = json.load(open(state_file)) if os.path.exists(state_file) else {}
+    today = os.environ.get("BUILD_DATE") or datetime.date.today().isoformat()
+    lastmod = {}
+    for u in urls:
+        fp = os.path.join(OUT, u.strip("/"), "index.html") if u != "/" else os.path.join(OUT, "index.html")
+        h = hashlib.sha1(open(fp, "rb").read()).hexdigest()
+        old = state.get(u)
+        lastmod[u] = old[1] if old and old[0] == h else today
+        state[u] = [h, lastmod[u]]
+    json.dump({u: state[u] for u in urls}, open(state_file, "w"), indent=0, sort_keys=True)
+    open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{lastmod[u]}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+    # IndexNow: lets Bing (and Yandex, Seznam, Naver) know about changed pages straight away
+    open(os.path.join(OUT, INDEXNOW_KEY + ".txt"), "w").write(INDEXNOW_KEY)
+    open(os.path.join(OUT, "_redirects"), "w").write(
+        "https://toptradesnearme.com/* https://toptradesnearme.co.uk/:splat 301!\n"
+        "https://www.toptradesnearme.com/* https://toptradesnearme.co.uk/:splat 301!\n"
+        "https://www.toptradesnearme.co.uk/* https://toptradesnearme.co.uk/:splat 301!\n")
     bots = ["Googlebot", "Bingbot", "Google-Extended", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot",
             "Claude-User", "PerplexityBot", "Perplexity-User", "Applebot", "Applebot-Extended", "DuckAssistBot", "Amazonbot", "meta-externalagent"]
     open(os.path.join(OUT, "robots.txt"), "w").write(
@@ -836,4 +926,5 @@ for f in BRAND_FILES:
 shutil.copy(os.path.join(HERE, "finder.js"), os.path.join(OUT, "finder.js"))
 shutil.copy(os.path.join(HERE, "dashboard.js"), os.path.join(OUT, "dashboard.js"))
 shutil.copytree(os.path.join(HERE, "vendor"), os.path.join(OUT, "vendor"), dirs_exist_ok=True)
+shutil.copytree(os.path.join(HERE, "fonts"), os.path.join(OUT, "fonts"), dirs_exist_ok=True)
 print("built", len(os.listdir(OUT)), "files")

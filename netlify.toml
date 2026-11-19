@@ -1,0 +1,7 @@
+# Netlify builds the live site from _src (see _src/build.py).
+[build]
+  command = "cd _src && LIVE=1 python3 build.py"
+  publish = "_src/site-live"
+
+[build.environment]
+  PYTHON_VERSION = "3.13"

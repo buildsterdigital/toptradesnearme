@@ -1,3 +1,10 @@
+/* Self-hosted fonts (SIL Open Font License, via Fontsource) */
+@font-face{font-family:"Archivo";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/archivo-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Archivo";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/archivo-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Archivo";font-style:normal;font-weight:800;font-display:swap;src:url(fonts/archivo-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"Source Sans 3";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/source-sans-3-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Source Sans 3";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/source-sans-3-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2")}
 /* Layout: trade-ledger feel. Ink header bar, ranked list as numbered rows, quote form sticks beside it on desktop. */
 :root {
   --bg: #f3f5f4; --surface: #ffffff; --ink: #18252b; --muted: #55656c; --line: #d6dddb;
@@ -221,3 +228,5 @@ main > .also { margin: 18px 0 40px; }
 .dash-list li { border-bottom: 1px solid var(--line); padding: 14px 0; }
 .dash-list p { margin: 4px 0; }
 .contact { font-size: 17px; }
+
+.ok.no { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
