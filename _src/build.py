@@ -680,11 +680,16 @@ def firm_page(slug):
     trades = [t for t in f.get("trades", []) if t in D["trades"]] or sorted({t for t, *_ in rs})
     tnames = ", ".join(D["trades"][t]["name"].lower() for t in trades)
     rated = next((b for *_, b in rs if "rating" in b), None) or ({"rating": f["rating"], "scale": f.get("scale", 5), "reviews": f.get("google_reviews", "?"), "source": f.get("source", "Google")} if "rating" in f else None)
-    rate = (f'<div class="rate"><b>{rated["rating"]:g}<span>/{rated["scale"]}</span></b><small>{rated.get("reviews", "?")} reviews · {e(rated["source"])}</small></div>' if rated else "")
-    logo = f'<img class="firm-logo" src="{src(f["logo"])}" alt="{e(f["name"])} logo" width="96" height="96">' if f.get("logo") else ""
+    count = f'{e(rated["source"])} rating' if f.get("hide_review_count") else f'{rated.get("reviews", "?")} reviews · {e(rated["source"])}' if rated else ""
+    rate = (f'<div class="rate"><b>{rated["rating"]:g}<span>/{rated["scale"]}</span></b><small>{count}</small></div>' if rated else "")
+    logo = f'<img class="firm-logo{" dark" if f.get("logo_dark") else ""}" src="{src(f["logo"])}" alt="{e(f["name"])} logo" width="96" height="96">' if f.get("logo") else ""
     contact = []
     if f.get("phone"):
         contact.append(f'<a class="btn" href="tel:{e(f["phone"].replace(" ", ""))}">Call {e(f["phone"])}</a>')
+    if f.get("mobile"):
+        contact.append(f'<a class="btn ghost" href="tel:{e(f["mobile"].replace(" ", ""))}">Mobile {e(f["mobile"])}</a>')
+    if f.get("text_only"):
+        contact.append(f'<a class="btn ghost" href="sms:{e(f["text_only"].replace(" ", ""))}">Text {e(f["text_only"])}</a>')
     if f.get("website"):
         contact.append(f'<a class="btn ghost" href="{e(f["website"])}" target="_blank" rel="noopener">Website</a>')
     services = "".join(f"<li>{e(x)}</li>" for x in f.get("services", []))
@@ -703,22 +708,29 @@ def firm_page(slug):
         contact.append(f'<a class="btn ghost" href="mailto:{e(f["email"])}">Email</a>')
     facts = "".join(f"<li>{e(x)}</li>" for x in f.get("highlights", []))
     hours = "".join(f"<li>{e(x)}</li>" for x in f.get("hours", []))
+    badges = "".join(f'<span class="badge-reg">{e(x)}</span>' for x in f.get("badges", []))
+    if hours or f.get("address"):
+        where = (f'<section class="firm-sec"><h2>{"Opening hours and address" if hours else "Address"}</h2>'
+                 + (f"<ul>{hours}</ul>" if hours else "") + (f'<p>{e(f["address"])}</p>' if f.get("address") else "")
+                 + (f'<p>Email: <a href="mailto:{e(f["email"])}">{e(f["email"])}</a></p>' if f.get("email") else "") + "</section>")
+    else:
+        where = ""
     title = f'{f["name"]}: {tnames} in {f.get("base", region())}'
     desc = (f.get("about") or f'{f["name"]}, {tnames} based in {f.get("base", "")}.')[:155]
     body = f"""{header()}
 <main class="wrap narrow firm">
 <p class="crumbs"><a href="{L()}">Home</a>{f' / <a href="{L(trades[0])}">{e(D["trades"][trades[0]]["name"])}</a>' if trades else ""} / {e(f["name"])}</p>
 <section class="hero firm-head">{logo}<div>{status}
-<h1>{e(f["name"])}</h1><p class="lede">{e(tnames.capitalize())}{(" · " + e(f["base"])) if f.get("base") else ""}</p></div>{rate}</section>
+<h1>{e(f["name"])}</h1><p class="lede">{e(tnames.capitalize())}{(" · " + e(f["base"])) if f.get("base") else ""}</p>{f'<p class="badges">{badges}</p>' if badges else ""}</div>{rate}</section>
 <p class="cta">{" ".join(contact)}</p>
 {f'<section class="firm-sec"><h2>About</h2><p>{e(f["about"])}</p></section>' if f.get("about") else ""}
 {f'<p class="msg">{e(f["note"])}</p>' if f.get("note") else ""}
 {f'<section class="firm-sec"><h2>At a glance</h2><ul>{facts}</ul></section>' if facts else ""}
 {f'<section class="firm-sec"><h2>Services</h2><ul class="cols">{services}</ul></section>' if services else ""}
 {f'<section class="firm-sec"><h2>Photos of our work</h2><div class="gallery">{photos}</div></section>' if photos else ""}
-{f'<section class="firm-sec"><h2>Opening hours and address</h2><ul>{hours}</ul>{("<p>" + e(f["address"]) + "</p>") if f.get("address") else ""}</section>' if hours else ""}
+{where}
 {reviews_block(slug, f)}
-{f'<section class="firm-sec"><h2>Towns covered</h2><p class="also">{towns}</p></section>' if towns else ""}
+{f'<section class="firm-sec"><h2>Towns covered</h2>{("<p>" + e(f["areas_note"]) + "</p>") if f.get("areas_note") else ""}<p class="also">{towns}</p></section>' if towns else ""}
 {f'<section class="firm-sec"><h2>Where it ranks</h2><ul>{rank_rows}</ul><p class="msg">Ranked by Google rating, weighted by number of reviews. Claiming a listing or having this page does not change the ranking.</p></section>' if rank_rows else ""}
 <p class="msg">This page is written from details {"the business gave us" if f.get("claimed") else "about the business"}. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">{"Log in to update it" if f.get("claimed") else "Claim it and log in to update it"}</a>.</p>
 </main>
@@ -726,7 +738,8 @@ def firm_page(slug):
     data = ld(crumbs_ld(("Home", "/"), (f["name"], F(slug))),
               {"@type": TYPES.get(trades[0], "HomeAndConstructionBusiness") if trades else "HomeAndConstructionBusiness",
                "@id": SITE + F(slug) + "#firm", "name": f["name"], "url": SITE + F(slug),
-               **({"telephone": f["phone"]} if f.get("phone") else {}), **({"sameAs": [f["website"]]} if f.get("website") else {}), **({"address": {"@type": "PostalAddress", "streetAddress": f["address"], "addressCountry": "GB"}} if f.get("address") else {}),
+               **({"telephone": f["phone"]} if f.get("phone") else {}), **({"email": f["email"]} if f.get("email") else {}),
+               **({"logo": f'{SITE}/firm/{slug}/{f["logo"]}', "image": [f'{SITE}/firm/{slug}/{ph["file"]}' for ph in f.get("photos", [])] or f'{SITE}/firm/{slug}/{f["logo"]}'} if f.get("logo") else {}), **({"sameAs": [f["website"]]} if f.get("website") else {}), **({"address": {"@type": "PostalAddress", "streetAddress": f["address"], "addressCountry": "GB"}} if f.get("address") else {}),
                "areaServed": [D["towns"][tw]["name"] for tw in covers if tw in D["towns"]]})
     write(wrap_doc(title, desc, F(slug), body, data), "firm", slug)
     folder = os.path.join(HERE, "firms", slug)

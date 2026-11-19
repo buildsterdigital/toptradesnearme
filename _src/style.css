@@ -230,3 +230,6 @@ main > .also { margin: 18px 0 40px; }
 .contact { font-size: 17px; }
 
 .ok.no { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
+.badges { margin: 8px 0 0; }
+.badge-reg { display: inline-block; font: 700 13px var(--display); padding: 4px 10px; border-radius: 4px; background: #ffd400; color: #111; border: 1px solid #111; margin-right: 6px; }
+.firm-logo.dark { background: #16242a; }
