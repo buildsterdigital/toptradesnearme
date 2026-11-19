@@ -214,7 +214,10 @@ def card(i, b, t=None, tw=None):
         rate = '<div class="rate none"><small>No Google rating found</small></div>'
     slug = CLAIMED.get(b["name"])
     if slug:
-        own = f'<p class="claimed"><span class="ok">Claimed</span> <a href="{F(slug)}">See profile and photos</a></p>'
+        if FIRMS[slug].get("claimed"):
+            own = f'<p class="claimed"><span class="ok">Claimed</span> <a href="{F(slug)}">See profile and photos</a></p>'
+        else:
+            own = f'<p class="claimed"><span class="ok no">Not yet claimed</span> <a href="{F(slug)}">See profile and photos</a></p>'
     else:
         own = (f'<p class="claim"><a href="{e(claim_link(organization=b["name"], trade=D["trades"][t]["short"], town=D["towns"][tw]["name"]))}" rel="nofollow">Your business? Claim this listing</a></p>' if t else "")
     link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="nofollow noopener">{"Google reviews" if b.get("source") == "Google" else "View profile"}</a>' if b.get("url") else ""
@@ -691,28 +694,39 @@ def firm_page(slug):
     rank_rows = "".join(f'<li><a href="{L(t, tw)}">{e(D["trades"][t]["name"])} in {e(D["towns"][tw]["name"])}</a>: '
                         f'{f"number {pos} of {n}" if pos else f"listed, no Google rating found ({n} firms)"}</li>'
                         for t, tw, pos, n, _ in sorted(rs, key=lambda x: (x[2] or 999, x[1])))
+    if f.get("claimed"):
+        status = f'<p class="claimed"><span class="ok">Claimed</span> by the business on {e(f["claimed"])}</p>' if f["claimed"] is not True else '<p class="claimed"><span class="ok">Claimed</span> by the business</p>'
+    else:
+        status = (f'<p class="claimed"><span class="ok no">Not yet claimed</span> '
+                  f'<a href="{e(claim_link(organization=f["name"], trade=D["trades"][trades[0]]["short"] if trades else "", town=D["towns"][covers[0]]["name"] if covers and covers[0] in D["towns"] else ""))}" rel="nofollow">Your business? Claim this page</a></p>')
+    if f.get("email"):
+        contact.append(f'<a class="btn ghost" href="mailto:{e(f["email"])}">Email</a>')
+    facts = "".join(f"<li>{e(x)}</li>" for x in f.get("highlights", []))
+    hours = "".join(f"<li>{e(x)}</li>" for x in f.get("hours", []))
     title = f'{f["name"]}: {tnames} in {f.get("base", region())}'
     desc = (f.get("about") or f'{f["name"]}, {tnames} based in {f.get("base", "")}.')[:155]
     body = f"""{header()}
 <main class="wrap narrow firm">
 <p class="crumbs"><a href="{L()}">Home</a>{f' / <a href="{L(trades[0])}">{e(D["trades"][trades[0]]["name"])}</a>' if trades else ""} / {e(f["name"])}</p>
-<section class="hero firm-head">{logo}<div><p class="claimed"><span class="ok">Claimed</span> by the business{(" on " + e(f["claimed"])) if f.get("claimed") else ""}</p>
+<section class="hero firm-head">{logo}<div>{status}
 <h1>{e(f["name"])}</h1><p class="lede">{e(tnames.capitalize())}{(" · " + e(f["base"])) if f.get("base") else ""}</p></div>{rate}</section>
 <p class="cta">{" ".join(contact)}</p>
 {f'<section class="firm-sec"><h2>About</h2><p>{e(f["about"])}</p></section>' if f.get("about") else ""}
 {f'<p class="msg">{e(f["note"])}</p>' if f.get("note") else ""}
+{f'<section class="firm-sec"><h2>At a glance</h2><ul>{facts}</ul></section>' if facts else ""}
 {f'<section class="firm-sec"><h2>Services</h2><ul class="cols">{services}</ul></section>' if services else ""}
 {f'<section class="firm-sec"><h2>Photos of our work</h2><div class="gallery">{photos}</div></section>' if photos else ""}
+{f'<section class="firm-sec"><h2>Opening hours and address</h2><ul>{hours}</ul>{("<p>" + e(f["address"]) + "</p>") if f.get("address") else ""}</section>' if hours else ""}
 {reviews_block(slug, f)}
 {f'<section class="firm-sec"><h2>Towns covered</h2><p class="also">{towns}</p></section>' if towns else ""}
 {f'<section class="firm-sec"><h2>Where it ranks</h2><ul>{rank_rows}</ul><p class="msg">Ranked by Google rating, weighted by number of reviews. Claiming a listing or having this page does not change the ranking.</p></section>' if rank_rows else ""}
-<p class="msg">This page is written from details the business gave us. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">Log in to update it</a>.</p>
+<p class="msg">This page is written from details {"the business gave us" if f.get("claimed") else "about the business"}. Something wrong? Email listings@toptradesnearme.co.uk. Run this business? <a href="{P('for-firms')}">{"Log in to update it" if f.get("claimed") else "Claim it and log in to update it"}</a>.</p>
 </main>
 {footer()}"""
     data = ld(crumbs_ld(("Home", "/"), (f["name"], F(slug))),
               {"@type": TYPES.get(trades[0], "HomeAndConstructionBusiness") if trades else "HomeAndConstructionBusiness",
                "@id": SITE + F(slug) + "#firm", "name": f["name"], "url": SITE + F(slug),
-               **({"telephone": f["phone"]} if f.get("phone") else {}), **({"sameAs": [f["website"]]} if f.get("website") else {}),
+               **({"telephone": f["phone"]} if f.get("phone") else {}), **({"sameAs": [f["website"]]} if f.get("website") else {}), **({"address": {"@type": "PostalAddress", "streetAddress": f["address"], "addressCountry": "GB"}} if f.get("address") else {}),
                "areaServed": [D["towns"][tw]["name"] for tw in covers if tw in D["towns"]]})
     write(wrap_doc(title, desc, F(slug), body, data), "firm", slug)
     folder = os.path.join(HERE, "firms", slug)
@@ -877,7 +891,7 @@ for slug in FIRMS:
     firm_page(slug)
 if LIVE:
     import shutil
-    shutil.copy(os.path.join(HERE, "site", "style.css"), os.path.join(OUT, "style.css"))
+    shutil.copy(os.path.join(HERE, "style.css"), os.path.join(OUT, "style.css"))
     urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "badge", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
     # lastmod = the day a page's content last changed, so Google can see what is new.
     import datetime, hashlib

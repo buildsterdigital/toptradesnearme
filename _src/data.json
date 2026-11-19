@@ -4744,6 +4744,15 @@
     "reviews": 18,
     "source": "Google",
     "url": "https://maps.google.com/?cid=9849988563701106966"
+   },
+   {
+    "name": "StoneCraft Driveways & Landscaping",
+    "base": "Headington, Oxford",
+    "services": "Resin, block paving and tarmac driveways, patios, landscaping, fencing",
+    "rating": 4.7,
+    "scale": 5,
+    "reviews": 35,
+    "source": "Google"
    }
   ],
   "driveways/abingdon": [
@@ -4786,6 +4795,15 @@
     "name": "Abingdon Driveways",
     "base": "Abingdon",
     "services": "Driveways"
+   },
+   {
+    "name": "StoneCraft Driveways & Landscaping",
+    "base": "Headington, Oxford",
+    "services": "Resin, block paving and tarmac driveways, patios, landscaping, fencing",
+    "rating": 4.7,
+    "scale": 5,
+    "reviews": 35,
+    "source": "Google"
    }
   ],
   "driveways/didcot": [
@@ -4828,6 +4846,15 @@
     "name": "LOAL",
     "base": "Oxfordshire",
     "services": "Block paving, landscaping"
+   },
+   {
+    "name": "StoneCraft Driveways & Landscaping",
+    "base": "Headington, Oxford",
+    "services": "Resin, block paving and tarmac driveways, patios, landscaping, fencing",
+    "rating": 4.7,
+    "scale": 5,
+    "reviews": 35,
+    "source": "Google"
    }
   ],
   "plumbers/oxford": [
@@ -5227,6 +5254,15 @@
     "name": "S Eugen Ltd",
     "base": "Operates in Bicester",
     "services": ""
+   },
+   {
+    "name": "StoneCraft Driveways & Landscaping",
+    "base": "Headington, Oxford",
+    "services": "Resin, block paving and tarmac driveways, patios, landscaping, fencing",
+    "rating": 4.7,
+    "scale": 5,
+    "reviews": 35,
+    "source": "Google"
    }
   ],
   "plumbers/bicester": [
@@ -5398,6 +5434,15 @@
     "name": "Liberty Contractors",
     "base": "Operates in Witney",
     "services": ""
+   },
+   {
+    "name": "StoneCraft Driveways & Landscaping",
+    "base": "Headington, Oxford",
+    "services": "Resin, block paving and tarmac driveways, patios, landscaping, fencing",
+    "rating": 4.7,
+    "scale": 5,
+    "reviews": 35,
+    "source": "Google"
    }
   ],
   "plumbers/witney": [
@@ -5549,6 +5594,15 @@
     "reviews": 16,
     "source": "Google",
     "url": "https://maps.google.com/?cid=13701130190009583330"
+   },
+   {
+    "name": "StoneCraft Driveways & Landscaping",
+    "base": "Headington, Oxford",
+    "services": "Resin, block paving and tarmac driveways, patios, landscaping, fencing",
+    "rating": 4.7,
+    "scale": 5,
+    "reviews": 35,
+    "source": "Google"
    }
   ],
   "plumbers/wantage": [
@@ -5725,6 +5779,15 @@
     "name": "TP Resin Driveways Ltd",
     "base": "Operates in Thame",
     "services": ""
+   },
+   {
+    "name": "StoneCraft Driveways & Landscaping",
+    "base": "Headington, Oxford",
+    "services": "Resin, block paving and tarmac driveways, patios, landscaping, fencing",
+    "rating": 4.7,
+    "scale": 5,
+    "reviews": 35,
+    "source": "Google"
    }
   ],
   "plumbers/thame": [
@@ -6057,6 +6120,15 @@
     "reviews": 43,
     "source": "Google",
     "url": "https://maps.google.com/?cid=8161503463744432702"
+   },
+   {
+    "name": "StoneCraft Driveways & Landscaping",
+    "base": "Headington, Oxford",
+    "services": "Resin, block paving and tarmac driveways, patios, landscaping, fencing",
+    "rating": 4.7,
+    "scale": 5,
+    "reviews": 35,
+    "source": "Google"
    }
   ],
   "plumbers/wallingford": [
@@ -6193,6 +6265,15 @@
     "reviews": 7,
     "source": "Google",
     "url": "https://maps.google.com/?cid=2684527197306010848"
+   },
+   {
+    "name": "StoneCraft Driveways & Landscaping",
+    "base": "Headington, Oxford",
+    "services": "Resin, block paving and tarmac driveways, patios, landscaping, fencing",
+    "rating": 4.7,
+    "scale": 5,
+    "reviews": 35,
+    "source": "Google"
    }
   ],
   "plumbers/kidlington": [
@@ -163884,6 +163965,86 @@
    ],
    "claimed": "9 Nov 2026",
    "google_reviews": 4
+  },
+  "stonecraft-driveways": {
+   "name": "StoneCraft Driveways & Landscaping",
+   "trades": [
+    "driveways"
+   ],
+   "base": "Headington, Oxford",
+   "address": "94 London Road, Headington, Oxford OX3 9FN",
+   "phone": "07753 922493",
+   "email": "info@stonecraft.ltd",
+   "website": "https://stonecraft-driveways.co.uk/",
+   "rating": 4.7,
+   "scale": 5,
+   "source": "Google",
+   "google_reviews": 35,
+   "about": "StoneCraft Driveways & Landscaping lays resin, block paving and tarmac driveways, natural stone and porcelain patios, and does landscaping and fencing across Oxford and Oxfordshire. More than 20 years' experience, a 5-year warranty on every new driveway and patio, fully insured, and winner of the 2024 Quality Business Awards Best Paving Contractor in Oxford. Free site survey and fixed written quote.",
+   "highlights": [
+    "Winner, 2024 Quality Business Awards: Best Paving Contractor in Oxford",
+    "5-year warranty on all new driveways and patios",
+    "Fully insured (public liability)",
+    "More than 20 years' experience, hundreds of jobs completed",
+    "Free site survey and fixed written quotes"
+   ],
+   "hours": [
+    "Monday to Saturday: 8am to 6pm",
+    "Sunday: closed"
+   ],
+   "services": [
+    "Resin bound driveways",
+    "Block paving driveways",
+    "Tarmac driveways",
+    "Gravel driveways",
+    "Natural stone (Indian sandstone) patios",
+    "Porcelain patios",
+    "Landscaping",
+    "Turfing",
+    "Fencing",
+    "Brick walls",
+    "Power washing and sealing"
+   ],
+   "towns": [
+    "oxford",
+    "kidlington",
+    "abingdon",
+    "didcot",
+    "witney",
+    "bicester",
+    "thame",
+    "wallingford",
+    "wantage"
+   ],
+   "logo": "stonecraft-logo.png",
+   "photos": [
+    {
+     "file": "stonecraft-block-paving-after-1.jpg",
+     "alt": "Red herringbone block paving driveway"
+    },
+    {
+     "file": "stonecraft-charcoal-drive-after-1.jpg",
+     "alt": "Charcoal block paving driveway with a brick border"
+    },
+    {
+     "file": "stonecraft-feature-drive-after-front.jpg",
+     "alt": "Charcoal driveway with a feature band"
+    },
+    {
+     "file": "stonecraft-cobble-drive-after-sign-1.jpg",
+     "alt": "New block paving driveway"
+    },
+    {
+     "file": "stonecraft-porcelain-patio-after-1.jpg",
+     "alt": "Porcelain patio under a covered pergola"
+    },
+    {
+     "file": "stonecraft-sandstone-patio-after-1.jpg",
+     "alt": "New stone patio at the back of a house"
+    }
+   ],
+   "claimed": false,
+   "note": "StoneCraft is run by a family member of the owner of Top Trades Near Me. Its place in the ranked lists comes from its Google rating and review count, the same as every other firm."
   }
  },
  "extra_sponsors": [
@@ -163901,6 +164062,29 @@
    "reviews": 4,
    "source": "Google",
    "url": "https://www.primeroofingandguttering.co.uk"
+  },
+  {
+   "trade": "driveways",
+   "towns": [
+    "oxford",
+    "kidlington",
+    "abingdon",
+    "didcot",
+    "witney",
+    "bicester",
+    "thame",
+    "wallingford",
+    "wantage"
+   ],
+   "name": "StoneCraft Driveways & Landscaping",
+   "base": "Headington, Oxford",
+   "services": "Resin, block paving and tarmac driveways, natural stone and porcelain patios, landscaping and fencing. Free site survey and fixed written quote.",
+   "phone": "07753 922493",
+   "rating": 4.7,
+   "scale": 5,
+   "reviews": 35,
+   "source": "Google",
+   "url": "https://stonecraft-driveways.co.uk/"
   }
  ]
 }

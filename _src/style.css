@@ -228,3 +228,5 @@ main > .also { margin: 18px 0 40px; }
 .dash-list li { border-bottom: 1px solid var(--line); padding: 14px 0; }
 .dash-list p { margin: 4px 0; }
 .contact { font-size: 17px; }
+
+.ok.no { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
