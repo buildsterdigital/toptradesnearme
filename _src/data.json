@@ -163757,11 +163757,11 @@
   "roofers": {
    "name": "Revive Roofing & Building",
    "base": "Covers up to 30 miles around Oxford",
-   "services": "Re-roofs, roof repairs, flat roofs, leadwork, extensions. Fully insured, 20+ years' experience, up to 20-year guarantees on new roofs.",
+   "services": "Re-roofs, roof repairs, flat roofs, leadwork and building work. Fully insured, 20+ years' experience, 20-year guarantee on new tile and slate roofs.",
    "phone": "01865 537500",
    "rating": 4.9,
    "scale": 5,
-   "reviews": 14,
+   "reviews": 18,
    "source": "Google",
    "url": "https://maps.google.com/?cid=260345197963814981"
   },
@@ -163784,7 +163784,7 @@
    "phone": "01865 537560",
    "rating": 4.9,
    "scale": 5,
-   "reviews": 46,
+   "reviews": 51,
    "source": "Google"
   }
  },
@@ -163808,12 +163808,27 @@
     "roofers"
    ],
    "base": "Headington, Oxford",
+   "address": "Office 147, 94 London Road, Headington, Oxford OX3 9FN",
    "phone": "01865 537500",
-   "website": "https://www.reviveroofingandbuilding.com/",
+   "mobile": "07367 194263",
+   "email": "reviveroofingservices@gmail.com",
+   "website": "https://reviveroofingandbuilding.com/",
    "rating": 4.9,
    "scale": 5,
    "source": "Google",
-   "about": "Family-run roofing and building firm based in Headington, Oxford. Revive works on homes across Oxfordshire, from small repairs to full new roofs, with free surveys, emergency call-outs and up to a 20-year guarantee on new tile and slate roofs. Fully insured.",
+   "google_reviews": 18,
+   "about": "Revive Roofing & Building fixes and replaces roofs across Oxford and Oxfordshire, from small repairs and leaks to full new tile and slate roofs, flat roofs, chimneys, leadwork and guttering. More than 20 years' experience, a 20-year guarantee on new tile and slate roofs, fully insured, and free drone roof surveys with a written quote. 24/7 emergency call-outs.",
+   "highlights": [
+    "More than 20 years' experience",
+    "20-year guarantee on new tile and slate roofs. Flat roofs carry the material manufacturer's warranty.",
+    "Fully insured",
+    "Free drone roof surveys and written quotes",
+    "24/7 emergency call-outs"
+   ],
+   "hours": [
+    "Monday to Saturday: 8am to 6pm",
+    "Emergency call-outs: 24/7"
+   ],
    "services": [
     "Roof repairs",
     "New roofs (tile and slate)",
@@ -163823,7 +163838,7 @@
     "Damp proofing",
     "Roof cleaning",
     "Drone roof inspections",
-    "Building work and extensions"
+    "Building work"
    ],
    "towns": [
     "oxford",
@@ -163839,9 +163854,35 @@
     "thame",
     "woodstock"
    ],
+   "logo": "revive-roofing-logo.webp",
+   "photos": [
+    {
+     "file": "revive-roofing-team-reroof.webp",
+     "alt": "Revive team stripping and re-battening a roof"
+    },
+    {
+     "file": "revive-roofing-slate-reroof.webp",
+     "alt": "New slate roof going on a terraced house"
+    },
+    {
+     "file": "revive-roofing-new-roof-battens.webp",
+     "alt": "Full new roof with membrane and battens, from the air"
+    },
+    {
+     "file": "revive-roofing-finished-roof-drone.webp",
+     "alt": "Finished new roof, drone view"
+    },
+    {
+     "file": "revive-roofing-tiled-roof-skylights.webp",
+     "alt": "Tiled roof with new roof windows"
+    },
+    {
+     "file": "revive-roofing-flat-roof.webp",
+     "alt": "New flat roof"
+    }
+   ],
    "claimed": "9 Nov 2026",
-   "note": "Revive is in the same group as Buildster Digital, which runs Top Trades Near Me. It appears only in labelled sponsored spots and does not affect the rankings.",
-   "google_reviews": 14
+   "note": "Revive is in the same group as Buildster Digital, which runs Top Trades Near Me. It appears only in labelled sponsored spots and does not affect the rankings."
   },
   "revive-plumbing": {
    "name": "Revive Plumbing & Heating",
@@ -163849,42 +163890,84 @@
     "plumbers"
    ],
    "base": "Headington, Oxford",
+   "address": "Headington, Oxford",
    "phone": "01865 537560",
-   "website": "https://reviveplumbing.co.uk",
+   "text_only": "07723 567752",
+   "email": "info@reviveplumbing.co.uk",
+   "website": "https://reviveplumbing.co.uk/",
    "rating": 4.9,
    "scale": 5,
    "source": "Google",
-   "about": "Gas Safe registered plumbing and heating engineers (Gas Safe 986716) based in Headington, Oxford. Revive fits and repairs boilers, services heating systems and handles everyday plumbing across Oxfordshire, with a 24/7 emergency service.",
+   "google_reviews": 51,
+   "badges": [
+    "Gas Safe registered · 986716"
+   ],
+   "about": "Revive Plumbing & Heating fits and repairs boilers, services heating systems and handles everyday plumbing across Oxford and Oxfordshire. Gas Safe registered (no. 986716). New boilers from £2,000 with a 10-year guarantee, or 13 years with our boiler care plan. Boiler services £90 + VAT. Free, no-obligation quotes.",
+   "highlights": [
+    "Gas Safe registered, no. 986716",
+    "New boilers from £2,000, with a 10-year guarantee (13 years with the boiler care plan)",
+    "Free first-year service on new boilers",
+    "Boiler service: £90 + VAT",
+    "Boiler Care Plan from £11 a month",
+    "Free, no-obligation quotes",
+    "Text only on 07723 567752 (no WhatsApp)"
+   ],
    "services": [
-    "New boilers and boiler replacement (Vaillant, Worcester Bosch)",
+    "New boilers and boiler replacement",
     "Boiler repairs",
     "Boiler servicing",
     "Central heating and power flushing",
     "Hot water cylinders",
-    "Radiators and heating controls",
-    "24/7 emergency plumbing",
+    "Radiators and heating controls (including Hive)",
     "Leaks and burst pipes",
     "Bathrooms and showers",
     "General plumbing"
    ],
+   "areas_note": "All of Oxfordshire, including Oxford, Headington, Cowley, Kidlington, Abingdon, Didcot, Wantage, Bicester, Witney, Thame and Wallingford.",
    "towns": [
     "oxford",
     "kidlington",
     "abingdon",
     "didcot",
-    "witney",
-    "bicester",
-    "banbury",
     "wantage",
+    "bicester",
+    "witney",
     "thame",
     "wallingford",
+    "banbury",
     "woodstock",
     "carterton",
     "henley"
    ],
+   "logo": "revive-plumbing-logo.png",
+   "photos": [
+    {
+     "file": "revive-plumbing-boiler-pipework.webp",
+     "alt": "Boiler pipework with a magnetic system filter"
+    },
+    {
+     "file": "revive-plumbing-hot-water-cylinder.webp",
+     "alt": "Hot water cylinder in an airing cupboard"
+    },
+    {
+     "file": "revive-plumbing-shower-room.webp",
+     "alt": "New shower room with walk-in shower"
+    },
+    {
+     "file": "revive-plumbing-shower-enclosure.webp",
+     "alt": "New shower enclosure and toilet"
+    },
+    {
+     "file": "revive-plumbing-bathroom-2.webp",
+     "alt": "New bathroom with bath and shower"
+    },
+    {
+     "file": "revive-plumbing-bathroom-1.webp",
+     "alt": "Tiled bathroom with new bath"
+    }
+   ],
    "claimed": "9 Nov 2026",
-   "note": "Revive is in the same group as Buildster Digital, which runs Top Trades Near Me. It appears only in labelled sponsored spots and does not affect the rankings.",
-   "google_reviews": 46
+   "note": "Revive is in the same group as Buildster Digital, which runs Top Trades Near Me. It appears only in labelled sponsored spots and does not affect the rankings."
   },
   "revive-driveways": {
    "name": "Revive Driveways & Landscaping",
@@ -163894,13 +163977,29 @@
    "trades": [
     "driveways"
    ],
-   "base": "London Road, Oxford",
+   "base": "Headington, Oxford",
+   "address": "Office 147, 94 London Road, Headington, Oxford OX3 9FN",
    "phone": "01865 537008",
-   "website": "https://www.revivedrivesandlandscaping.com",
+   "mobile": "07897 019642",
+   "email": "contact@revivedrivesandlandscaping.com",
+   "website": "https://www.revivedrivesandlandscaping.com/",
    "rating": 5.0,
    "scale": 5,
    "source": "Google",
-   "about": "Local Oxfordshire team for new driveways, patios and landscaping. Revive offers a free home survey, a fixed-price quote with no hidden costs and a 10-year guarantee, and has completed over 100 jobs. Fully insured.",
+   "google_reviews": 10,
+   "about": "Revive Driveways & Landscaping lays block paving, resin, tarmac and shingle driveways, porcelain and Indian sandstone patios, and does landscaping, fencing, decking and turf across Oxford and Oxfordshire. Over 100 jobs completed, a 10-year guarantee, fully insured, and a free home survey with a fixed-price quote and no hidden costs.",
+   "highlights": [
+    "Over 100 jobs completed",
+    "10-year guarantee on patios and block paving",
+    "Resin driveways: a 10-year guarantee plus the manufacturer's 20-year product warranty",
+    "Fully insured",
+    "Free home survey and fixed-price quote, no hidden costs"
+   ],
+   "hours": [
+    "Monday to Friday: 7am to 7pm",
+    "Saturday: 8am to 5pm",
+    "Sunday: 9am to 4pm"
+   ],
    "services": [
     "Block paving driveways",
     "Resin bound driveways",
@@ -163908,6 +164007,7 @@
     "Shingle driveways",
     "Porcelain patios",
     "Indian sandstone patios",
+    "Garden landscaping",
     "Fencing",
     "Composite decking",
     "Artificial grass",
@@ -163927,9 +164027,31 @@
     "carterton",
     "woodstock"
    ],
+   "logo": "revive-driveways-logo.png",
+   "photos": [
+    {
+     "file": "revive-driveways-red-block-paving.webp",
+     "alt": "New red block paving driveway with a charcoal border"
+    },
+    {
+     "file": "revive-driveways-tarmac-block-border.webp",
+     "alt": "Tarmac driveway with a block paving border"
+    },
+    {
+     "file": "revive-driveways-grey-block-paving.webp",
+     "alt": "Grey herringbone block paving driveway"
+    },
+    {
+     "file": "revive-driveways-brindle-block-paving.webp",
+     "alt": "Brindle block paving driveway with drainage channel"
+    },
+    {
+     "file": "revive-driveways-block-paving-wall.webp",
+     "alt": "Block paving driveway with a new brick wall"
+    }
+   ],
    "claimed": "9 Nov 2026",
-   "note": "Revive is in the same group as Buildster Digital, which runs Top Trades Near Me. It appears only in labelled sponsored spots and does not affect the rankings.",
-   "google_reviews": 10
+   "note": "Revive is in the same group as Buildster Digital, which runs Top Trades Near Me. It appears only in labelled sponsored spots and does not affect the rankings."
   },
   "prime-roofing-guttering": {
    "name": "Prime Roofing & Guttering",
@@ -163937,12 +164059,26 @@
     "roofers"
    ],
    "base": "Littlemore, Oxford",
+   "address": "John Eccles House, Littlemore, Oxford OX4 4GP",
    "phone": "01865 587212",
-   "website": "https://www.primeroofingandguttering.co.uk",
+   "mobile": "07863 787622",
+   "email": "contact@primeroofingandguttering.co.uk",
+   "website": "https://www.primeroofingandguttering.co.uk/",
    "rating": 5.0,
    "scale": 5,
    "source": "Google",
-   "about": "Roofing and guttering firm based in Littlemore, Oxford. Prime handles roof repairs, new roofs, flat roofs and all guttering work across Oxfordshire. Free quotes and surveys, open 6am to 8pm, with 24/7 emergency call-outs.",
+   "google_reviews": 4,
+   "hide_review_count": true,
+   "about": "Prime Roofing & Guttering is a local Oxfordshire roofing and guttering business based in Littlemore, Oxford. Prime does roof repairs, new roofs, flat roofs, chimneys and leadwork, and all guttering, fascia and soffit work across Oxford and Oxfordshire. Free, no-obligation quotes, open 6am to 8pm, with 24/7 emergency call-outs.",
+   "highlights": [
+    "Free, no-obligation quotes and surveys",
+    "Open 6am to 8pm",
+    "24/7 emergency call-outs"
+   ],
+   "hours": [
+    "Open: 6am to 8pm",
+    "Emergency call-outs: 24/7"
+   ],
    "services": [
     "Roof repairs",
     "New roofs",
@@ -163963,8 +164099,35 @@
     "kidlington",
     "wantage"
    ],
+   "logo": "prime-roofing-logo.png",
+   "photos": [
+    {
+     "file": "prime-roofing-new-tiled-roof.webp",
+     "alt": "New tiled roof on a terraced house"
+    },
+    {
+     "file": "prime-roofing-reroof-scaffold.webp",
+     "alt": "Roof being re-tiled, with scaffold"
+    },
+    {
+     "file": "prime-roofing-terrace-roof.webp",
+     "alt": "New roof on a terrace, from the air"
+    },
+    {
+     "file": "prime-roofing-hipped-tiled-roof.webp",
+     "alt": "New hipped tiled roof"
+    },
+    {
+     "file": "prime-roofing-flat-roof.webp",
+     "alt": "New flat roof"
+    },
+    {
+     "file": "prime-roofing-new-guttering.webp",
+     "alt": "New black guttering and fascia"
+    }
+   ],
    "claimed": "9 Nov 2026",
-   "google_reviews": 4
+   "logo_dark": true
   },
   "stonecraft-driveways": {
    "name": "StoneCraft Driveways & Landscaping",
