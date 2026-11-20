@@ -271,7 +271,10 @@ def page(t, tw):
     tv, twv = D["trades"][t], D["towns"][tw]
     items = sorted(D["listings"][f"{t}/{tw}"], key=score, reverse=True)
     yr = D["checked"][-4:]
-    title = fit(f'{len(items)} best {tv["name"].lower()} in {twv["name"]} ({yr})',
+    full = tv["name"].lower()
+    amp = [f'{len(items)} best {full.replace(" and ", " & ")} in {twv["name"]} ({yr})',
+           f'{full.replace(" and ", " & ").capitalize()} in {twv["name"]} ({yr})'] if " and " in full else []
+    title = fit(f'{len(items)} best {full} in {twv["name"]} ({yr})', *amp,
                 f'{len(items)} best {tv["short"].lower()} in {twv["name"]} ({yr})',
                 f'Best {tv["short"].lower()} in {twv["name"]} ({yr})')
     vs = villages(tw)
@@ -315,7 +318,7 @@ def page(t, tw):
          f'Usually, yes. Villages near {twv["name"]} include {", ".join(vs)}. Check with the firm when you ask for a quote.'),
         (f'How do I get quotes from {trade_l} in {twv["name"]}?',
          f'Use the free quote form on this page. We pass your job to up to three {trade_l} in {twv["name"]}, or you can contact any firm above directly.'),
-    ]
+    ] + [(q.format(town=twv["name"]), a.format(town=twv["name"])) for q, a in tv.get("faq", [])]
     faq_html = "".join(f"<h3>{e(q)}</h3><p>{e(a)}</p>" for q, a in faqs)
     body = f'''{header()}
 <main class="wrap">
@@ -930,7 +933,8 @@ if LIVE:
             "Claude-User", "PerplexityBot", "Perplexity-User", "Applebot", "Applebot-Extended", "DuckAssistBot", "Amazonbot", "meta-externalagent"]
     open(os.path.join(OUT, "robots.txt"), "w").write(
         "# Search engines and AI assistants are welcome to read and cite this site.\n"
-        + "".join(f"User-agent: {b}\n" for b in bots) + "Allow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: " + SITE + "/sitemap.xml\n")
+        + "# Claim links carry each firm's name in the address. They are all one form, so crawlers skip them.\n"
+        + "".join(f"User-agent: {b}\n" for b in bots) + "Allow: /\nDisallow: /claim/?\n\nUser-agent: *\nAllow: /\nDisallow: /claim/?\n\nSitemap: " + SITE + "/sitemap.xml\n")
     open(os.path.join(OUT, "llms.txt"), "w").write(llms_txt())
     open(os.path.join(OUT, "CNAME"), "w").write("toptradesnearme.co.uk\n")
     open(os.path.join(OUT, "404.html"), "w").write('<!doctype html><meta charset="utf-8"><title>Page not found</title><p>Page not found. <a href="/">Go to Top Trades Near Me</a></p>')
