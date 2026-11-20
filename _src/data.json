@@ -4557,7 +4557,11 @@
    "short": "Plumbers",
    "single": "plumber",
    "verb": "plumbing and heating",
-   "intro": "Boiler installs and repairs, servicing, leaks, bathrooms, cylinders and landlord gas certificates.",
+   "intro": "Heating engineers and plumbers for boiler installs and repairs, servicing, central heating, leaks, bathrooms, cylinders and landlord gas certificates.",
+   "faq": [
+    ["Where can I find a heating engineer near {town}?", "Most firms on this page are plumbing and heating engineers: they repair and service boilers, fit new boilers and fix central heating in and around {town}. For any gas work, choose a Gas Safe registered engineer and check their number on the Gas Safe Register."],
+    ["Who can fix my boiler in {town}?", "Any Gas Safe registered heating engineer listed above. Say the make of boiler and the fault code (if it shows one) when you ask for a quote, so they bring the right parts."]
+   ],
    "tips": [
     "Any gas work must be done by a Gas Safe registered engineer. Check their number on the official Gas Safe Register before they start.",
     "A gas boiler service costs around £80 to £120 locally.",
