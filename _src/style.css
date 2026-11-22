@@ -233,3 +233,12 @@ main > .also { margin: 18px 0 40px; }
 .badges { margin: 8px 0 0; }
 .badge-reg { display: inline-block; font: 700 13px var(--display); padding: 4px 10px; border-radius: 4px; background: #ffd400; color: #111; border: 1px solid #111; margin-right: 6px; }
 .firm-logo.dark { background: #16242a; }
+/* Single-service pages (flat roofing, damp proofing): short guide sections and a price table */
+.note { color: var(--muted); font-size: 15px; margin: 14px 0 8px; max-width: 70ch; }
+.guide { margin-top: 28px; }
+.guide h2 { font-size: 21px; }
+.guide p, .guide ul { max-width: 70ch; }
+.guide ul { padding-left: 20px; display: grid; gap: 6px; }
+.prices { border-collapse: collapse; width: 100%; max-width: 560px; margin: 10px 0; background: var(--surface); font-size: 15px; }
+.prices th, .prices td { text-align: left; padding: 8px 10px; border: 1px solid var(--line); }
+.prices th { font-family: var(--display); font-weight: 700; }
