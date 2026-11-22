@@ -439,6 +439,7 @@ def area_page(t, a):
 <div class="mapbox">{map_block(t, a)}</div>
 </div>
 {f'<section class="soon"><h2>Coming next in {e(av["name"])}</h2><div class="chips">{soon}</div></section>' if soon else ""}
+{svc_strip(towns, f"Specialist services in {av['name']}")}
 <section class="tips"><h2>Before you hire a {e(tv["single"])} in {e(av["name"])}</h2><ul>{tips}</ul></section>
 <p class="also">Other trades in {e(av["name"])}: {other_trades}</p>
 {f'<p class="also">{e(tv["name"])} in other areas: {other_areas}</p>' if other_areas else ""}
@@ -643,6 +644,7 @@ def index():
 </div>
 <div class="mapbox">{map_block()}</div>
 </section>
+{svc_strip()}
 <section class="arealist"><h2>Or pick your area</h2><div class="areas-grid">{"".join(cards)}</div></section>
 <section class="soon"><h2>More trades coming</h2><div class="chips">{soon}</div></section>
 <section class="getlisted-box" id="get-listed"><h2>Are you a trade?</h2>
@@ -910,6 +912,13 @@ def svc_sponsors(sl, tw):
     for name in sv.get("extra_sponsors", {}).get(tw, []):
         out += [b for b in D.get("extra_sponsors", []) if b["name"] == name][:1]
     return out
+
+
+def svc_strip(towns=None, h="Specialist services"):
+    """Cards linking to the single-service pages (optionally only for some towns)."""
+    cards = [f'<a class="area live" href="{L(sl, tw)}"><b>{e(sv["name"])}</b><span>{e(D["towns"][tw]["name"])} · {len(sv["towns"][tw])} firms</span></a>'
+             for sl, sv in SERVICES.items() for tw in sv["towns"] if towns is None or tw in towns]
+    return f'<section class="arealist svc"><h2>{e(h)}</h2><div class="areas-grid">{"".join(cards)}</div></section>' if cards else ""
 
 
 def service_page(sl, tw):
