@@ -4559,8 +4559,14 @@
    "verb": "plumbing and heating",
    "intro": "Heating engineers and plumbers for boiler installs and repairs, servicing, central heating, leaks, bathrooms, cylinders and landlord gas certificates.",
    "faq": [
-    ["Where can I find a heating engineer near {town}?", "Most firms on this page are plumbing and heating engineers: they repair and service boilers, fit new boilers and fix central heating in and around {town}. For any gas work, choose a Gas Safe registered engineer and check their number on the Gas Safe Register."],
-    ["Who can fix my boiler in {town}?", "Any Gas Safe registered heating engineer listed above. Say the make of boiler and the fault code (if it shows one) when you ask for a quote, so they bring the right parts."]
+    [
+     "Where can I find a heating engineer near {town}?",
+     "Most firms on this page are plumbing and heating engineers: they repair and service boilers, fit new boilers and fix central heating in and around {town}. For any gas work, choose a Gas Safe registered engineer and check their number on the Gas Safe Register."
+    ],
+    [
+     "Who can fix my boiler in {town}?",
+     "Any Gas Safe registered heating engineer listed above. Say the make of boiler and the fault code (if it shows one) when you ask for a quote, so they bring the right parts."
+    ]
    ],
    "tips": [
     "Any gas work must be done by a Gas Safe registered engineer. Check their number on the official Gas Safe Register before they start.",
@@ -164252,5 +164258,547 @@
    "source": "Google",
    "url": "https://stonecraft-driveways.co.uk/"
   }
- ]
+ ],
+ "services": {
+  "flat-roofing": {
+   "name": "Flat roofing",
+   "short": "Flat roofing",
+   "single": "flat roofer",
+   "parent": "roofers",
+   "checked": "22 Nov 2026",
+   "intro": "Flat roof replacement and repairs on garages, extensions, dormers and bay windows: felt, EPDM rubber and GRP fibreglass.",
+   "list_note": "These are the roofing firms Google shows for flat roofing in {town}, ranked by their Google reviews. Not every roofer fits every flat roof system, so ask which one they would use when you get a quote.",
+   "guide": [
+    [
+     "How much does a new flat roof cost?",
+     "<p>A typical flat roof replacement costs about £2,800 to £7,500, depending on size, access and the material. Rough prices per square metre:</p><table class=\"prices\"><thead><tr><th>Material</th><th>Price per m²</th><th>Typical life</th></tr></thead><tbody><tr><td>Felt (torch-on bitumen)</td><td>£50 to £80</td><td>10 to 20 years</td></tr><tr><td>EPDM rubber</td><td>£80 to £100</td><td>20 years or more</td></tr><tr><td>GRP fibreglass</td><td>£95 to £120</td><td>20 years or more</td></tr></tbody></table><p class=\"fine\">National guide prices from <a href=\"https://www.checkatrade.com/blog/cost-guides/flat-roof-replacement-costs/\" rel=\"nofollow noopener\" target=\"_blank\">Checkatrade's 2026 flat roof cost guide</a>. Prices in and around {town} are often a little higher. Life spans are typical ranges and depend on the fitting. Always get a written quote.</p>"
+    ],
+    [
+     "Felt, rubber or fibreglass: which one?",
+     "<ul><li><strong>Felt</strong> is the cheapest and suits sheds, small garages and tight budgets.</li><li><strong>EPDM rubber</strong> goes on as one sheet with no seams, so it is a good choice for garages and extensions.</li><li><strong>GRP fibreglass</strong> is hard-wearing and neat, and suits roofs you walk on or look down on, like dormers and balconies.</li></ul>"
+    ],
+    [
+     "Repair or replace?",
+     "<p>A single leak, a split or one blister can often be repaired. Replacement usually makes sense when:</p><ul><li>the roof leaks in more than one place, or keeps leaking after repairs;</li><li>the boards underneath feel soft or spongy;</li><li>water sits in pools for days after rain;</li><li>a felt roof is cracked or blistered all over, or is more than about 15 years old.</li></ul>"
+    ]
+   ],
+   "tips": [
+    "Ask which system they will fit (felt, EPDM or GRP) and get the make of membrane in writing.",
+    "Ask what the guarantee covers and for how long. Flat roofs usually carry the membrane maker's warranty.",
+    "Ask whether the old roof and boards will be stripped back or covered over, and check that is in the quote.",
+    "Replacing most of a roof can mean adding insulation to meet Building Regulations. Ask the roofer who handles it."
+   ],
+   "faq": [
+    [
+     "Do I need planning permission to replace a flat roof in {town}?",
+     "Usually not, if you are replacing it like for like. If you change its height or shape, or live in a listed building or conservation area, check with the council first."
+    ],
+    [
+     "How long does a flat roof replacement take?",
+     "A garage or small extension roof often takes one to three days, weather permitting. Bigger roofs take longer."
+    ],
+    [
+     "Can a flat roof be replaced in winter?",
+     "Yes, but felt and fibreglass need dry weather to lay. EPDM rubber is less fussy about the cold. Expect some dates to move if it rains."
+    ]
+   ],
+   "towns": {
+    "oxford": [
+     {
+      "name": "Thames Valley Roofing and Painting Limited",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Thames+Valley+Roofing+and+Painting+Limited+Oxford",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 79,
+      "source": "Google"
+     },
+     {
+      "name": "Safeguard Roofing & Building Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Safeguard+Roofing+%26+Building+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 207,
+      "source": "Google"
+     },
+     {
+      "name": "Premier Roofing and Gutters Limited",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Premier+Roofing+and+Gutters+Limited+Oxford",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 192,
+      "source": "Google"
+     },
+     {
+      "name": "Oxford Roofing and Maintenance Ltd",
+      "base": "Faringdon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Oxford+Roofing+and+Maintenance+Ltd+Faringdon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 67,
+      "source": "Google"
+     },
+     {
+      "name": "Regency Roofing & Drainage Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Regency+Roofing+%26+Drainage+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 31,
+      "source": "Google"
+     },
+     {
+      "name": "Oxford Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Oxford+Roofing+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 1,
+      "source": "Google"
+     },
+     {
+      "name": "KBS Oxford Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=KBS+Oxford+Roofing+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 37,
+      "source": "Google"
+     },
+     {
+      "name": "RS & Sons Roofing and Building Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=RS+%26+Sons+Roofing+and+Building+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 43,
+      "source": "Google"
+     },
+     {
+      "name": "Carma UK Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Carma+UK+Roofing+Oxford",
+      "rating": 4.7,
+      "scale": 5,
+      "reviews": 56,
+      "source": "Google"
+     },
+     {
+      "name": "North Oxford Roofing & Guttering",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=North+Oxford+Roofing+%26+Guttering+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 25,
+      "source": "Google"
+     },
+     {
+      "name": "All Roofing Experts Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=All+Roofing+Experts+Ltd+Oxford",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 28,
+      "source": "Google"
+     },
+     {
+      "name": "Roofs in Oxford",
+      "base": "Kidlington",
+      "url": "https://www.google.com/maps/search/?api=1&query=Roofs+in+Oxford+Kidlington",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 37,
+      "source": "Google"
+     },
+     {
+      "name": "All Type Roofing & Building Group Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=All+Type+Roofing+%26+Building+Group+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 35,
+      "source": "Google"
+     },
+     {
+      "name": "Bc Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Bc+Roofing+Oxford",
+      "rating": 4.8,
+      "scale": 5,
+      "reviews": 25,
+      "source": "Google"
+     },
+     {
+      "name": "M. Hill Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=M.+Hill+Roofing+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 5,
+      "source": "Google"
+     },
+     {
+      "name": "Everlast Roofing Services",
+      "base": "Abingdon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Everlast+Roofing+Services+Abingdon",
+      "rating": 4.8,
+      "scale": 5,
+      "reviews": 90,
+      "source": "Google"
+     },
+     {
+      "name": "AD Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=AD+Roofing+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 23,
+      "source": "Google"
+     },
+     {
+      "name": "Abbott Roofing Oxford",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Abbott+Roofing+Oxford+Oxford",
+      "rating": 3.8,
+      "scale": 5,
+      "reviews": 24,
+      "source": "Google"
+     },
+     {
+      "name": "Acorn Roofing Services Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Acorn+Roofing+Services+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 13,
+      "source": "Google"
+     },
+     {
+      "name": "Premier Roofing, Repairs & Maintenance Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Premier+Roofing%2C+Repairs+%26+Maintenance+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 28,
+      "source": "Google"
+     }
+    ],
+    "swindon": [
+     {
+      "name": "Highworth Felt Roofing Ltd",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Highworth+Felt+Roofing+Ltd+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 18,
+      "source": "Google"
+     },
+     {
+      "name": "Stone And Sons Flat Roofing",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Stone+And+Sons+Flat+Roofing+Swindon",
+      "rating": 4.2,
+      "scale": 5,
+      "reviews": 5,
+      "source": "Google"
+     },
+     {
+      "name": "All Roofing",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=All+Roofing+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 10,
+      "source": "Google"
+     },
+     {
+      "name": "JK Roofing Ltd",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=JK+Roofing+Ltd+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 50,
+      "source": "Google"
+     },
+     {
+      "name": "GWR Roofing Ltd",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=GWR+Roofing+Ltd+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 32,
+      "source": "Google"
+     },
+     {
+      "name": "GK Roofing Services Ltd",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=GK+Roofing+Services+Ltd+Swindon",
+      "rating": 4.6,
+      "scale": 5,
+      "reviews": 70,
+      "source": "Google"
+     },
+     {
+      "name": "Brunel Roofing",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Brunel+Roofing+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 20,
+      "source": "Google"
+     },
+     {
+      "name": "A.P.S Roofing Services",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=A.P.S+Roofing+Services+Swindon",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 103,
+      "source": "Google"
+     },
+     {
+      "name": "Look Sharp Roofing",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Look+Sharp+Roofing+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 24,
+      "source": "Google"
+     },
+     {
+      "name": "Baker Roofing Swindon Ltd",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Baker+Roofing+Swindon+Ltd+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 33,
+      "source": "Google"
+     },
+     {
+      "name": "C. Richards & Son",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=C.+Richards+%26+Son+Swindon",
+      "rating": 4.5,
+      "scale": 5,
+      "reviews": 8,
+      "source": "Google"
+     },
+     {
+      "name": "Swindon and Wiltshire Roofing",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Swindon+and+Wiltshire+Roofing+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 10,
+      "source": "Google"
+     },
+     {
+      "name": "Hicks Roofing Limited",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Hicks+Roofing+Limited+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 16,
+      "source": "Google"
+     },
+     {
+      "name": "J & S Roofing and Bricklaying Contractors Ltd",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=J+%26+S+Roofing+and+Bricklaying+Contractors+Ltd+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 18,
+      "source": "Google"
+     },
+     {
+      "name": "Foulser Roofing",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Foulser+Roofing+Swindon",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 50,
+      "source": "Google"
+     },
+     {
+      "name": "R&M Roofing",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=R%26M+Roofing+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 18,
+      "source": "Google"
+     },
+     {
+      "name": "Nicks Roofing Swindon",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Nicks+Roofing+Swindon+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 16,
+      "source": "Google"
+     },
+     {
+      "name": "Pitch Perfect GC Ltd",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Pitch+Perfect+GC+Ltd+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 5,
+      "source": "Google"
+     },
+     {
+      "name": "P Curtis & Son Roofing Services",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=P+Curtis+%26+Son+Roofing+Services+Swindon",
+      "rating": 4.7,
+      "scale": 5,
+      "reviews": 35,
+      "source": "Google"
+     },
+     {
+      "name": "Listed Roofing Ltd",
+      "base": "Swindon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Listed+Roofing+Ltd+Swindon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 7,
+      "source": "Google"
+     }
+    ]
+   },
+   "sponsor": {
+    "services": "Flat roofs in EPDM rubber, GRP fibreglass and felt, plus flat roof repairs and leaks. Free drone roof survey and written quote. Fully insured, more than 20 years' experience."
+   },
+   "extra_sponsors": {
+    "oxford": [
+     "Prime Roofing & Guttering"
+    ]
+   }
+  },
+  "damp-proofing": {
+   "name": "Damp proofing",
+   "short": "Damp proofing",
+   "single": "damp specialist",
+   "parent": null,
+   "checked": "22 Nov 2026",
+   "intro": "Penetrating damp, rising damp, condensation and mould: finding the cause and fixing it.",
+   "list_note": "These are the damp firms Google shows for damp proofing in {town}, ranked by their Google reviews.",
+   "guide": [
+    [
+     "What kind of damp have you got?",
+     "<p>Getting the cause right matters more than anything else. The wrong treatment costs money and the damp comes back.</p><ul><li><strong>Penetrating damp</strong> is rain getting in from outside. Look for patches that grow after wet weather, often high on walls, round windows, on chimney breasts or on ceilings. Common causes are leaking gutters and downpipes, roof and chimney defects, cracked render and worn pointing.</li><li><strong>Rising damp</strong> is ground water moving up the wall. It shows as a tide mark low down on ground floor walls, often with salty, crumbly plaster.</li><li><strong>Condensation</strong> is moisture from inside the home. It shows as black mould on cold walls, window frames and corners, worst in winter and in kitchens and bathrooms.</li></ul>"
+    ],
+    [
+     "Damp in older {town} homes",
+     "<p>{town} has a lot of older stone and solid-wall houses, and many listed buildings. These walls need to breathe. Cement render, plastic paints and the wrong injected treatments can trap water in and make damp worse. If your home is old or listed, ask the firm about their experience with older buildings and lime materials.</p>"
+    ],
+    [
+     "How much does damp treatment cost?",
+     "<p>In Oxfordshire, a damp survey is usually about £135 to £300. Damp proofing work typically runs from about £690 to £2,050, and can be more for big jobs. Fixing penetrating damp is often cheaper, because it can be a gutter, pointing or roof repair, not a treatment.</p><p class=\"fine\">Price ranges as shown by Checkatrade for Oxfordshire in November 2026. Always get a written quote.</p>"
+    ]
+   ],
+   "tips": [
+    "Get a written survey that names the cause of the damp before you pay for any treatment.",
+    "Be wary of anyone who offers a new damp proof course before they have found the cause.",
+    "Ask what the guarantee covers, how long it lasts, and whether it is insurance-backed.",
+    "Fix the outside first: gutters, downpipes, pointing and the roof. Then let the walls dry before you re-plaster."
+   ],
+   "faq": [
+    [
+     "How do I know if it is penetrating damp or rising damp?",
+     "Penetrating damp gets worse after rain and can show anywhere on a wall or ceiling. Rising damp stays low on ground floor walls. A survey will tell you for sure."
+    ],
+    [
+     "Is damp the landlord's job or the tenant's?",
+     "In most rented homes the landlord must fix damp caused by the building, like leaks and rising damp. Tenants can help with condensation by heating and airing the home. Oxford City Council can advise renters."
+    ],
+    [
+     "Does a damp proof course fix all damp?",
+     "No. A damp proof course is for rising damp only. It will not stop rain getting in or condensation, which are more common."
+    ]
+   ],
+   "towns": {
+    "oxford": [
+     {
+      "name": "ROBERTS Plastering & Damp proofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=ROBERTS+Plastering+%26+Damp+proofing+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 24,
+      "source": "Google"
+     },
+     {
+      "name": "AP Damp Solutions Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=AP+Damp+Solutions+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 13,
+      "source": "Google"
+     },
+     {
+      "name": "Timberwise (UK) Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Timberwise+%28UK%29+Ltd+Oxford",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 18,
+      "source": "Google"
+     },
+     {
+      "name": "Oxford Damp Surveyors",
+      "base": "Bicester",
+      "url": "https://www.google.com/maps/search/?api=1&query=Oxford+Damp+Surveyors+Bicester",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 2,
+      "source": "Google"
+     },
+     {
+      "name": "Preservation Specialist Treatments",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Preservation+Specialist+Treatments+Oxford",
+      "rating": 4.7,
+      "scale": 5,
+      "reviews": 9,
+      "source": "Google"
+     },
+     {
+      "name": "Property Conservation Services",
+      "base": "Witney",
+      "url": "https://www.google.com/maps/search/?api=1&query=Property+Conservation+Services+Witney",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 63,
+      "source": "Google"
+     },
+     {
+      "name": "Damprot Renovations Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Damprot+Renovations+Ltd+Oxford",
+      "rating": 3.9,
+      "scale": 5,
+      "reviews": 7,
+      "source": "Google"
+     },
+     {
+      "name": "Universal Damp and Rendering Solutions",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Universal+Damp+and+Rendering+Solutions+Oxford",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 31,
+      "source": "Google"
+     }
+    ]
+   },
+   "sponsor": {
+    "services": "Damp proofing alongside roofing and building work, so the leaks behind penetrating damp, like roofs, gutters and chimneys, are fixed by the same team. Free surveys and written quotes."
+   },
+   "extra_sponsors": {}
+  }
+ }
 }

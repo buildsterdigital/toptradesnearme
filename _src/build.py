@@ -23,6 +23,7 @@ PORTAL = D.get("portal", {}).get("login", "")
 BILLING = D.get("portal", {}).get("billing", "")
 FORMS["change"] = D.get("portal", {}).get("change_form", "")
 FORMS["review"] = D.get("portal", {}).get("review_form", "")
+SERVICES = D.get("services", {})  # single-service pages (e.g. flat roofing, damp proofing) for a few towns
 FIRMS = D.get("firms", {})  # claimed firms that have a profile page, by slug
 CLAIMED = {n: slug for slug, f in FIRMS.items() for n in [f["name"]] + f.get("listed_as", [])}
 INDEXNOW_KEY = "7437c4ec36f61a7c86dc2cd2e2ca6ef5"  # public by design: served at /<key>.txt
@@ -219,7 +220,7 @@ def card(i, b, t=None, tw=None):
         else:
             own = f'<p class="claimed"><span class="ok no">Not yet claimed</span> <a href="{F(slug)}">See profile and photos</a></p>'
     else:
-        own = (f'<p class="claim"><a href="{e(claim_link(organization=b["name"], trade=D["trades"][t]["short"], town=D["towns"][tw]["name"]))}" rel="nofollow">Your business? Claim this listing</a></p>' if t else "")
+        own = (f'<p class="claim"><a href="{e(claim_link(organization=b["name"], trade=(D["trades"].get(t) or SERVICES[t])["short"], town=D["towns"][tw]["name"]))}" rel="nofollow">Your business? Claim this listing</a></p>' if t else "")
     link = f'<a class="more" href="{e(b["url"])}" target="_blank" rel="nofollow noopener">{"Google reviews" if b.get("source") == "Google" else "View profile"}</a>' if b.get("url") else ""
     pos = i if "rating" in b else "–"
     return (f'<li class="biz"><div class="pos">{pos}</div><div class="body"><h3>{e(b["name"])}</h3>'
@@ -336,7 +337,7 @@ def page(t, tw):
 <section class="tips"><h2>Before you hire a {e(tv["single"])} in {e(twv["name"])}</h2><ul>{tips}</ul></section>
 <section class="faq"><h2>Questions about {e(trade_l)} in {e(twv["name"])}</h2>{faq_html}</section>
 <p class="also">{e(tv["name"])} nearby: {others} <a href="{L(t, ar)}">All of {e(D["areas"][ar]["name"])}</a></p>
-<p class="also">Other trades in {e(twv["name"])}: {other_trades}</p>
+<p class="also">Other trades in {e(twv["name"])}: {other_trades}</p>{svc_links(tw)}
 </div>
 <aside class="quote"><h2>Get up to 3 quotes</h2><p>Tell us the job once. We pass it to up to three {e(tv["name"].lower())} in {e(twv["name"])}.</p>
 {ghl("quote", f"Quote request: {tv['short']} in {twv['name']}", 760, trade=tv["short"], town=twv["name"])}
@@ -891,6 +892,103 @@ def llms_txt():
     return "\n".join(out)
 
 
+
+def svc_links(tw):
+    """Links from a town page to the single-service pages for that town."""
+    got = [(sl, sv) for sl, sv in SERVICES.items() if tw in sv["towns"]]
+    if not got:
+        return ""
+    return f'<p class="also">Also in {e(D["towns"][tw]["name"])}: ' + " ".join(f'<a href="{L(sl, tw)}">{e(sv["name"])}</a>' for sl, sv in got) + "</p>"
+
+
+def svc_sponsors(sl, tw):
+    """Revive (within 30 miles of Oxford) first, then any named extra sponsors that already sponsor the parent trade."""
+    sv = SERVICES[sl]
+    out = []
+    if sponsored_here(tw):
+        out.append(dict(D["sponsors"]["roofers"], services=sv["sponsor"]["services"]))
+    for name in sv.get("extra_sponsors", {}).get(tw, []):
+        out += [b for b in D.get("extra_sponsors", []) if b["name"] == name][:1]
+    return out
+
+
+def service_page(sl, tw):
+    sv, twv = SERVICES[sl], D["towns"][tw]
+    town = twv["name"]
+    fmt = lambda x: x.replace("{town}", town)
+    items = sorted(sv["towns"][tw], key=score, reverse=True)
+    yr = sv["checked"][-4:]
+    name_l = sv["name"].lower()
+    title = fit(f'{sv["name"]} in {town}: {len(items)} firms ranked ({yr})', f'{sv["name"]} in {town} ({yr})')
+    top = next((b for b in items if "rating" in b and "reviews" in b), None)
+    desc = (f'{len(items)} {name_l} firms in {town} ranked by Google reviews, with prices and what to ask. Free quotes from up to 3 firms.')
+    if len(desc) > 160:
+        desc = f'{sv["name"]} in {town}: firms ranked by Google reviews, prices and free quotes.'
+    rated = [b for b in items if "rating" in b][:3]
+    rt = lambda b: f'{b["rating"]:g} out of {b["scale"]}' + (f' from {b["reviews"]} reviews' if "reviews" in b else "")
+    answer = (f'The highest-rated firms Google shows for {name_l} in {town} are ' + "; ".join(f'{b["name"]} ({rt(b)})' for b in rated)
+              + f'. Ratings checked {sv["checked"]}.') if rated else ""
+    sps = svc_sponsors(sl, tw)
+    sp_html = "\n".join(sponsor(None, b) for b in sps)
+    left = 2 - len(sps)
+    feat = (f'<div class="featured"><span class="tag">Sponsored spot</span><p><strong>{"One more sponsored spot" if left == 1 else "Two sponsored spots"} free for a {e(sv["single"])} in {e(town)}.</strong> '
+            f'Top of the page, your photos, your number.</p><a href="{e(claim_link(trade=sv["short"], town=town))}" rel="nofollow">Ask about it</a></div>') if left > 0 else ""
+    lst = "".join(card(i + 1, b, sl, tw) for i, b in enumerate(items))
+    guide = "".join(f'<section class="guide"><h2>{e(fmt(h))}</h2>{fmt(body)}</section>' for h, body in sv["guide"])
+    tips = "".join(f"<li>{e(fmt(x))}</li>" for x in sv["tips"])
+    faqs = [(f'How do I get quotes for {name_l} in {town}?',
+             f'Use the free quote form on this page. We pass your job to up to three firms that do {name_l} in {town}, or you can contact any firm above directly.'),
+            ("How is this list ranked?",
+             "By Google star rating, weighted by how many reviews it is based on. Firms cannot pay to move up. Sponsored spots are labelled and sit outside the ranked list.")] \
+        + [(fmt(q), fmt(a)) for q, a in sv["faq"]]
+    faq_html = "".join(f"<h3>{e(q)}</h3><p>{e(a)}</p>" for q, a in faqs)
+    par = sv.get("parent")
+    if par:
+        crumbs = f'<a href="{L()}">Home</a> / <a href="{L(par)}">{e(D["trades"][par]["name"])}</a> / <a href="{L(par, tw)}">{e(town)}</a> / {e(sv["name"])}'
+        steps = [("Home", "/"), (D["trades"][par]["name"], L(par)), (town, L(par, tw)), (sv["name"], L(sl, tw))]
+        back = f'<p class="also">All roofers in {e(town)}, for tiled and slate roofs too: <a href="{L(par, tw)}">Roofers in {e(town)}</a></p>'
+    else:
+        crumbs = f'<a href="{L()}">Home</a> / {e(sv["name"])} / {e(town)}'
+        steps = [("Home", "/"), (f'{sv["name"]} in {town}', L(sl, tw))]
+        back = ""
+    others = " ".join(f'<a href="{L(o, tw)}">{e(SERVICES[o]["name"]) if o in SERVICES else e(D["trades"][o]["name"])}</a>'
+                      for o in list(D["trades"]) + [x for x in SERVICES if tw in SERVICES[x]["towns"]] if o != sl and o != par)
+    body = f'''{header()}
+<main class="wrap">
+<p class="crumbs">{crumbs}</p>
+<section class="hero"><h1>{e(sv["name"])} in {e(town)}</h1>
+<p class="lede">{e(sv["intro"])} Covering {e(town)} and nearby villages including {e(twv["villages"])}.</p>
+<p class="stamp">{len(items)} firms listed · Google ratings checked {sv["checked"]}</p>
+{f'<p class="answer">{e(answer)}</p>' if answer else ""}</section>
+<div class="grid">
+<div class="main">
+{sp_html}
+{feat}
+<p class="note">{e(fmt(sv["list_note"]))}</p>
+<ol class="list">{lst}</ol>
+{guide}
+<section class="tips"><h2>Before you hire a {e(sv["single"])} in {e(town)}</h2><ul>{tips}</ul></section>
+<section class="faq"><h2>Questions about {e(name_l)} in {e(town)}</h2>{faq_html}</section>
+{back}
+<p class="also">Other trades in {e(town)}: {others}</p>
+</div>
+<aside class="quote"><h2>Get up to 3 quotes</h2><p>Tell us the job once. We pass it to up to three firms that do {e(name_l)} in {e(town)}.</p>
+{ghl("quote", f"Quote request: {sv['short']} in {town}", 760, trade=sv["short"], town=town)}
+<p class="msg">Free, no obligation. We share your details only with the up to three firms we pass your job to, which may include sponsored firms. We do not vet or guarantee firms. <a href="{P('privacy')}">Privacy</a> · <a href="{P('terms')}">Terms</a></p></aside>
+</div></main>
+{footer()}'''
+    data = ld(crumbs_ld(*steps),
+              {"@type": "CollectionPage", "@id": SITE + L(sl, tw), "url": SITE + L(sl, tw), "name": title, "description": desc,
+               "isPartOf": {"@id": SITE + "/#site"},
+               "spatialCoverage": [{"@type": "City", "name": town}],
+               "mainEntity": {"@type": "ItemList", "name": f'{sv["name"]} in {town}', "numberOfItems": len(items),
+                              "itemListElement": [{"@type": "ListItem", "position": i + 1,
+                                                   "item": {"@type": "HomeAndConstructionBusiness", "name": b["name"], "areaServed": town}}
+                                                  for i, b in enumerate(items)]}},
+              {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]})
+    write(wrap_doc(title, desc, L(sl, tw), body, data), sl, tw)
+
+
 for t in D["trades"]:
     trade_index(t)
     for a in LIVE_AREAS:
@@ -905,10 +1003,13 @@ review_pages()
 dashboard()
 for slug in FIRMS:
     firm_page(slug)
+for sl, sv in SERVICES.items():
+    for tw in sv["towns"]:
+        service_page(sl, tw)
 if LIVE:
     import shutil
     shutil.copy(os.path.join(HERE, "style.css"), os.path.join(OUT, "style.css"))
-    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "badge", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]]
+    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "badge", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]] + [L(sl, tw) for sl in SERVICES for tw in SERVICES[sl]["towns"]]
     # lastmod = the day a page's content last changed, so Google can see what is new.
     import datetime, hashlib
     state_file = os.path.join(HERE, "lastmod.json")
