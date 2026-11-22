@@ -164799,6 +164799,228 @@
     "services": "Damp proofing alongside roofing and building work, so the leaks behind penetrating damp, like roofs, gutters and chimneys, are fixed by the same team. Free surveys and written quotes."
    },
    "extra_sponsors": {}
+  },
+  "emergency-roof-repair": {
+   "name": "Emergency roof repair",
+   "short": "Emergency roof repair",
+   "single": "roofer for an emergency",
+   "parent": "roofers",
+   "checked": "22 Nov 2026",
+   "intro": "Roof leaking now? Storm damage, slipped or missing tiles, a hole in a flat roof or water coming through the ceiling.",
+   "list_note": "These are the roofing firms Google shows for emergency roof repair in {town}, ranked by their Google reviews. Many list themselves as open 24 hours, but call to check who can come out today.",
+   "guide": [
+    [
+     "Roof leaking? Do this first",
+     "<ul><li><strong>Stay safe.</strong> Don't go on the roof or up a ladder in wind, rain or the dark.</li><li><strong>If water is near lights or sockets</strong>, turn the power off at the fuse box for that area and keep away.</li><li><strong>A bulging ceiling</strong> can come down. Move people and things out of the room, put a bucket under it, and stay clear.</li><li><strong>Catch the water</strong> with buckets and towels, and move furniture and electricals away.</li><li><strong>Take photos</strong> of the damage inside and out (from the ground) for your insurer.</li><li><strong>Call a roofer</strong>, and ask them to make it watertight first, with a tarp or temporary patch, then quote for the proper repair.</li></ul>"
+    ],
+    [
+     "How much does an emergency roof repair cost?",
+     "<p>A temporary fix to stop the water is often the first visit. The proper repair is quoted after. For roof repairs in {town}, Checkatrade shows an average of about £966, with most jobs between about £500 and £1,900. Call-outs at night or at weekends usually cost more.</p><p class=\"fine\">Price range as shown by Checkatrade for roof repairs in Oxford in November 2026. Always ask for the call-out price before they come.</p>"
+    ],
+    [
+     "Will my insurance pay?",
+     "<p>Home insurance often covers sudden storm damage, but not wear and tear or a roof that was already failing. Check your policy, take photos, keep receipts for the emergency fix, and tell your insurer early.</p>"
+    ]
+   ],
+   "tips": [
+    "Ask the call-out price and hourly rate on the phone, before anyone comes.",
+    "Ask for a temporary fix first if the full repair needs scaffolding or materials.",
+    "Get the proper repair quoted in writing, separate from the emergency visit.",
+    "Be wary of anyone who knocks on your door after a storm offering roof work."
+   ],
+   "faq": [
+    [
+     "Can a roofer come out tonight in {town}?",
+     "Some can. Call a few firms from the list and ask who can come today. In heavy storms roofers get very busy, so a temporary tarp may come first."
+    ],
+    [
+     "Is a leaking roof an emergency?",
+     "If water is coming in near electrics, a ceiling is bulging, or tiles or slates have come off in a storm, yes. A small drip in a loft can usually wait a day or two, but get it looked at before it does more damage."
+    ],
+    [
+     "Should I fix it myself?",
+     "Don't go on the roof. You can catch water, move things and turn off power to the wet area. Leave the roof to a roofer."
+    ]
+   ],
+   "towns": {
+    "oxford": [
+     {
+      "name": "Safeguard Roofing & Building Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Safeguard+Roofing+%26+Building+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 207,
+      "source": "Google"
+     },
+     {
+      "name": "Thames Valley Roofing and Painting Limited",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Thames+Valley+Roofing+and+Painting+Limited+Oxford",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 79,
+      "source": "Google"
+     },
+     {
+      "name": "Oxford Roofing and Maintenance Ltd",
+      "base": "Faringdon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Oxford+Roofing+and+Maintenance+Ltd+Faringdon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 67,
+      "source": "Google"
+     },
+     {
+      "name": "Regency Roofing & Drainage Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Regency+Roofing+%26+Drainage+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 31,
+      "source": "Google"
+     },
+     {
+      "name": "Oxford Roof Masters",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Oxford+Roof+Masters+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 13,
+      "source": "Google"
+     },
+     {
+      "name": "All Roofing Experts Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=All+Roofing+Experts+Ltd+Oxford",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 28,
+      "source": "Google"
+     },
+     {
+      "name": "KBS Oxford Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=KBS+Oxford+Roofing+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 37,
+      "source": "Google"
+     },
+     {
+      "name": "North Oxford Roofing & Guttering",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=North+Oxford+Roofing+%26+Guttering+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 25,
+      "source": "Google"
+     },
+     {
+      "name": "Roofs in Oxford",
+      "base": "Kidlington",
+      "url": "https://www.google.com/maps/search/?api=1&query=Roofs+in+Oxford+Kidlington",
+      "rating": 4.9,
+      "scale": 5,
+      "reviews": 37,
+      "source": "Google"
+     },
+     {
+      "name": "All Type Roofing & Building Group Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=All+Type+Roofing+%26+Building+Group+Ltd+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 35,
+      "source": "Google"
+     },
+     {
+      "name": "Oxford Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Oxford+Roofing+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 1,
+      "source": "Google"
+     },
+     {
+      "name": "Everlast Roofing Services",
+      "base": "Abingdon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Everlast+Roofing+Services+Abingdon",
+      "rating": 4.8,
+      "scale": 5,
+      "reviews": 90,
+      "source": "Google"
+     },
+     {
+      "name": "Oxfordshire Roofing & Building Services",
+      "base": "Abingdon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Oxfordshire+Roofing+%26+Building+Services+Abingdon",
+      "rating": 4.5,
+      "scale": 5,
+      "reviews": 54,
+      "source": "Google"
+     },
+     {
+      "name": "Bc Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Bc+Roofing+Oxford",
+      "rating": 4.8,
+      "scale": 5,
+      "reviews": 25,
+      "source": "Google"
+     },
+     {
+      "name": "Abbott Roofing Oxford",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Abbott+Roofing+Oxford+Oxford",
+      "rating": 3.8,
+      "scale": 5,
+      "reviews": 24,
+      "source": "Google"
+     },
+     {
+      "name": "Carma UK Roofing",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Carma+UK+Roofing+Oxford",
+      "rating": 4.7,
+      "scale": 5,
+      "reviews": 56,
+      "source": "Google"
+     },
+     {
+      "name": "Sterling Roofing Oxfordshire",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Sterling+Roofing+Oxfordshire+Oxford",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 13,
+      "source": "Google"
+     },
+     {
+      "name": "Creative Roofing Ltd",
+      "base": "Oxford",
+      "url": "https://www.google.com/maps/search/?api=1&query=Creative+Roofing+Ltd+Oxford",
+      "rating": 4.6,
+      "scale": 5,
+      "reviews": 9,
+      "source": "Google"
+     },
+     {
+      "name": "Milton Roofing (Oxfordshire)",
+      "base": "Abingdon",
+      "url": "https://www.google.com/maps/search/?api=1&query=Milton+Roofing+%28Oxfordshire%29+Abingdon",
+      "rating": 5.0,
+      "scale": 5,
+      "reviews": 7,
+      "source": "Google"
+     }
+    ]
+   },
+   "sponsor": {
+    "services": "24/7 emergency call-outs for leaks, storm damage and missing tiles, then a written quote for the proper repair. Fully insured, more than 20 years' experience."
+   },
+   "extra_sponsors": {}
   }
  }
 }
