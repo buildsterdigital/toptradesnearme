@@ -141,6 +141,39 @@ def count(t, tw):
     return len(D["listings"].get(f"{t}/{tw}", []))
 
 
+# Weak pages stay up for visitors but ask search engines not to index them (Google's doorway and
+# thin-content rules). A page is weak when it lists 3 firms or fewer, or shows exactly the same firms
+# as another town's page for that trade. Of two identical pages we keep the town most firms are based
+# in (ties: the town added first). Rules, not a fixed list, so pages come back once they grow.
+MIN_FIRMS = 4
+TOWN_ORDER = {tw: i for i, tw in enumerate(D["towns"])}
+
+
+def _weak_pages():
+    weak, same_as, groups = set(), {}, {}
+    for key, items in D["listings"].items():
+        t, tw = key.split("/")
+        if len(items) < MIN_FIRMS:
+            weak.add((t, tw))
+        else:
+            groups.setdefault((t, tuple(sorted(b["name"] for b in items))), []).append(tw)
+    for (t, _), towns in groups.items():
+        if len(towns) < 2:
+            continue
+        def based(tw):
+            name = D["towns"][tw]["name"].lower()
+            return sum(1 for b in D["listings"][f"{t}/{tw}"] if b.get("base", "").lower() == name)
+        keep = sorted(towns, key=lambda tw: (-based(tw), TOWN_ORDER[tw]))[0]
+        for tw in towns:
+            if tw != keep:
+                weak.add((t, tw))
+                same_as[(t, tw)] = keep
+    return weak, same_as
+
+
+WEAK, SAME_AS = _weak_pages()
+
+
 def finder_data():
     towns = [{"s": tw, "n": v["name"], "a": v["area"], "lat": v["lat"], "lon": v["lon"],
               "c": {t: count(t, tw) for t in D["trades"]}} for tw, v in D["towns"].items()]
@@ -268,6 +301,36 @@ def featured_box(t, tw, tv, twv):
             f'Top of the page, your photos, your number.</p><a href="{e(claim_link(trade=tv["short"], town=twv["name"]))}" rel="nofollow">Ask about it</a></div>')
 
 
+def local_facts(t, tw, items):
+    """One line of facts drawn from this town's own listings, plus a pointer when choice is thin."""
+    tv, name = D["trades"][t], D["towns"][tw]["name"]
+    rated = [b for b in items if "rating" in b and "reviews" in b]
+    out = []
+    if rated and len(items) > 1:
+        high = sum(1 for b in rated if b["rating"] / b["scale"] >= 0.9)
+        total = sum(b["reviews"] for b in rated)
+        based = sum(1 for b in items if b.get("base", "").lower() == name.lower())
+        if high == len(items):
+            first = f'All {len(items)} firms here have 4.5 stars or more on Google' if len(items) > 2 else "Both firms here have 4.5 stars or more on Google"
+        elif high == 0:
+            first = f'None of the {len(items)} firms here has 4.5 stars or more on Google'
+        else:
+            first = f'{high} of the {len(items)} firms here {"has" if high == 1 else "have"} 4.5 stars or more on Google'
+        bits = [first, f'{total:,} Google reviews between them']
+        if based:
+            bits.append(f'{based} {"is" if based == 1 else "are"} based in {name} itself')
+        out.append(f'<p class="facts">{e(", ".join(bits[:-1]) + " and " + bits[-1])}.</p>')
+    if (t, tw) in SAME_AS:
+        o = SAME_AS[(t, tw)]
+        out.append(f'<p class="facts">The same firms cover <a href="{L(t, o)}">{e(D["towns"][o]["name"])}</a>, close by.</p>')
+    elif len(items) < MIN_FIRMS:
+        more = [o for o in nearest(tw, 12) if count(t, o) >= MIN_FIRMS and (t, o) not in WEAK][:2]
+        if more:
+            links = " and ".join(f'<a href="{L(t, o)}">{e(D["towns"][o]["name"])}</a>' for o in more)
+            out.append(f'<p class="facts">We found only {len(items)} {e(tv["name"].lower() if len(items) != 1 else tv["single"])} in {e(name)} so far. For more choice, see {links}.</p>')
+    return "".join(out)
+
+
 def page(t, tw):
     tv, twv = D["trades"][t], D["towns"][tw]
     items = sorted(D["listings"][f"{t}/{tw}"], key=score, reverse=True)
@@ -327,7 +390,7 @@ def page(t, tw):
 <section class="hero"><h1>Top {e(tv["name"].lower())} in {e(twv["name"])}</h1>
 <p class="lede">{e(tv["intro"])} Covering {e(twv["name"])} and nearby villages including {e(twv["villages"])}.</p>
 <p class="stamp">{len(items)} firms listed · Google ratings checked {D["checked"]}</p>
-<p class="answer">{e(answer)}</p></section>
+<p class="answer">{e(answer)}</p>{local_facts(t, tw, items)}</section>
 <div class="grid">
 <div class="main">
 {sponsor_box(t, tw)}
@@ -355,7 +418,8 @@ def page(t, tw):
                                                             "areaServed": twv["name"]}} for i, b in enumerate(items)]}},
               {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q,
                                                    "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]})
-    doc = f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{head(title, desc, L(t, tw))}{data}</head><body>{body}</body></html>'
+    robots = '<meta name="robots" content="noindex,follow">\n' if (t, tw) in WEAK else ""
+    doc = f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{robots}{head(title, desc, L(t, tw))}{data}</head><body>{body}</body></html>'
     if LIVE:
         os.makedirs(os.path.join(OUT, t, tw), exist_ok=True)
         open(os.path.join(OUT, t, tw, "index.html"), "w").write(doc)
@@ -1009,7 +1073,7 @@ for sl, sv in SERVICES.items():
 if LIVE:
     import shutil
     shutil.copy(os.path.join(HERE, "style.css"), os.path.join(OUT, "style.css"))
-    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "badge", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"]] + [L(sl, tw) for sl in SERVICES for tw in SERVICES[sl]["towns"]]
+    urls = ["/"] + [P(x) for x in ("claim", "get-listed", "for-firms", "badge", "review", "reviews-policy", "privacy", "terms")] + [F(x) for x in FIRMS] + [L(t) for t in D["trades"]] + [L(t, a) for t in D["trades"] for a in LIVE_AREAS] + [L(t, tw) for t in D["trades"] for tw in D["towns"] if (t, tw) not in WEAK] + [L(sl, tw) for sl in SERVICES for tw in SERVICES[sl]["towns"]]
     # lastmod = the day a page's content last changed, so Google can see what is new.
     import datetime, hashlib
     state_file = os.path.join(HERE, "lastmod.json")
